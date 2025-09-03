@@ -4,8 +4,7 @@
 #include "ChipConfig.h"
 #include "IO.h"
 
-
-
+//3/09
 int main (void){
     
     //Initialisation oscillateur
@@ -13,7 +12,7 @@ int main (void){
     
     // Configuration des input et output (IO)
     InitIO();
-    LED_BLANCHE_1 = 1;
+    LED_BLANCHE_1 = 1;  
     LED_BLEUE_1 = 1;
     LED_ORANGE_1 = 1;
     LED_ROUGE_1 = 1;
