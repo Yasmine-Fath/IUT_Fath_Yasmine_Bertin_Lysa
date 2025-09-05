@@ -5,13 +5,13 @@
 void InitTimer1(void) {
 //Timer1 pour horodater les mesures (1ms)
 T1CONbits.TON = 0; // Disable Timer
-T1CONbits.TCKPS = 0b01; //Prescaler b=binaire (PS)
+T1CONbits.TCKPS = 0b00; //Prescaler b=binaire (PS)
 //11 = 1:256 prescale value
 //10 = 1:64 prescale value
 //01 = 1:8 prescale value
 //00 = 1:1 prescale value
 T1CONbits.TCS = 0; //clock source = internal clock
-PR1 = 0x1D4C;
+PR1 = 5f000;
 IFS0bits.T1IF = 0; // Clear Timer Interrupt Flag
 IEC0bits.T1IE = 1; // Enable Timer interrupt
 T1CONbits.TON = 1; // Enable Timer
@@ -23,9 +23,9 @@ LED_BLANCHE_1 = !LED_BLANCHE_1;
 }
 //Initialisation d?un timer 32 bits
 void InitTimer23(void) {
-T3CONbits.TON = 0; // Stop any 16-bit Timer3 operation
+T3CONbits.TON = 1 ; // Stop any 16-bit Timer3 operation
 T2CONbits.TON = 0; // Stop any 16/32-bit Timer3 operation
-T2CONbits.T32 = 1; // Enable 32-bit Timer mode
+T2CONbits.T32 = 0; // Enable 32-bit Timer mode
 T2CONbits.TCS = 0; // Select internal instruction cycle clock
 T2CONbits.TCKPS = 0b00; // Select 1:1 Prescaler
 TMR3 = 0x00; // Clear 32-bit Timer (msw)

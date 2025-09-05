@@ -3,8 +3,9 @@
 #include <xc.h>
 #include "ChipConfig.h"
 #include "IO.h"
+#include "timer.h"
 
-//3/09
+//5/09
 int main (void){
     
     //Initialisation oscillateur

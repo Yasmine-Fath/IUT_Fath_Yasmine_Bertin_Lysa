@@ -86,9 +86,9 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x152           0x1fb  (507)
-.text                        0x352               0x150           0x1f8  (504)
+.text                        0x352               0x152           0x1fb  (507)
 
-                 Total "program" memory used (bytes):          0x3f3  (1011) <1%
+                 Total "program" memory used (bytes):          0x3f6  (1014) <1%
 
 
 Auxflash Memory  [Origin = 0x7fc000, Length = 0x3ffa]
@@ -129,22 +129,22 @@ External Symbols in Program Memory (by address):
                   0x000324                  __T3Interrupt
                   0x00034c                  __DefaultInterrupt
                   0x000352                  _InitOscillator
-                  0x0003e8                  _InitTimer1
-                  0x000406                  _InitTimer23
-                  0x000438                  _InitIO
-                  0x000462                  _LockIO
-                  0x000474                  _UnlockIO
-                  0x000486                  _main
+                  0x0003e8                  _InitIO
+                  0x000412                  _LockIO
+                  0x000424                  _UnlockIO
+                  0x000436                  _InitTimer1
+                  0x000452                  _InitTimer23
+                  0x000484                  _main
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000438                  _InitIO
+                  0x0003e8                  _InitIO
                   0x000352                  _InitOscillator
-                  0x0003e8                  _InitTimer1
-                  0x000406                  _InitTimer23
-                  0x000462                  _LockIO
-                  0x000474                  _UnlockIO
+                  0x000436                  _InitTimer1
+                  0x000452                  _InitTimer23
+                  0x000412                  _LockIO
+                  0x000424                  _UnlockIO
                   0x00034c                  __DefaultInterrupt
                   0xf80004                  __FGS.sec
                   0x0002fa                  __T1Interrupt
@@ -153,7 +153,7 @@ External Symbols in Program Memory (by name):
                   0x000248                  __data_init_extended
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000486                  _main
+                  0x000484                  _main
 
 Memory Configuration
 
@@ -237,7 +237,7 @@ usercode
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS05о
+ __FGS.sec        0xf80004          0x2 /CW/_FGS дн
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -279,12 +279,12 @@ __FUID0
  .debug_abbrev    0x00014f         0x99 build/default/production/IO.o
  .debug_abbrev    0x0001e8         0xda build/default/production/timer.o
 
-.debug_line       0x000000        0x4a9
+.debug_line       0x000000        0x4ab
  *(.debug_line)
- .debug_line      0x000000        0x11b build/default/production/main.o
- .debug_line      0x00011b        0x127 build/default/production/ChipConfig.o
- .debug_line      0x000242        0x127 build/default/production/IO.o
- .debug_line      0x000369        0x140 build/default/production/timer.o
+ .debug_line      0x000000        0x11d build/default/production/main.o
+ .debug_line      0x00011d        0x127 build/default/production/ChipConfig.o
+ .debug_line      0x000244        0x127 build/default/production/IO.o
+ .debug_line      0x00036b        0x140 build/default/production/timer.o
 
 .debug_frame      0x000000        0x14e
  *(.debug_frame)
@@ -3144,7 +3144,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/production/fath-bertin-robot-projet-1.2.X.production.elf elf32-pic30)
-LOAD /CW/_FGS05о
+LOAD /CW/_FGS дн
 LOAD default_isr
 
 .debug_pubtypes
@@ -3205,15 +3205,15 @@ __c30_signature
  .ivt._T3Interrupt
                   0x000024          0x2 build/default/production/timer.o
 
-.text             0x000352        0x150
+.text             0x000352        0x152
  .text            0x000352         0x96 build/default/production/ChipConfig.o
                   0x000352                  _InitOscillator
- .text            0x0003e8         0x50 build/default/production/timer.o
-                  0x0003e8                  _InitTimer1
-                  0x000406                  _InitTimer23
- .text            0x000438         0x4e build/default/production/IO.o
-                  0x000438                  _InitIO
-                  0x000462                  _LockIO
-                  0x000474                  _UnlockIO
- .text            0x000486         0x1c build/default/production/main.o
-                  0x000486                  _main
+ .text            0x0003e8         0x4e build/default/production/IO.o
+                  0x0003e8                  _InitIO
+                  0x000412                  _LockIO
+                  0x000424                  _UnlockIO
+ .text            0x000436         0x4e build/default/production/timer.o
+                  0x000436                  _InitTimer1
+                  0x000452                  _InitTimer23
+ .text            0x000484         0x20 build/default/production/main.o
+                  0x000484                  _main
