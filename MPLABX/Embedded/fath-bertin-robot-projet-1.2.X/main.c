@@ -4,6 +4,7 @@
 #include "ChipConfig.h"
 #include "IO.h"
 #include "timer.h"
+#include "PWM.h"
 
 //5/09
 int main (void){
@@ -26,6 +27,11 @@ int main (void){
     LED_ORANGE_2 = 1;
     LED_ROUGE_2 = 1;
     LED_VERTE_2 = 1;
+    
+    
+    //PWM
+    InitPWM();
+    PWMSetSpeed(20.0);
     
     // Boucle Principale
     while(1)
