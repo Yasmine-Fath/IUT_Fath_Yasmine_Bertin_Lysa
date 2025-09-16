@@ -1,5 +1,5 @@
 #include <xc.h>
-#include "adc.h"
+#include "ADC.h"
 
 unsigned char ADCResultIndex = 0;
 static unsigned int ADCResult[5];
@@ -44,9 +44,9 @@ void InitADC1(void)
     //Configuration des ports
     /************************************************************/
     //ADC éutiliss : 8(B8)-9(B9)-10(B10)
-    ANSELBbits.ANSB8 = 1;
-    ANSELBbits.ANSB9 = 1;
-    ANSELBbits.ANSB10 = 1;
+    ANSELBbits.ANSB8 = 1;  //ACResult[0]
+    ANSELBbits.ANSB9 = 1;//ACResult[1]
+    ANSELBbits.ANSB10 = 1;//ACResult[2]
     AD1CSSLbits.CSS8=1; // Enable AN8 for scan
     AD1CSSLbits.CSS9=1; // Enable AN9 for scan
     AD1CSSLbits.CSS10=1; // Enable AN10 for scan
