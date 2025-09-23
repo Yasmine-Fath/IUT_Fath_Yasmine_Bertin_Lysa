@@ -7,7 +7,7 @@
 #define PWMPER 24.0
 
 double talon = 50;
-int acceleration = 1;
+int acceleration = 5;
 
 void InitPWM(void) {
     PTCON2bits.PCLKDIV = 0b000; //Divide by 1
