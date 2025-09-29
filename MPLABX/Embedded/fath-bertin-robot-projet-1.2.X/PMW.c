@@ -72,12 +72,12 @@ void PWMUpdateSpeed() {
     }
 
     if (robotState.vitesseGaucheCommandeCourante > 0) {
-        PDC1 = robotState.vitesseGaucheCommandeCourante * PWMPER + talon;
-        SDC1 = talon;
+        SDC1 = robotState.vitesseGaucheCommandeCourante * PWMPER + talon;
+        PDC1 = talon;//gauche
     }
     else {
-        PDC1 = talon;
-        SDC1 = -robotState.vitesseGaucheCommandeCourante * PWMPER + talon;
+        SDC1 = talon;
+        PDC1 = -robotState.vitesseGaucheCommandeCourante * PWMPER + talon;
     }
 
     if (robotState.vitesseDroiteCommandeCourante < robotState.vitesseDroiteConsigne) {
@@ -94,7 +94,7 @@ void PWMUpdateSpeed() {
 
     if (robotState.vitesseDroiteCommandeCourante >= 0) {
         PDC2 = robotState.vitesseDroiteCommandeCourante * PWMPER + talon;
-        SDC2 = talon;
+        SDC2 = talon;//droite
     } else {
         PDC2 = talon;
         SDC2 = -robotState.vitesseDroiteCommandeCourante * PWMPER + talon;

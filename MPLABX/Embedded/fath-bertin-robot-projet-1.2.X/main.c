@@ -115,7 +115,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsigne(30, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(15, MOTEUR_DROIT);
             PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
@@ -126,7 +126,7 @@ void OperatingSystemLoop(void) {
 
         case STATE_TOURNE_DROITE:
             PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(30, MOTEUR_GAUCHE);
+            PWMSetSpeedConsigne(15, MOTEUR_GAUCHE);
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
 
@@ -162,56 +162,215 @@ void OperatingSystemLoop(void) {
 
 
 unsigned char nextStateRobot = 0;
+unsigned int flagrobot;
 
 void SetNextRobotStateInAutomaticMode() {
-    unsigned char positionObstacle = PAS_D_OBSTACLE;
-    //ÈDtermination de la position des obstacles en fonction des ÈÈËtlmtres
-    if (robotState.distanceTelemetreDroit < 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) { //Obstacle ‡droite
-        positionObstacle = OBSTACLE_A_DROITE;
-    } else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche < 30) { //Obstacle ‡gauche
-        positionObstacle = OBSTACLE_A_GAUCHE;
-    } else if (robotState.distanceTelemetreCentre < 20) { //Obstacle en face
-        positionObstacle = OBSTACLE_EN_FACE;
-    } else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) { //pas d?obstacle
-        positionObstacle = PAS_D_OBSTACLE;
-    }   
-    else if (robotState.distanceTelemetreDroitDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGaucheGauche < 15) { //Obstacle ‡gauche
-        positionObstacle = OBSTACLE_A_GAUCHE_GAUCHE;
-    } 
-    else if (robotState.distanceTelemetreGaucheGauche > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreDroitDroit < 15) { //Obstacle ‡gauche
-        positionObstacle = OBSTACLE_A_DROITE_DROITE;
-    } 
-        
+//    unsigned char positionObstacle = PAS_D_OBSTACLE;
+//    //ÈDtermination de la position des obstacles en fonction des ÈÈËtlmtres
+//    if (robotState.distanceTelemetreDroit < 30 &&
+//            robotState.distanceTelemetreCentre > 20 &&
+//            robotState.distanceTelemetreGauche > 30) { //Obstacle ‡droite
+//        positionObstacle = OBSTACLE_A_DROITE;
+//    } else if (robotState.distanceTelemetreDroit > 30 &&
+//            robotState.distanceTelemetreCentre > 20 &&
+//            robotState.distanceTelemetreGauche < 30) { //Obstacle ‡gauche
+//        positionObstacle = OBSTACLE_A_GAUCHE;
+//    } else if (robotState.distanceTelemetreCentre < 20) { //Obstacle en face
+//        positionObstacle = OBSTACLE_EN_FACE;
+//    } else if (robotState.distanceTelemetreDroit > 30 &&
+//            robotState.distanceTelemetreCentre > 20 &&
+//            robotState.distanceTelemetreGauche > 30) { //pas d?obstacle
+//        positionObstacle = PAS_D_OBSTACLE;
+//    }   
+//    else if (robotState.distanceTelemetreDroitDroit > 30 &&
+//            robotState.distanceTelemetreCentre > 20 &&
+//            robotState.distanceTelemetreGaucheGauche < 15) { //Obstacle ‡gauche
+//        positionObstacle = OBSTACLE_A_GAUCHE_GAUCHE;
+//    } 
+//    else if (robotState.distanceTelemetreGaucheGauche > 30 &&
+//            robotState.distanceTelemetreCentre > 20 &&
+//            robotState.distanceTelemetreDroitDroit < 15) { //Obstacle ‡gauche
+//        positionObstacle = OBSTACLE_A_DROITE_DROITE;
+//        
+//    } 
+    
+      
             
-   
-    //ÈDtermination de lÈ?tat ‡venir du robot
-    if (positionObstacle == PAS_D_OBSTACLE) {
-        nextStateRobot = STATE_AVANCE;
-    } else if (positionObstacle == OBSTACLE_A_DROITE) {
-        nextStateRobot = STATE_TOURNE_GAUCHE;
-    } else if (positionObstacle == OBSTACLE_A_GAUCHE) {
-        nextStateRobot = STATE_TOURNE_DROITE;
-    } else if (positionObstacle == OBSTACLE_EN_FACE) {
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+//   
+//    //ÈDtermination de lÈ?tat ‡venir du robot
+//    if (positionObstacle == PAS_D_OBSTACLE) {
+//        nextStateRobot = STATE_AVANCE;
+//    } else if (positionObstacle == OBSTACLE_A_DROITE) {
+//        nextStateRobot = STATE_TOURNE_GAUCHE;
+//    } else if (positionObstacle == OBSTACLE_A_GAUCHE) {
+//        nextStateRobot = STATE_TOURNE_DROITE;
+//    } else if (positionObstacle == OBSTACLE_EN_FACE) {
+//        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+//    }
+//    else if (positionObstacle == OBSTACLE_A_GAUCHE_GAUCHE) {
+//        nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+//    }
+//    else if (positionObstacle == OBSTACLE_A_DROITE_DROITE) {
+//        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+//    }
+    
+    flagrobot = 0b00000;
+    if(robotState.distanceTelemetreGaucheGauche < 25){
+        flagrobot |= 0b00001;  
     }
-    else if (positionObstacle == OBSTACLE_A_GAUCHE_GAUCHE) {
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+    
+    if(robotState.distanceTelemetreGauche< 30){
+        flagrobot |= 0b00010 ;
+        //flagrobot != 1<<3;  
     }
-    else if (positionObstacle == OBSTACLE_A_DROITE_DROITE) {
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+    if(robotState.distanceTelemetreCentre < 35){
+        flagrobot |= 0b00100 ;
+       // flagrobot != 1<<2;  
+    }
+    if(robotState.distanceTelemetreDroit < 30){
+        flagrobot |= 0b01000 ;
+        //flagrobot != 1<<1;  
+    }
+    if(robotState.distanceTelemetreDroitDroit < 25){
+        flagrobot |= 0b10000;  
+    }
+    
+    
+    switch (flagrobot) {
+        case 0b00000:
+            nextStateRobot = STATE_AVANCE;
+            break;
+            
+        case 0b00001:
+            nextStateRobot = STATE_AVANCE;
+            break;
+            
+        case 0b00010:
+            nextStateRobot = STATE_TOURNE_GAUCHE;
+            break;
+            
+        case 0b00011:
+            nextStateRobot = STATE_TOURNE_GAUCHE;
+            break;
+            
+        case 0b00100:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b00101:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b00110:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b00111:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01000:
+            nextStateRobot = STATE_TOURNE_DROITE;
+            break;
+            
+        case 0b01001:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01010:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01011:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01100:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b01101:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01110:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b01111:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b10000:
+            nextStateRobot = STATE_AVANCE;
+            break;
+            
+        case 0b10001:
+            nextStateRobot = STATE_AVANCE;
+            break;
+            
+        case 0b10010:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b10011:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b10100:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b10101:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b10110:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b10111:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b11000:
+            nextStateRobot = STATE_TOURNE_DROITE;
+            break;
+            
+        case 0b11001:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b11010:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b11011:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+        case 0b11100:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b11101:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b11110:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+            break;
+            
+        case 0b11111:
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            break;
+            
+            
+        
     }
     //Si l?on n?est pas dans la transition de lÈ?tape en cours
     if (nextStateRobot != stateRobot - 1) {
         stateRobot = nextStateRobot;
     }
 }
+
