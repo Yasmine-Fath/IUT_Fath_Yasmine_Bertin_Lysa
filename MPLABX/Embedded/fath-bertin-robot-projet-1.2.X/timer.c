@@ -10,7 +10,7 @@
 unsigned char toggle = 0;
 float f = 1000.0;
 float f1 = 50.0;
-unsigned long timestamp;
+unsigned long timestampD,timestampG, timestamp;
 
 //Initialisation d?un timer 16 bits
 
@@ -108,6 +108,8 @@ void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     IFS1bits.T4IF = 0;
     //LED_BLEUE_1 = !LED_BLEUE_1;
     timestamp = timestamp + 1;
+    timestampD = timestampD + 1;
+    timestampG = timestampG + 1;
     OperatingSystemLoop();
 }
 
