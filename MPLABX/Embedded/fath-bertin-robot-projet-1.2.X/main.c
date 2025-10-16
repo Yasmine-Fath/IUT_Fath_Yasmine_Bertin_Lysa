@@ -222,23 +222,23 @@ void SetNextRobotStateInAutomaticMode() {
 //    }
     
     flagrobot = 0b00000;
-    if(robotState.distanceTelemetreGaucheGauche < 30){
+    if(robotState.distanceTelemetreGaucheGauche < 35){
         flagrobot |= 0b00001;  
     }
     
-    if(robotState.distanceTelemetreGauche< 35){
+    if(robotState.distanceTelemetreGauche< 40){
         flagrobot |= 0b00010 ;
         //flagrobot != 1<<3;  
     }
-    if(robotState.distanceTelemetreCentre < 35){
+    if(robotState.distanceTelemetreCentre < 40){
         flagrobot |= 0b00100 ;
        // flagrobot != 1<<2;  
     }
-    if(robotState.distanceTelemetreDroit < 35){
+    if(robotState.distanceTelemetreDroit < 40){
         flagrobot |= 0b01000 ;
         //flagrobot != 1<<1;  
     }
-    if(robotState.distanceTelemetreDroitDroit < 30){
+    if(robotState.distanceTelemetreDroitDroit < 35){
         flagrobot |= 0b10000;  
     }
     
