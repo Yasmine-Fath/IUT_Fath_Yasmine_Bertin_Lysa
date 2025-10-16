@@ -1,0 +1,34 @@
+﻿<Window x:Class="Robot_interface_fath_bertin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Robot_interface_fath_bertin"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="0" Width="30"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Réception" BorderBrush="Black" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="1">
+            <TextBox TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" AcceptsReturn="True"/>
+        </GroupBox>
+        <GroupBox Header="Émission" Margin="0,0,0,1" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="textBoxEmission" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" AcceptsReturn="True"/>
+        </GroupBox>
+        <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Envoyer" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="NaN" Click="buttonEnvoyer_Click"/>
+
+    </Grid>
+</Window>
