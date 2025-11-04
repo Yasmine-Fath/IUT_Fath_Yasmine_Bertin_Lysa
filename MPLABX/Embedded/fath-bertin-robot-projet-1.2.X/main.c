@@ -227,15 +227,15 @@ void SetNextRobotStateInAutomaticMode() {
     }
     
     if(robotState.distanceTelemetreGauche< 40){
-        flagrobot |= 0b00010 ;
+        flagrobot |= 0b00010 ; 
         //flagrobot != 1<<3;  
     }
     if(robotState.distanceTelemetreCentre < 40){
-        flagrobot |= 0b00100 ;
+        flagrobot |= 0b00100 ; 
        // flagrobot != 1<<2;  
     }
     if(robotState.distanceTelemetreDroit < 40){
-        flagrobot |= 0b01000 ;
+        flagrobot |= 0b01000 ; 
         //flagrobot != 1<<1;  
     }
     if(robotState.distanceTelemetreDroitDroit < 35){
