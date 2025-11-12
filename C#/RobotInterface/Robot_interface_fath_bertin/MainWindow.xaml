@@ -23,10 +23,10 @@
 
         </Grid.ColumnDefinitions>
         <GroupBox Header="Réception" BorderBrush="Black" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="1">
-            <TextBox TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" AcceptsReturn="True"/>
+            <TextBox x:Name="textBoxReception" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" AcceptsReturn="True"/>
         </GroupBox>
         <GroupBox Header="Émission" Margin="0,0,0,1" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="1">
-            <TextBox x:Name="textBoxEmission" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" AcceptsReturn="True"/>
+            <TextBox x:Name="textBoxEmission" TextWrapping="Wrap" Text="" Background="{x:Null}" BorderBrush="{x:Null}" AcceptsReturn="True" PreviewKeyDown="TextBoxEmission_PreviewKeyDown"/>
         </GroupBox>
         <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Envoyer" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="NaN" Click="buttonEnvoyer_Click"/>
 

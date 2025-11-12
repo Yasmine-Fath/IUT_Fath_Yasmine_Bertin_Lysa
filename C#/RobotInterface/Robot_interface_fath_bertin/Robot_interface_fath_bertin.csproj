@@ -8,4 +8,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ExtendedSerialPort">
+      <HintPath>..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="System.IO.Ports">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
 </Project>
