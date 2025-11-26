@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExtendedSerialPort_NS;
 using System.IO.Ports;
+using System.Windows.Threading;
 
 namespace Robot_interface_fath_bertin
 {
@@ -18,23 +19,50 @@ namespace Robot_interface_fath_bertin
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        bool toggle;
+        int cpt = 0;
+        ExtendedSerialPort serialPort1;
+        //string receivedText=""; //à été remplacé par : robot.receivedText.
+
+        DispatcherTimer timerAffichage;
+        Robot robot;
+
+
         public MainWindow()
         {
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
             serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
-            try
+            serialPort1.DataReceived += SerialPort1_DataReceived;
+            serialPort1.Open();
+
+            //Initialisation du timer affichage
+            timerAffichage = new DispatcherTimer();
+            timerAffichage.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            timerAffichage.Tick += TimerAffichage_Tick;
+            timerAffichage.Start();
+
+            //classe Robot
+            robot = new Robot();
+        }
+
+        private void TimerAffichage_Tick(object? sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (robot.receivedText != "")
             {
-                serialPort1.Open();
-                MessageBox.Show("Port série ouvert avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur lors de l'ouverture du port série : " + ex.Message);
+                textBoxReception.AppendText(" Message Reçu : " + robot.receivedText);
+                robot.receivedText = "";
             }
         }
+
+        public void SerialPort1_DataReceived(object sender, DataReceivedArgs e)        
+        {
+            robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);            
+        }
+
+        
     
 
 
@@ -50,9 +78,7 @@ namespace Robot_interface_fath_bertin
             }
         }
         
-        bool toggle;
-        int cpt = 0;
-        ExtendedSerialPort serialPort1;
+        
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -62,7 +88,8 @@ namespace Robot_interface_fath_bertin
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            toggle = !toggle;
             if (toggle) {
                 buttonEnvoyer.Background =   Brushes.Beige;
                 // Vérifie si la TextBox "émission" contient du texte
@@ -76,7 +103,7 @@ namespace Robot_interface_fath_bertin
                 else
                 {
                     // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
-                    MessageBox.Show("Veuillez entrer un message dans l'émission.");
+                    //MessageBox.Show("Veuillez entrer un message dans l'émission.");
                 }
             }
             else
@@ -85,7 +112,58 @@ namespace Robot_interface_fath_bertin
             }
 
            
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+
             toggle = !toggle;
+            if (toggle)
+            {
+                buttonClear.Background = Brushes.Beige;
+                // Vérifie si la TextBox "émission" contient du texte
+                if (textBoxReception.Text != "")
+                {
+                    textBoxReception.Clear();
+
+                }
+            }
+            else
+            {
+                buttonEnvoyer.Background = Brushes.RoyalBlue;
+            }
+
+
+            
+        }
+
+        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        {
+
+            toggle = !toggle;
+            if (toggle)
+            {
+                buttonTest.Background = Brushes.Beige;
+                // Vérifie si la TextBox "émission" contient du texte
+                if (!string.IsNullOrEmpty(textBoxEmission.Text))
+                {
+                    SendMessage();
+
+                    toggle = !toggle;
+
+                }
+                else
+                {
+                    // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
+                    //MessageBox.Show("Veuillez entrer un message dans l'émission.");
+                }
+            }
+            else
+            {
+                buttonTest.Background = Brushes.RoyalBlue;
+            }
+
+
         }
 
         private void TextBoxEmission_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -94,6 +172,7 @@ namespace Robot_interface_fath_bertin
             if (e.Key == Key.Enter)
             {
                 // Empêche le retour à la ligne
+                
                 e.Handled = true;
 
                 // Appelle la méthode pour envoyer le message
@@ -106,22 +185,11 @@ namespace Robot_interface_fath_bertin
         {
             if (!string.IsNullOrEmpty(textBoxEmission.Text)) // Vérifie que la TextBox n'est pas vide
             {
-                // Incrémente le compteur de messages
-                cpt++;
-
-                // Affiche le message dans la TextBox "réception"
-                textBoxReception.AppendText("Reçu : Message " + cpt + Environment.NewLine);
-
                 // Envoi du message via le port série
                 serialPort1.WriteLine(textBoxEmission.Text);
 
                 // Vide la TextBox "émission" après envoi
                 textBoxEmission.Clear();
-            }
-            else
-            {
-                // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou rien faire
-                MessageBox.Show("Veuillez entrer un message dans l'émission.");
             }
         }
 
