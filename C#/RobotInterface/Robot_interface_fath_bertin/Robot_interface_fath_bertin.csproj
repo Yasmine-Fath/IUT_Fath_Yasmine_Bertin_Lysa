@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\ExtendedSerialPort.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ExtendedSerialPort">
       <HintPath>..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll</HintPath>
     </Reference>

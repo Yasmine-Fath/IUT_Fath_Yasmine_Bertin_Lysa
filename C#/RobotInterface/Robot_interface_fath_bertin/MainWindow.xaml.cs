@@ -33,7 +33,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM7", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -55,18 +55,35 @@ namespace Robot_interface_fath_bertin
                 textBoxReception.AppendText(" Message Reçu : " + robot.receivedText);
                 robot.receivedText = "";
             }
+            if (robot.byteListReceived.Count > 0)
+            {
+                StringBuilder sbHex = new StringBuilder();
+
+                while (robot.byteListReceived.Count > 0)
+                {
+                    byte b = robot.byteListReceived.Dequeue(); 
+                    // sbHex.Append("0x" + b.ToString("X2") + " "); 
+                }
+
+               // sbHex.Append("\r\n");
+                //textBoxReception.AppendText(sbHex.ToString());
+            }
+
         }
 
         public void SerialPort1_DataReceived(object sender, DataReceivedArgs e)        
         {
-            robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);            
+            robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
+
+            foreach (byte b in e.Data)
+            {
+                robot.byteListReceived.Enqueue(b);
+            }
+
         }
 
         
-    
-
-
-            protected override void OnClosed(EventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
             //Cette méthode s'assure que le port série est fermé lorsque la fenêtre est fermée.
             base.OnClosed(e);
@@ -144,19 +161,12 @@ namespace Robot_interface_fath_bertin
             if (toggle)
             {
                 buttonTest.Background = Brushes.Beige;
-                // Vérifie si la TextBox "émission" contient du texte
-                if (!string.IsNullOrEmpty(textBoxEmission.Text))
+                byte[] byteList = new byte[20];
+                for(int i = 0; i<20; i++)
                 {
-                    SendMessage();
-
-                    toggle = !toggle;
-
+                    byteList[i] = (byte)(2 * i);
                 }
-                else
-                {
-                    // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
-                    //MessageBox.Show("Veuillez entrer un message dans l'émission.");
-                }
+                serialPort1.Write(byteList, 0, byteList.Length);
             }
             else
             {

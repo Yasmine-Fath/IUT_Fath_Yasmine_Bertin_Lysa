@@ -12,6 +12,7 @@ namespace Robot_interface_fath_bertin
         public float distanceTelemetreDroit;
         public float distanceTelemetreCentre;
         public float distanceTelemetreGauche;
+        public Queue<byte> byteListReceived = new Queue<byte>();
         public Robot()
         {
         }
