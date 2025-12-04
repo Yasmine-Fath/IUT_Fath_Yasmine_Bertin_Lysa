@@ -33,7 +33,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM7", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -161,12 +161,20 @@ namespace Robot_interface_fath_bertin
             if (toggle)
             {
                 buttonTest.Background = Brushes.Beige;
-                byte[] byteList = new byte[20];
-                for(int i = 0; i<20; i++)
-                {
-                    byteList[i] = (byte)(2 * i);
-                }
-                serialPort1.Write(byteList, 0, byteList.Length);
+                //byte[] byteList = new byte[20];
+                //for (int i = 0; i < 20; i++)
+                //{
+                //    byteList[i] = (byte)(2 * i);
+                //}
+                //serialPort1.Write(byteList, 0, byteList.Length);
+
+                string messageString = "Bonjour";
+
+                // 2️⃣ Convertir la chaîne en byte[]
+                byte[] payload = Encoding.ASCII.GetBytes(messageString);
+
+                // 3️⃣ Appeler la fonction d'envoi
+                UartEncodeAndSendMessage(0x0080, payload.Length, payload);
             }
             else
             {
@@ -203,9 +211,133 @@ namespace Robot_interface_fath_bertin
             }
         }
 
-       
+        private byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
+        {
+            byte checksum = 0x00;
 
-        
+            // Ajouter le SOF
+            checksum ^= 0xFE;
+
+            // Ajouter les 2 octets de commande
+            checksum ^= 0x00;           // premier octet de commande
+            checksum ^= (byte)(msgFunction >> 8); // second octet de commande bit de poids fort 
+            checksum ^= (byte)(msgFunction >> 0); // second octet de commande bit de poids faible 
+
+            // Ajouter les 2 octets de la longeur du payload 
+            checksum ^= 0x00;           // premier octet de commande
+            checksum ^= (byte)(msgPayloadLength >> 8); // second octet de la longeur du payload bit de poids fort 
+            checksum ^= (byte)(msgPayloadLength >> 0); // second octet de la longeur du payload bit de poids faible 
+
+            // Ajouter les octets du payload
+            for (int i = 0; i < msgPayloadLength; i++)
+            {
+                checksum ^= msgPayload[i];
+            }
+
+            return checksum;
+        }
+
+        private void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
+        {
+            // 1️⃣ Taille totale de la trame : SOF + 2 octets commande + payload + checksum
+            int totalLength = 1 + 2 + msgPayloadLength + 1;
+
+            // 2️⃣ Créer le tableau de la trame
+            byte[] frame = new byte[totalLength];
+
+            int index = 0;
+
+            // 3️⃣ Ajouter SOF
+            frame[index] = 0xFE;
+            index++;
+
+            // 4️⃣ Ajouter la commande sur 2 octets
+            frame[index] = 0x00;
+            index++;
+            frame[index] = (byte)msgFunction;
+            index++;
+
+            // 5️⃣ Ajouter le payload
+            for (int i = 0; i < msgPayloadLength; i++)
+            {
+                frame[index] = msgPayload[i];
+                index++;
+            }
+
+            // 6️⃣ Calculer le checksum avec la fonction précédente
+            byte checksum = CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
+
+            // 7️⃣ Ajouter le checksum à la trame
+            frame[index] = checksum;
+
+            // 8️⃣ Envoyer la trame sur l'UART
+            serialPort1.Write(frame, 0, totalLength);
+        }
+
+
+        public enum StateReception
+        {
+            Waiting,
+            FunctionMSB,
+            FunctionLSB,
+            PayloadLengthMSB,
+            PayloadLengthLSB,
+            Payload,
+            CheckSum
+        }
+
+
+        StateReception rcvState = StateReception.Waiting;
+        int msgDecodedFunction = 0;
+        int msgDecodedPayloadLength = 0;
+        byte[] msgDecodedPayload;
+        int msgDecodedPayloadIndex = 0;
+
+
+
+        private void DecodeMessage(byte c)
+        {
+            switch (rcvState)
+            {
+                case StateReception.Waiting:
+                    ...
+                    break;
+                case StateReception.FunctionMSB:
+                    ...
+                    break;
+                case StateReception.FunctionLSB:
+                    ...
+                    break;
+                case StateReception.PayloadLengthMSB:
+                    ...
+                    break;
+                case StateReception.PayloadLengthLSB:
+                    ...
+                    break;
+                case StateReception.Payload:
+                    ...
+                    break;
+                case StateReception.CheckSum:
+                    ...
+                if (calculatedChecksum == receivedChecksum)
+                    {
+                        //Success, on a un message valide
+                    }
+                    ...
+                    break;
+                default:
+                    rcvState = StateReception.Waiting;
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
 
     }
 }

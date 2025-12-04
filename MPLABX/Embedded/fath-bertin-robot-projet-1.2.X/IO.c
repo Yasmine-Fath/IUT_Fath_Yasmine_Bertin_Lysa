@@ -34,9 +34,6 @@ void InitIO()
     
     //****** Moteurs ************************
 
-    // Configuration des entrées
-    _U1RXR = 18; //Remappe la RP... sur l?éentre Rx1
-    _RP98R = 0b00001; //Remappe la sortie Tx1 vers RP...
 
     /****************************************************************************************************/
     // Gestion des pin remappables
@@ -44,6 +41,9 @@ void InitIO()
     UnlockIO(); // On unlock les registres d'entrées/sorties, ainsi que les registres des PPS
     
     //Assignation des remappable pins
+    // Configuration des entrées
+    _U1RXR = 18; //Remappe la RP... sur l?éentre Rx1
+    _RP98R = 0b00001; //Remappe la sortie Tx1 vers RP...
         
     LockIO(); // On lock les registres d'entrées/sorties, ainsi que les registres des PPS
 }

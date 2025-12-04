@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <xc.h>
+#include <libpic30.h>
 #include "ChipConfig.h"
 #include "IO.h"
 #include "timer.h"
@@ -8,9 +9,11 @@
 #include "Robot.h"
 #include "ADC.h"
 #include "UART.h"
+#include "CB_TX1.h"
+#include "CB_RX1.h"
 #include "main.h"
 
-//5/09
+//derniere modif : 4/
 
 unsigned int ADCValue0, ADCValue1, ADCValue2, ADCValue3, ADCValue4;
 
@@ -49,51 +52,61 @@ int main(void) {
 
     // Boucle Principale
     while (1) {
-//        if (ADCIsConversionFinished() == 1) {
-//            ADCClearConversionFinishedFlag();
-//
-//            unsigned int * result = ADCGetResult();
-//            float volts = ((float) result [0])* 3.3 / 4096;
-//            robotState.distanceTelemetreGaucheGauche = 34 / volts - 5;
-//            volts = ((float) result [1])* 3.3 / 4096;
-//            robotState.distanceTelemetreGauche = 34 / volts - 5;
-//            volts = ((float) result [2])* 3.3 / 4096;
-//            robotState.distanceTelemetreCentre = 34 / volts - 5;
-//            volts = ((float) result [3])* 3.3 / 4096;
-//            robotState.distanceTelemetreDroit = 34 / volts - 5;
-//            volts = ((float) result [4])* 3.3 / 4096;
-//            robotState.distanceTelemetreDroitDroit = 34 / volts - 5;
-//
-//
-//            if (robotState.distanceTelemetreGaucheGauche > 30) {
-//                LED_BLANCHE_1 = 0;
-//            } else {
-//                LED_BLANCHE_1 = 1;
-//            }
-//            if (robotState.distanceTelemetreGauche > 30) {
-//                LED_BLEUE_1 = 0;
-//            } else {
-//                LED_BLEUE_1 = 1;
-//            }
-//            if (robotState.distanceTelemetreCentre > 30) {
-//                LED_ORANGE_1 = 0;
-//            } else {
-//                LED_ORANGE_1 = 1;
-//            }
-//            if (robotState.distanceTelemetreDroit > 30) {
-//                LED_ROUGE_1 = 0;
-//            } else {
-//                LED_ROUGE_1 = 1;
-//            }
-//            if (robotState.distanceTelemetreDroitDroit > 30) {
-//                LED_VERTE_1 = 0;
-//            } else {
-//                LED_VERTE_1 = 1;
-//            }
-//        }
+        if (ADCIsConversionFinished() == 1) {
+            ADCClearConversionFinishedFlag();
+
+            unsigned int * result = ADCGetResult();
+            float volts = ((float) result [0])* 3.3 / 4096;
+            robotState.distanceTelemetreGaucheGauche = 34 / volts - 5;
+            volts = ((float) result [1])* 3.3 / 4096;
+            robotState.distanceTelemetreGauche = 34 / volts - 5;
+            volts = ((float) result [2])* 3.3 / 4096;
+            robotState.distanceTelemetreCentre = 34 / volts - 5;
+            volts = ((float) result [3])* 3.3 / 4096;
+            robotState.distanceTelemetreDroit = 34 / volts - 5;
+            volts = ((float) result [4])* 3.3 / 4096;
+            robotState.distanceTelemetreDroitDroit = 34 / volts - 5;
+
+
+            if (robotState.distanceTelemetreGaucheGauche > 30) {
+                LED_BLANCHE_1 = 0;
+            } else {
+                LED_BLANCHE_1 = 1;
+            }
+            if (robotState.distanceTelemetreGauche > 30) {
+                LED_BLEUE_1 = 0;
+            } else {
+                LED_BLEUE_1 = 1;
+            }
+            if (robotState.distanceTelemetreCentre > 30) {
+                LED_ORANGE_1 = 0;
+            } else {
+                LED_ORANGE_1 = 1;
+            }
+            if (robotState.distanceTelemetreDroit > 30) {
+                LED_ROUGE_1 = 0;
+            } else {
+                LED_ROUGE_1 = 1;
+            }
+            if (robotState.distanceTelemetreDroitDroit > 30) {
+                LED_VERTE_1 = 0;
+            } else {
+                LED_VERTE_1 = 1;
+            }
+            //SendMessage("Bonjour", 7);
+            
+        }
         
-        SendMessageDirect((unsigned char*) "Bonjour", 7);
-        __delay32(40000000);
+//        SendMessageDirect((unsigned char*) "Bonjour", 7);
+//        __delay32(40000000);
+        
+        int i;
+        for(i=0; i< CB_RX1_GetDataSize(); i++)
+        {
+            unsigned char c = CB_RX1_Get();
+            SendMessage(&c,1);
+        }
+        __delay32(10000);
 
         
     }
