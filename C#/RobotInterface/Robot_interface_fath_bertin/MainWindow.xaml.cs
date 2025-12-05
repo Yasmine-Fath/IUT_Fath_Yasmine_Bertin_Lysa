@@ -61,17 +61,18 @@ namespace Robot_interface_fath_bertin
 
                 while (robot.byteListReceived.Count > 0)
                 {
-                    byte b = robot.byteListReceived.Dequeue(); 
+                    byte b = robot.byteListReceived.Dequeue();
+                    DecodeMessage(b);
                     // sbHex.Append("0x" + b.ToString("X2") + " "); 
                 }
 
-               // sbHex.Append("\r\n");
+                // sbHex.Append("\r\n");
                 //textBoxReception.AppendText(sbHex.ToString());
             }
 
         }
 
-        public void SerialPort1_DataReceived(object sender, DataReceivedArgs e)        
+        public void SerialPort1_DataReceived(object sender, DataReceivedArgs e)
         {
             robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
 
@@ -82,7 +83,7 @@ namespace Robot_interface_fath_bertin
 
         }
 
-        
+
         protected override void OnClosed(EventArgs e)
         {
             //Cette méthode s'assure que le port série est fermé lorsque la fenêtre est fermée.
@@ -94,94 +95,68 @@ namespace Robot_interface_fath_bertin
                 serialPort1.Close();
             }
         }
-        
-        
+
+
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-        
+
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
-
-            toggle = !toggle;
-            if (toggle) {
-                buttonEnvoyer.Background =   Brushes.Beige;
-                // Vérifie si la TextBox "émission" contient du texte
-                if (!string.IsNullOrEmpty(textBoxEmission.Text))
-                {
-                    SendMessage();
-
-                    toggle = !toggle;
-
-                }
-                else
-                {
-                    // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
-                    //MessageBox.Show("Veuillez entrer un message dans l'émission.");
-                }
+            // Vérifie si la TextBox "émission" contient du texte
+            if (!string.IsNullOrEmpty(textBoxEmission.Text))
+            {
+                SendMessage();
             }
             else
             {
-                buttonEnvoyer.Background = Brushes.RoyalBlue;
+                // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
+                //MessageBox.Show("Veuillez entrer un message dans l'émission.");
             }
 
-           
+
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
-
-            toggle = !toggle;
-            if (toggle)
+            // Vérifie si la TextBox "émission" contient du texte
+            if (textBoxReception.Text != "")
             {
-                buttonClear.Background = Brushes.Beige;
-                // Vérifie si la TextBox "émission" contient du texte
-                if (textBoxReception.Text != "")
-                {
-                    textBoxReception.Clear();
-
-                }
-            }
-            else
-            {
-                buttonEnvoyer.Background = Brushes.RoyalBlue;
+                textBoxReception.Clear();
             }
 
-
-            
         }
 
         private void buttonTest_Click(object sender, RoutedEventArgs e)
         {
+            //byte[] byteList = new byte[20];
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    byteList[i] = (byte)(2 * i);
+            //}
+            //serialPort1.Write(byteList, 0, byteList.Length);
 
-            toggle = !toggle;
-            if (toggle)
-            {
-                buttonTest.Background = Brushes.Beige;
-                //byte[] byteList = new byte[20];
-                //for (int i = 0; i < 20; i++)
-                //{
-                //    byteList[i] = (byte)(2 * i);
-                //}
-                //serialPort1.Write(byteList, 0, byteList.Length);
+            string messageString = "Bonjour";
 
-                string messageString = "Bonjour";
+            // 2️⃣ Convertir la chaîne en byte[]
+            byte[] payload = Encoding.ASCII.GetBytes(messageString);
 
-                // 2️⃣ Convertir la chaîne en byte[]
-                byte[] payload = Encoding.ASCII.GetBytes(messageString);
+            // 3️⃣ Appeler la fonction d'envoi
+            UartEncodeAndSendMessage(0x0080, payload.Length, payload);
 
-                // 3️⃣ Appeler la fonction d'envoi
-                UartEncodeAndSendMessage(0x0080, payload.Length, payload);
-            }
-            else
-            {
-                buttonTest.Background = Brushes.RoyalBlue;
-            }
+            //Leds
+            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 1, 0 });
+            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 2, 1 });
+            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 3, 1 });
 
+            //Telemetre
+            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 40, 50, 24 });
 
+            //Vitesse
+            UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
         }
 
         private void TextBoxEmission_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -190,7 +165,7 @@ namespace Robot_interface_fath_bertin
             if (e.Key == Key.Enter)
             {
                 // Empêche le retour à la ligne
-                
+
                 e.Handled = true;
 
                 // Appelle la méthode pour envoyer le message
@@ -239,36 +214,28 @@ namespace Robot_interface_fath_bertin
 
         private void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
-            // 1️⃣ Taille totale de la trame : SOF + 2 octets commande + payload + checksum
-            int totalLength = 1 + 2 + msgPayloadLength + 1;
-
-            // 2️⃣ Créer le tableau de la trame
+            int totalLength = msgPayloadLength + 6;
             byte[] frame = new byte[totalLength];
 
             int index = 0;
-
             // 3️⃣ Ajouter SOF
-            frame[index] = 0xFE;
-            index++;
-
-            // 4️⃣ Ajouter la commande sur 2 octets
-            frame[index] = 0x00;
-            index++;
-            frame[index] = (byte)msgFunction;
-            index++;
+            frame[index++] = 0xFE;
+            frame[index++] = (byte)(msgFunction >> 8);
+            frame[index++] = (byte)(msgFunction >> 0);
+            frame[index++] = (byte)(msgPayloadLength >> 8);
+            frame[index++] = (byte)(msgPayloadLength >> 0);
 
             // 5️⃣ Ajouter le payload
             for (int i = 0; i < msgPayloadLength; i++)
             {
-                frame[index] = msgPayload[i];
-                index++;
+                frame[index++] = msgPayload[i];
             }
 
             // 6️⃣ Calculer le checksum avec la fonction précédente
             byte checksum = CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
 
             // 7️⃣ Ajouter le checksum à la trame
-            frame[index] = checksum;
+            frame[index++] = checksum;
 
             // 8️⃣ Envoyer la trame sur l'UART
             serialPort1.Write(frame, 0, totalLength);
@@ -294,50 +261,126 @@ namespace Robot_interface_fath_bertin
         int msgDecodedPayloadIndex = 0;
 
 
+        int calculatedChecksum = 0;
+        byte receivedChecksum = 0;
+        int VG = 0, VD = 0, DG = 0, DC = 0, DD = 0;
+
 
         private void DecodeMessage(byte c)
         {
             switch (rcvState)
             {
                 case StateReception.Waiting:
-                    ...
+                    if (c == 0xFE)
+                    {
+                        calculatedChecksum = 0;
+                        calculatedChecksum ^= c;
+                        rcvState = StateReception.FunctionMSB;
+                    }
                     break;
+
                 case StateReception.FunctionMSB:
-                    ...
+                    msgDecodedFunction = c << 8;
+                    rcvState = StateReception.FunctionLSB;
                     break;
+
                 case StateReception.FunctionLSB:
-                    ...
+                    msgDecodedFunction |= c;
+                    rcvState = StateReception.PayloadLengthMSB;
+
                     break;
+
                 case StateReception.PayloadLengthMSB:
-                    ...
+                    msgDecodedPayloadLength = c << 8;
+                    rcvState = StateReception.PayloadLengthLSB;
                     break;
+
                 case StateReception.PayloadLengthLSB:
-                    ...
+                    msgDecodedPayloadLength |= c;
+                    msgDecodedPayload = new byte[msgDecodedPayloadLength];
+                    msgDecodedPayloadIndex = 0;
+                    rcvState = StateReception.Payload;
                     break;
+
                 case StateReception.Payload:
-                    ...
+                    msgDecodedPayload[msgDecodedPayloadIndex++] = c;
+                    if (msgDecodedPayloadIndex >= msgDecodedPayloadLength)
+                        rcvState = StateReception.CheckSum;
                     break;
                 case StateReception.CheckSum:
-                    ...
-                if (calculatedChecksum == receivedChecksum)
+                    calculatedChecksum = CalculateChecksum(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
+                    if (calculatedChecksum == c)
                     {
                         //Success, on a un message valide
+                        textBoxReception.AppendText("Success, on a un message valide");
+                        ProcessDecodedMessage(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
                     }
-                    ...
+                    rcvState = StateReception.Waiting;
+
                     break;
                 default:
                     rcvState = StateReception.Waiting;
                     break;
             }
         }
+        void ProcessDecodedMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
+        {
+            if (msgFunction == 0x0020)
+            {
+                if (msgPayload[0] == 1)
+                {
+                    if (msgPayload[1] == 1)
+                    {
+                        checkBoxLed1.IsChecked = true;
+                    }
+                    else if (msgPayload[1] == 0)
+                    {
+                        checkBoxLed1.IsChecked = false;
+                    }
+                }
+
+                if (msgPayload[0] == 2)
+                {
+                    if (msgPayload[1] == 1)
+                    {
+                        checkBoxLed2.IsChecked = true;
+                    }
+                    else if (msgPayload[1] == 0)
+                    {
+                        checkBoxLed2.IsChecked = false;
+                    }
+                }
+
+                if (msgPayload[0] == 3)
+                {
+                    if (msgPayload[1] == 1)
+                    {
+                        checkBoxLed3.IsChecked = true;
+                    }
+                    else if (msgPayload[1] == 0)
+                    {
+                        checkBoxLed3.IsChecked = false;
+                    }
+                }
+
+
+            }
+
+            if (msgFunction == 0x0030)
+            {
+                TextBoxIRGauche.Text = $"IR Gauche : {msgPayload[0]} cm";
+                TextBoxIRCentre.Text = $"IR Centre : {msgPayload[1]} cm";
+                TextBoxIRDroit.Text = $"IR Droit : {msgPayload[2]} cm";
+            }
+
+            if (msgFunction == 0x0040)
+            {
+                TextBoxVitesseGauche.Text = $"Vitesse Gauche : {msgPayload[0]} %";
+                TextBoxVitesseDroit.Text = $"Vitesse Droit : {msgPayload[1]} %";
+            }
 
 
 
-
-
-
-
-
-
+        }
     }
 }
