@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using ExtendedSerialPort_NS;
 using System.IO.Ports;
 using System.Windows.Threading;
+using System.Net;
 
 namespace Robot_interface_fath_bertin
 {
@@ -27,13 +28,16 @@ namespace Robot_interface_fath_bertin
         DispatcherTimer timerAffichage;
         Robot robot;
 
+        byte previousStateRobot = 0xFF; // 0xFF = valeur invalide pour forcer le premier envoi
+        uint timestamp = 0; // Timestamp en ms, à incrémenter dans ton timer
+
 
         public MainWindow()
         {
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique
+            serialPort1 = new ExtendedSerialPort("COM11", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -153,7 +157,7 @@ namespace Robot_interface_fath_bertin
             UartEncodeAndSendMessage(0x0020, 2, new byte[] { 3, 1 });
 
             //Telemetre
-            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 40, 50, 24 });
+            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 50, 24, 40 });
 
             //Vitesse
             UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
@@ -312,7 +316,8 @@ namespace Robot_interface_fath_bertin
                     if (calculatedChecksum == c)
                     {
                         //Success, on a un message valide
-                        textBoxReception.AppendText("Success, on a un message valide");
+                        //textBoxReception.AppendText("Success, on a un message valide"); // désactiver l’affichage de caractères reçus dans la console de réception
+                                                                                         //en C# afin de ne pas surcharger l’affichage.
                         ProcessDecodedMessage(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
                     }
                     rcvState = StateReception.Waiting;
@@ -323,6 +328,29 @@ namespace Robot_interface_fath_bertin
                     break;
             }
         }
+
+
+        public enum StateRobot
+        {
+            STATE_ATTENTE = 0,
+            STATE_ATTENTE_EN_COURS = 1,
+            STATE_AVANCE = 2,
+            STATE_AVANCE_EN_COURS = 3,
+            STATE_TOURNE_GAUCHE = 4,
+            STATE_TOURNE_GAUCHE_EN_COURS = 5,
+            STATE_TOURNE_DROITE = 6,
+            STATE_TOURNE_DROITE_EN_COURS = 7,
+            STATE_TOURNE_SUR_PLACE_GAUCHE = 8,
+            STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS = 9,
+            STATE_TOURNE_SUR_PLACE_DROITE = 10,
+            STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS = 11,
+            STATE_ARRET = 12,
+            STATE_ARRET_EN_COURS = 13,
+            STATE_RECULE = 14,
+            STATE_RECULE_EN_COURS = 15
+        }
+
+
         void ProcessDecodedMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
             if (msgFunction == 0x0020)
@@ -377,10 +405,43 @@ namespace Robot_interface_fath_bertin
             {
                 TextBoxVitesseGauche.Text = $"Vitesse Gauche : {msgPayload[0]} %";
                 TextBoxVitesseDroit.Text = $"Vitesse Droit : {msgPayload[1]} %";
+                if (msgPayload[0] != previousStateRobot)
+                {
+                    SendStepInfo(msgPayload[0], timestamp);
+                    previousStateRobot = msgPayload[0];
+                }
+                if (msgPayload[1] != previousStateRobot)
+                {
+                    SendStepInfo(msgPayload[1], timestamp);
+                    previousStateRobot = msgPayload[1];
+                }
+            }
+
+            if (msgFunction == 0x0050) {
+                int instant = (((int)msgPayload[1]) << 24) + (((int)msgPayload[2]) << 16) + (((int)msgPayload[3]) << 8) + ((int)msgPayload[4]);
+                //rtbReception.Text += "\nRobot␣State␣:␣" + ((StateRobot)(msgPayload[0])).ToString() + "␣-␣" + instant.ToString() + "␣ms";
+                textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
             }
 
 
 
+            }
+
+        private void SendStepInfo(byte stepNumber, uint timestampMs)
+        {
+            // Préparer la payload de 5 octets
+            byte[] payload = new byte[5];
+            payload[0] = stepNumber;
+
+            // Timestamp codé sur 4 octets, big-endian
+            payload[1] = (byte)((timestampMs >> 24) & 0xFF);
+            payload[2] = (byte)((timestampMs >> 16) & 0xFF);
+            payload[3] = (byte)((timestampMs >> 8) & 0xFF);
+            payload[4] = (byte)(timestampMs & 0xFF);
+
+            // Envoyer le message avec l’ID 0x0050
+            UartEncodeAndSendMessage(0x0050, payload.Length, payload);
         }
+
     }
 }
