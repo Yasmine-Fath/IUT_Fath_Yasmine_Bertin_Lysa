@@ -157,7 +157,7 @@ namespace Robot_interface_fath_bertin
             UartEncodeAndSendMessage(0x0020, 2, new byte[] { 3, 1 });
 
             //Telemetre
-            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 50, 24, 40 });
+            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 40, 50, 24 });
 
             //Vitesse
             UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });

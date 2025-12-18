@@ -59,7 +59,7 @@ int msgDecodedPayloadIndex = 0;
 void UartDecodeMessage(unsigned char c)
 {
 //Fonction prenant en entree un octet et servant a reconstituer les trames
-/*static int state = 0;
+static int state = 0;
 
 switch(state)
 {
@@ -88,6 +88,7 @@ switch(state)
 
     case 4: // PayloadLength LSB
         msgDecodedPayloadLength |= c;
+        msgDecodedPayloadIndex = 0;
 
         if(msgDecodedPayloadLength == 0)
             state = 6; // checksum
@@ -122,7 +123,7 @@ switch(state)
         state = 0;
         break;
     }
-}*/
+}
 }
 void UartProcessDecodedMessage(int function,int payloadLength, unsigned char* payload)
 {

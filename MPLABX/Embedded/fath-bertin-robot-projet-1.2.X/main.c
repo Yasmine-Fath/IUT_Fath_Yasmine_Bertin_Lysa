@@ -121,7 +121,15 @@ int main(void) {
 
         // Temporisation pour éviter un flux trop rapide
         //__delay32(40000000);
+        
+        int i;
+                    for(i=0; i< CB_RX1_GetDataSize(); i++){
 
+            unsigned char c = CB_RX1_Get();
+            UartDecodeMessage(c);
+            SendMessage(&c,1);
+        }
+        //__delay32(10000);
         
     }
 }
