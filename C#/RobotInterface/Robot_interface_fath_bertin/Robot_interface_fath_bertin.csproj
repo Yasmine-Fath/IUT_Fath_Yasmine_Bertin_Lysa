@@ -20,6 +20,9 @@
     <Reference Include="ExtendedSerialPort">
       <HintPath>..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll</HintPath>
     </Reference>
+    <Reference Include="KeyboardHook">
+      <HintPath>..\..\KeyboardHook (1)\KeyboardHook\bin\Release\net6.0\KeyboardHook.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

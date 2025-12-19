@@ -27,6 +27,10 @@
 #define OBSTACLE_A_DROITE_DROITE 4
 #define OBSTACLE_A_GAUCHE_GAUCHE 5
 
+#define MODE_MANUEL 0
+#define MODE_AUTO 1
+
+extern unsigned char stateRobot;
 
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode();

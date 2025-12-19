@@ -27,27 +27,27 @@ void InitPWM(void) {
     /* Enable PWM Module */
     PTCONbits.PTEN = 1;
 }
-//
-//void PWMSetSpeed(float vitesseEnPourcents, int moteur)
-//{
-//    if(vitesseEnPourcents<0){
-//        vitesseEnPourcents=-vitesseEnPourcents;
-//        if( moteur==1){
-//            SDC2 = vitesseEnPourcents * PWMPER + talon;
-//            PDC2 = talon;}
-//        else{
-//            PDC1 = vitesseEnPourcents * PWMPER + talon;
-//            SDC1 = talon;}
-//    }
-//    else{
-//        if( moteur==1){
-//            SDC1 = vitesseEnPourcents * PWMPER + talon;
-//            PDC1 = talon;}
-//        else{
-//            PDC2 = vitesseEnPourcents * PWMPER + talon;
-//            SDC2 = talon;} 
-//    }
-//}
+
+void PWMSetSpeed(float vitesseEnPourcents, int moteur)
+{
+    if(vitesseEnPourcents<0){
+        vitesseEnPourcents=-vitesseEnPourcents;
+        if( moteur==1){
+            SDC2 = vitesseEnPourcents * PWMPER + talon;
+            PDC2 = talon;}
+        else{
+            PDC1 = vitesseEnPourcents * PWMPER + talon;
+            SDC1 = talon;}
+    }
+    else{
+        if( moteur==1){
+            SDC1 = vitesseEnPourcents * PWMPER + talon;
+            PDC1 = talon;}
+        else{
+            PDC2 = vitesseEnPourcents * PWMPER + talon;
+            SDC2 = talon;} 
+    }
+}
 
 void PWMSetSpeedConsigne(float vitesseEnPourcents, int moteur) {
     if (moteur == MOTEUR_GAUCHE) 

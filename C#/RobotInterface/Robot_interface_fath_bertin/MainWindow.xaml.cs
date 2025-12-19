@@ -12,6 +12,7 @@ using ExtendedSerialPort_NS;
 using System.IO.Ports;
 using System.Windows.Threading;
 using System.Net;
+using KeyboardHook_NS;
 
 namespace Robot_interface_fath_bertin
 {
@@ -31,6 +32,8 @@ namespace Robot_interface_fath_bertin
         byte previousStateRobot = 0xFF; // 0xFF = valeur invalide pour forcer le premier envoi
         uint timestamp = 0; // Timestamp en ms, à incrémenter dans ton timer
 
+        GlobalKeyboardHook _globalKeyboardHook = new GlobalKeyboardHook();
+
 
         public MainWindow()
         {
@@ -49,6 +52,9 @@ namespace Robot_interface_fath_bertin
 
             //classe Robot
             robot = new Robot();
+
+            //initialisation d'un objet de type GlobalKeyboardHook
+            _globalKeyboardHook.KeyPressed += _globalKeyboardHook_KeyPressed;
         }
 
         private void TimerAffichage_Tick(object? sender, EventArgs e)
@@ -149,7 +155,7 @@ namespace Robot_interface_fath_bertin
             byte[] payload = Encoding.ASCII.GetBytes(messageString);
 
             // 3️⃣ Appeler la fonction d'envoi
-            UartEncodeAndSendMessage(0x0080, payload.Length, payload);
+            //UartEncodeAndSendMessage(0x0080, payload.Length, payload);
 
             //Leds
             UartEncodeAndSendMessage(0x0020, 2, new byte[] { 1, 0 });
@@ -162,6 +168,12 @@ namespace Robot_interface_fath_bertin
             //Vitesse
             UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
         }
+
+        private void buttonAuto_Click(object sender, RoutedEventArgs e)
+        {
+            UartEncodeAndSendMessage(0x0052, 1, new byte[] { (byte)StateRobot.STATE_ATTENTE_EN_COURS });        //STATE_ATTENTE_EN_COURS pour avoir un payload = 1 -> auto
+        }
+
 
         private void TextBoxEmission_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -417,15 +429,25 @@ namespace Robot_interface_fath_bertin
                 }
             }
 
-            if (msgFunction == 0x0050) {
+            if (msgFunction == 0x0050)
+            {
                 int instant = (((int)msgPayload[1]) << 24) + (((int)msgPayload[2]) << 16) + (((int)msgPayload[3]) << 8) + ((int)msgPayload[4]);
                 //rtbReception.Text += "\nRobot␣State␣:␣" + ((StateRobot)(msgPayload[0])).ToString() + "␣-␣" + instant.ToString() + "␣ms";
                 textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
             }
 
-
-
+            if (msgFunction == 0x0051)
+            {
+                checkBoxModeM.IsChecked = true;
+                checkBoxModeA.IsChecked = false;
             }
+
+            if (msgFunction == 0x0052)
+            {
+                checkBoxModeA.IsChecked = true;
+                checkBoxModeM.IsChecked = false;
+            }
+        }
 
         private void SendStepInfo(byte stepNumber, uint timestampMs)
         {
@@ -441,6 +463,28 @@ namespace Robot_interface_fath_bertin
 
             // Envoyer le message avec l’ID 0x0050
             UartEncodeAndSendMessage(0x0050, payload.Length, payload);
+        }
+
+        private void _globalKeyboardHook_KeyPressed(object? sender, KeyArgs e)
+        {
+            switch (e.keyCode)
+            {
+                case KeyCode.LEFT:
+                    UartEncodeAndSendMessage(0x0051, 1, new byte[] { (byte)StateRobot.STATE_TOURNE_SUR_PLACE_GAUCHE });
+                    break;
+                case KeyCode.RIGHT:
+                    UartEncodeAndSendMessage(0x0051, 1, new byte[] { (byte)StateRobot.STATE_TOURNE_SUR_PLACE_DROITE });
+                    break;
+                case KeyCode.UP:
+                    UartEncodeAndSendMessage(0x0051, 1, new byte[] { (byte)StateRobot.STATE_AVANCE });
+                    break;
+                case KeyCode.DOWN:
+                    UartEncodeAndSendMessage(0x0051, 1, new byte[] { (byte)StateRobot.STATE_ARRET });
+                    break;
+                case KeyCode.PAGEDOWN:
+                    UartEncodeAndSendMessage(0x0051, 1, new byte[] { (byte)StateRobot.STATE_RECULE });
+                    break;
+            }
         }
 
     }
