@@ -6,28 +6,31 @@
 #include "ADC.h"
 #include "main.h"
 #include "ChipConfig.h"
+#include "QEI.h"
 
 unsigned char toggle = 0;
-float f = 1000.0;
-float f1 = 50.0;
-unsigned long timestampD,timestampG, timestamp;
+float f1 = 250.0;
+int cpt = 1;
+unsigned long timestamp;
 
 //Initialisation d?un timer 16 bits
 
 void InitTimer1(void) {
     //Timer1 pour horodater les mesures (1ms)
     T1CONbits.TON = 0; // Disable Timer
-    //T1CONbits.TCKPS = 0b10; //Prescaler b=binaire (PS)
+    T1CONbits.TCKPS = 0b10; //Prescaler b=binaire (PS)
     //11 = 1:256 prescale value
     //10 = 1:64 prescale value
     //01 = 1:8 prescale value
     //00 = 1:1 prescale value
     T1CONbits.TCS = 0; //clock source = internal clock
-    //PR1 = 9375;   //normale de trouver 3kHz a l'oscilloscope car => temps de allumer/étaindre
+    PR1 = 3750;   //normale de trouver 3kHz a l'oscilloscope car => temps de allumer/étaindre
     IFS0bits.T1IF = 0; // Clear Timer Interrupt Flag
     IEC0bits.T1IE = 1; // Enable Timer interrupt
     T1CONbits.TON = 1; // Enable Timer
     SetFreqTimer1(f1);
+    
+ 
 }
 //Interruption du timer 1
 
@@ -36,6 +39,11 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     //LED_BLANCHE_1 = !LED_BLANCHE_1;
     PWMUpdateSpeed();
     ADC1StartConversionSequence();
+    QEIUpdateData();
+    
+    if(cpt++ % 250 == 0){
+        SendPositionData();
+    }
 
 }
 //Initialisation d?un timer 32 bits
@@ -101,15 +109,13 @@ void InitTimer4(void) {
     IFS1bits.T4IF = 0; // Clear Timer Interrupt Flag
     IEC1bits.T4IE = 1; // Enable Timer interrupt
     T4CONbits.TON = 1; // Enable Timer
-    SetFreqTimer4(f);
+    SetFreqTimer4(1000);
 }
 
 void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     IFS1bits.T4IF = 0;
     //LED_BLEUE_1 = !LED_BLEUE_1;
-    timestamp = timestamp + 1;
-    timestampD = timestampD + 1;
-    timestampG = timestampG + 1;
+    timestamp++;
     OperatingSystemLoop();
 }
 

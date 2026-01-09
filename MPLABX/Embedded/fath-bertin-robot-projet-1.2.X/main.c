@@ -13,6 +13,7 @@
 #include "CB_RX1.h"
 #include "UART_Protocol.h"
 #include "main.h"
+#include "QEI.h"
 
 //derniere modif : 4/
 
@@ -36,6 +37,8 @@ int main(void) {
     InitPWM();
     InitADC1();
     InitUART();
+    InitQEI1();
+    InitQEI2();
 
     PWM_ENABLE = 1;
 
@@ -191,7 +194,7 @@ void OperatingSystemLoop(void) {
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
             PWMSetSpeedConsigne(15, MOTEUR_DROIT);
             PWMSetSpeedConsigne(-15, MOTEUR_GAUCHE);
-            if (timestampG > 500) {
+            if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             }
             break;
@@ -204,7 +207,7 @@ void OperatingSystemLoop(void) {
         case STATE_TOURNE_SUR_PLACE_DROITE:
             PWMSetSpeedConsigne(-15, MOTEUR_DROIT);
             PWMSetSpeedConsigne(15, MOTEUR_GAUCHE);
-            if (timestampD > 500) {
+            if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
             }
             break;

@@ -40,7 +40,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM11", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM12", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -446,6 +446,13 @@ namespace Robot_interface_fath_bertin
             {
                 checkBoxModeA.IsChecked = true;
                 checkBoxModeM.IsChecked = false;
+            }
+
+            if (msgFunction == 0x0061)
+            {
+                TextBoxXPosition.Text = $"x : {msgPayload[4]} m";
+                TextBoxYPosition.Text = $"y : {msgPayload[1]} m";
+                TextBoxAnglePosition.Text = $"angle : {msgPayload[2]} °";
             }
         }
 

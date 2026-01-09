@@ -57,6 +57,13 @@
                     <CheckBox x:Name="checkBoxModeA" Content="Auto" Margin="5"/>
                 </StackPanel>
             </GroupBox>
+            <GroupBox Header="Position" Margin="5">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock x:Name="TextBoxXPosition" Text ="x : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxYPosition" Text="y : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxAnglePosition" Text="angle : " Margin="5"/>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
 
     </Grid>
