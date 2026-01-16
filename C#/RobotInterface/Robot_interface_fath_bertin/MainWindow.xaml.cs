@@ -34,6 +34,10 @@ namespace Robot_interface_fath_bertin
 
         GlobalKeyboardHook _globalKeyboardHook = new GlobalKeyboardHook();
 
+        //Pour WPF
+        int lineId = 1;
+        double Vx = 0;
+        double Vy = 0;
 
         public MainWindow()
         {
@@ -55,6 +59,13 @@ namespace Robot_interface_fath_bertin
 
             //initialisation d'un objet de type GlobalKeyboardHook
             _globalKeyboardHook.KeyPressed += _globalKeyboardHook_KeyPressed;
+
+            //Initialisation de la classe WPF (oscilloscope)
+    
+            
+            oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
+            oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
+
         }
 
         private void TimerAffichage_Tick(object? sender, EventArgs e)
@@ -79,6 +90,8 @@ namespace Robot_interface_fath_bertin
                 // sbHex.Append("\r\n");
                 //textBoxReception.AppendText(sbHex.ToString());
             }
+            //Pour afficher des données dans l’oscilloscope (WPF)
+            oscilloSpeed.AddPointToLine(lineId, Vx, Vy);
 
         }
 
@@ -152,21 +165,21 @@ namespace Robot_interface_fath_bertin
             string messageString = "Bonjour";
 
             // 2️⃣ Convertir la chaîne en byte[]
-            byte[] payload = Encoding.ASCII.GetBytes(messageString);
+            //byte[] payload = Encoding.ASCII.GetBytes(messageString);
 
             // 3️⃣ Appeler la fonction d'envoi
             //UartEncodeAndSendMessage(0x0080, payload.Length, payload);
 
-            //Leds
-            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 1, 0 });
-            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 2, 1 });
-            UartEncodeAndSendMessage(0x0020, 2, new byte[] { 3, 1 });
+            ////Leds
+            //UartEncodeAndSendMessage(0x0020, 2, new byte[] { 1, 0 });
+            //UartEncodeAndSendMessage(0x0020, 2, new byte[] { 2, 1 });
+            //UartEncodeAndSendMessage(0x0020, 2, new byte[] { 3, 1 });
 
-            //Telemetre
-            UartEncodeAndSendMessage(0x0030, 3, new byte[] { 40, 50, 24 });
+            ////Telemetre
+            //UartEncodeAndSendMessage(0x0030, 3, new byte[] { 40, 50, 24 });
 
-            //Vitesse
-            UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
+            ////Vitesse
+            //UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
         }
 
         private void buttonAuto_Click(object sender, RoutedEventArgs e)
@@ -341,6 +354,10 @@ namespace Robot_interface_fath_bertin
             }
         }
 
+        //private void oscilloSpeed_Loaded(object sender, RoutedEventArgs e)
+        //{
+
+        //}
 
         public enum StateRobot
         {
@@ -450,12 +467,16 @@ namespace Robot_interface_fath_bertin
 
             if (msgFunction == 0x0061)
             {
-                TextBoxXPosition.Text = $"x : {msgPayload[4]} m";
-                TextBoxYPosition.Text = $"y : {msgPayload[1]} m";
-                TextBoxAnglePosition.Text = $"angle : {msgPayload[2]} °";
+                TextBoxXPosition.Text = "x : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2") + " m";
+                TextBoxYPosition.Text = "y : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2") + " m";
+                TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12)*180/float.Pi).ToString("N2") + " °";
+                TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2")+" m/s";
+                TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
+                Vy = BitConverter.ToSingle(msgPayload, 8);
+                Vx = BitConverter.ToSingle(msgPayload, 4);
             }
         }
-
+        
         private void SendStepInfo(byte stepNumber, uint timestampMs)
         {
             // Préparer la payload de 5 octets

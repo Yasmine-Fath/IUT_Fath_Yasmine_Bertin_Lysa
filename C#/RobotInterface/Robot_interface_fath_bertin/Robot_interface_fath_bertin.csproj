@@ -6,23 +6,19 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SciChart" Version="7.0.2.27161" />
     <PackageReference Include="System.IO.Ports" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\ExtendedSerialPort.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="ExtendedSerialPort">
-      <HintPath>..\..\ExtendedSerialPort .NET6 (3)\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll</HintPath>
-    </Reference>
-    <Reference Include="KeyboardHook">
-      <HintPath>..\..\KeyboardHook (1)\KeyboardHook\bin\Release\net6.0\KeyboardHook.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\ExtendedSerialPort\ExtendedSerialPort\ExtendedSerialPort.csproj" />
+    <ProjectReference Include="..\..\KeyboardHook\KeyboardHook\KeyboardHook.csproj" />
+    <ProjectReference Include="..\..\WpfAsservissementDisplay\WpfAsservissementDisplay.csproj" />
+    <ProjectReference Include="..\WpfOscilloscopeControl\WpfOscilloscopeControl.csproj" />
   </ItemGroup>
 
   <ItemGroup>
