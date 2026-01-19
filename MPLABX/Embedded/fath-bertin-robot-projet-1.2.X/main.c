@@ -36,7 +36,7 @@ int main(void) {
     InitTimer4();
     InitPWM();
     InitADC1();
-    InitUART();
+    InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
 
@@ -121,25 +121,29 @@ int main(void) {
 //        UartEncodeAndSendMessage(0x0080,7,payload);
 //        __delay32(40000000);
 
-        // Créer la payload (3 octets pour les distances)
-        //unsigned char payload[3] = {robotState.distanceTelemetreGauche, robotState.distanceTelemetreCentre, robotState.distanceTelemetreDroit};
+//        // Créer la payload (3 octets pour les distances)
+//        unsigned char payload[3] = {robotState.distanceTelemetreGauche, robotState.distanceTelemetreCentre, robotState.distanceTelemetreDroit};
+//
+//        // Appeler la fonction pour envoyer la trame avec l'ID 0x0030 (distances télémètre)
+//        UartEncodeAndSendMessage(0x0030, 3, payload);
+//
+//        // Temporisation pour éviter un flux trop rapide
+//        __delay32(40000000);
 
-        // Appeler la fonction pour envoyer la trame avec l'ID 0x0030 (distances télémètre)
-        //UartEncodeAndSendMessage(0x0030, 3, payload);
-
-        // Temporisation pour éviter un flux trop rapide
-        //__delay32(40000000);
-
-////        int i;
-////        for (i = 0; i < CB_RX1_GetDataSize(); i++) {
-////
-////            unsigned char c = CB_RX1_Get();
-////            UartDecodeMessage(c);
-////            SendMessage(&c, 1);
-////        }
-        //__delay32(10000);
+//        int i;
+//        for (i = 0; i < CB_RX1_GetDataSize(); i++) {
+//
+//            unsigned char c = CB_RX1_Get();
+//            UartDecodeMessage(c);
+//            SendMessage(&c, 1);
+//        }
+//        __delay32(10000);
+        
+//        unsigned char payload[2] = {20,10};
+//        UartEncodeAndSendMessage(0x0040, 2, payload);
 
     }
+    
 }
 
 void OperatingSystemLoop(void) {

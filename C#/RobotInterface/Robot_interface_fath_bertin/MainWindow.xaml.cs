@@ -39,6 +39,14 @@ namespace Robot_interface_fath_bertin
         double Vx = 0;
         double Vy = 0;
 
+        //mesures robot :
+        double r = 0.025;   //rayon 
+        double L = 0.219;  //entraxe
+
+        //vitesses gauche et droit 
+        double M1 = 0;
+        double M2 = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -63,8 +71,8 @@ namespace Robot_interface_fath_bertin
             //Initialisation de la classe WPF (oscilloscope)
     
             
-            oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
-            oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
+            //oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
+            //oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
 
         }
 
@@ -91,7 +99,7 @@ namespace Robot_interface_fath_bertin
                 //textBoxReception.AppendText(sbHex.ToString());
             }
             //Pour afficher des données dans l’oscilloscope (WPF)
-            oscilloSpeed.AddPointToLine(lineId, Vx, Vy);
+            oscilloSpeed.AddPointToLine(lineId, 3 , 2);
 
         }
 
@@ -162,7 +170,7 @@ namespace Robot_interface_fath_bertin
             //}
             //serialPort1.Write(byteList, 0, byteList.Length);
 
-            string messageString = "Bonjour";
+            //string messageString = "Bonjour";
 
             // 2️⃣ Convertir la chaîne en byte[]
             //byte[] payload = Encoding.ASCII.GetBytes(messageString);
@@ -444,6 +452,9 @@ namespace Robot_interface_fath_bertin
                     SendStepInfo(msgPayload[1], timestamp);
                     previousStateRobot = msgPayload[1];
                 }
+
+
+
             }
 
             if (msgFunction == 0x0050)
@@ -474,6 +485,17 @@ namespace Robot_interface_fath_bertin
                 TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
                 Vy = BitConverter.ToSingle(msgPayload, 8);
                 Vx = BitConverter.ToSingle(msgPayload, 4);
+
+                asservSpeedDisplay.UpdatePolarOdometrySpeed(BitConverter.ToSingle(msgPayload, 16), BitConverter.ToSingle(msgPayload, 20));
+
+                //double M1 = (BitConverter.ToSingle(msgPayload, 16) - (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur gauche
+                //double M2 = (BitConverter.ToSingle(msgPayload, 16) + (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur droit
+                M1 = BitConverter.ToSingle(msgPayload, 24);
+                M2 = BitConverter.ToSingle(msgPayload, 28);
+                asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
+
+
+
             }
         }
         

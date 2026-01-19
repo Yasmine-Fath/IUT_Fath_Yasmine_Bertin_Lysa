@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/QEI.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/CB_RX1.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Robot.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/CB_RX1.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/QEI.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Utilities.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/UART_Protocol.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/PMW.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/IO.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/ToolBox.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/UART.c</file>

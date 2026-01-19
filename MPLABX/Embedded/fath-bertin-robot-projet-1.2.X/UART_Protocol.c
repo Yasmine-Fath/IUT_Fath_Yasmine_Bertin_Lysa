@@ -133,8 +133,8 @@ void UartDecodeMessage(unsigned char c) {
 }
 
 void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPayloadLength, unsigned char msgPayload[]) {
-    //Fonction éappele èaprs le édcodage pour éexcuter l?action
-    //correspondant au message çreu
+    //Fonction appelée après le édcodage pour éxcuter l'action
+    //correspondant au message reçu
     switch (msgFunction) {
         case SET_ROBOT_STATE:
             SetRobotState(msgPayload[0]);

@@ -1,21 +1,1006 @@
-9064 1768550902028 GEN4_CONNECT_DIAGNOSTICS:MPLABCommTool is null
+6640 1768835167544 XXXX 1768835167544, Thread 6640: XXXX 1768835167544, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167544 XXXX 1768835167544, Thread 6640: XXXX 1768835167544, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167544 XXXX 1768835167544, Thread 6640: XXXX 1768835167544, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167549 XXXX 1768835167549, Thread 6640: XXXX 1768835167549, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167549 XXXX 1768835167549, Thread 6640: XXXX 1768835167549, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167549 XXXX 1768835167549, Thread 6640: XXXX 1768835167549, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167552 XXXX 1768835167552, Thread 6640: XXXX 1768835167552, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167552 XXXX 1768835167552, Thread 6640: XXXX 1768835167552, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167552 XXXX 1768835167552, Thread 6640: XXXX 1768835167552, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167557 XXXX 1768835167557, Thread 6640: XXXX 1768835167557, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167557 XXXX 1768835167557, Thread 6640: XXXX 1768835167557, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167557 XXXX 1768835167557, Thread 6640: XXXX 1768835167557, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167560 XXXX 1768835167560, Thread 6640: XXXX 1768835167560, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167560 XXXX 1768835167560, Thread 6640: XXXX 1768835167560, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167560 XXXX 1768835167560, Thread 6640: XXXX 1768835167560, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167565 XXXX 1768835167565, Thread 6640: XXXX 1768835167565, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167565 XXXX 1768835167565, Thread 6640: XXXX 1768835167565, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167565 XXXX 1768835167565, Thread 6640: XXXX 1768835167565, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167567 XXXX 1768835167567, Thread 6640: XXXX 1768835167567, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167567 XXXX 1768835167567, Thread 6640: XXXX 1768835167567, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167567 XXXX 1768835167567, Thread 6640: XXXX 1768835167567, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167582 XXXX 1768835167582, Thread 6640: XXXX 1768835167582, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167582 XXXX 1768835167582, Thread 6640: XXXX 1768835167582, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167582 XXXX 1768835167582, Thread 6640: XXXX 1768835167582, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167586 XXXX 1768835167586, Thread 6640: XXXX 1768835167586, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167586 XXXX 1768835167586, Thread 6640: XXXX 1768835167586, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167586 XXXX 1768835167586, Thread 6640: XXXX 1768835167586, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167591 XXXX 1768835167591, Thread 6640: XXXX 1768835167591, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167591 XXXX 1768835167591, Thread 6640: XXXX 1768835167591, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167591 XXXX 1768835167591, Thread 6640: XXXX 1768835167591, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167594 XXXX 1768835167594, Thread 6640: XXXX 1768835167594, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167594 XXXX 1768835167594, Thread 6640: XXXX 1768835167594, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167594 XXXX 1768835167594, Thread 6640: XXXX 1768835167594, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167599 XXXX 1768835167599, Thread 6640: XXXX 1768835167599, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167599 XXXX 1768835167599, Thread 6640: XXXX 1768835167599, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167599 XXXX 1768835167599, Thread 6640: XXXX 1768835167599, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167603 XXXX 1768835167603, Thread 6640: XXXX 1768835167603, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167603 XXXX 1768835167603, Thread 6640: XXXX 1768835167603, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167603 XXXX 1768835167603, Thread 6640: XXXX 1768835167603, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167608 XXXX 1768835167608, Thread 6640: XXXX 1768835167608, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167608 XXXX 1768835167608, Thread 6640: XXXX 1768835167608, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167608 XXXX 1768835167608, Thread 6640: XXXX 1768835167608, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167610 XXXX 1768835167610, Thread 6640: XXXX 1768835167610, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167610 XXXX 1768835167610, Thread 6640: XXXX 1768835167610, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167610 XXXX 1768835167610, Thread 6640: XXXX 1768835167610, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167615 XXXX 1768835167615, Thread 6640: XXXX 1768835167615, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167615 XXXX 1768835167615, Thread 6640: XXXX 1768835167615, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167615 XXXX 1768835167615, Thread 6640: XXXX 1768835167615, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167618 XXXX 1768835167618, Thread 6640: XXXX 1768835167618, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167618 XXXX 1768835167618, Thread 6640: XXXX 1768835167618, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167618 XXXX 1768835167618, Thread 6640: XXXX 1768835167618, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167623 XXXX 1768835167623, Thread 6640: XXXX 1768835167623, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167623 XXXX 1768835167623, Thread 6640: XXXX 1768835167623, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167623 XXXX 1768835167623, Thread 6640: XXXX 1768835167623, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167625 XXXX 1768835167625, Thread 6640: XXXX 1768835167625, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167625 XXXX 1768835167625, Thread 6640: XXXX 1768835167625, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167625 XXXX 1768835167625, Thread 6640: XXXX 1768835167625, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167630 XXXX 1768835167630, Thread 6640: XXXX 1768835167630, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167630 XXXX 1768835167630, Thread 6640: XXXX 1768835167630, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167630 XXXX 1768835167630, Thread 6640: XXXX 1768835167630, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167632 XXXX 1768835167632, Thread 6640: XXXX 1768835167632, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167632 XXXX 1768835167632, Thread 6640: XXXX 1768835167632, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167632 XXXX 1768835167632, Thread 6640: XXXX 1768835167632, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167637 XXXX 1768835167637, Thread 6640: XXXX 1768835167637, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167637 XXXX 1768835167637, Thread 6640: XXXX 1768835167637, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167637 XXXX 1768835167637, Thread 6640: XXXX 1768835167637, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167639 XXXX 1768835167639, Thread 6640: XXXX 1768835167639, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167639 XXXX 1768835167639, Thread 6640: XXXX 1768835167639, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167639 XXXX 1768835167639, Thread 6640: XXXX 1768835167639, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167644 XXXX 1768835167644, Thread 6640: XXXX 1768835167644, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167644 XXXX 1768835167644, Thread 6640: XXXX 1768835167644, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167644 XXXX 1768835167644, Thread 6640: XXXX 1768835167644, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167646 XXXX 1768835167646, Thread 6640: XXXX 1768835167646, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167646 XXXX 1768835167646, Thread 6640: XXXX 1768835167646, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167646 XXXX 1768835167646, Thread 6640: XXXX 1768835167646, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167651 XXXX 1768835167651, Thread 6640: XXXX 1768835167651, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167651 XXXX 1768835167651, Thread 6640: XXXX 1768835167651, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167651 XXXX 1768835167651, Thread 6640: XXXX 1768835167651, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167653 XXXX 1768835167653, Thread 6640: XXXX 1768835167653, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167653 XXXX 1768835167653, Thread 6640: XXXX 1768835167653, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167653 XXXX 1768835167653, Thread 6640: XXXX 1768835167653, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167658 XXXX 1768835167658, Thread 6640: XXXX 1768835167658, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167658 XXXX 1768835167658, Thread 6640: XXXX 1768835167658, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167658 XXXX 1768835167658, Thread 6640: XXXX 1768835167658, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167660 XXXX 1768835167660, Thread 6640: XXXX 1768835167660, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167660 XXXX 1768835167660, Thread 6640: XXXX 1768835167660, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167660 XXXX 1768835167660, Thread 6640: XXXX 1768835167660, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167665 XXXX 1768835167665, Thread 6640: XXXX 1768835167665, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167665 XXXX 1768835167665, Thread 6640: XXXX 1768835167665, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167665 XXXX 1768835167665, Thread 6640: XXXX 1768835167665, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167668 XXXX 1768835167668, Thread 6640: XXXX 1768835167668, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167668 XXXX 1768835167668, Thread 6640: XXXX 1768835167668, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167668 XXXX 1768835167668, Thread 6640: XXXX 1768835167668, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167673 XXXX 1768835167673, Thread 6640: XXXX 1768835167673, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167673 XXXX 1768835167673, Thread 6640: XXXX 1768835167673, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167673 XXXX 1768835167673, Thread 6640: XXXX 1768835167673, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167676 XXXX 1768835167676, Thread 6640: XXXX 1768835167676, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167676 XXXX 1768835167676, Thread 6640: XXXX 1768835167676, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167676 XXXX 1768835167676, Thread 6640: XXXX 1768835167676, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167681 XXXX 1768835167681, Thread 6640: XXXX 1768835167681, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167681 XXXX 1768835167681, Thread 6640: XXXX 1768835167681, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167681 XXXX 1768835167681, Thread 6640: XXXX 1768835167681, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167684 XXXX 1768835167684, Thread 6640: XXXX 1768835167684, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167684 XXXX 1768835167684, Thread 6640: XXXX 1768835167684, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167684 XXXX 1768835167684, Thread 6640: XXXX 1768835167684, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167689 XXXX 1768835167689, Thread 6640: XXXX 1768835167689, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167689 XXXX 1768835167689, Thread 6640: XXXX 1768835167689, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167689 XXXX 1768835167689, Thread 6640: XXXX 1768835167689, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167692 XXXX 1768835167692, Thread 6640: XXXX 1768835167692, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167692 XXXX 1768835167692, Thread 6640: XXXX 1768835167692, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167692 XXXX 1768835167692, Thread 6640: XXXX 1768835167692, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167697 XXXX 1768835167697, Thread 6640: XXXX 1768835167697, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167697 XXXX 1768835167697, Thread 6640: XXXX 1768835167697, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167697 XXXX 1768835167697, Thread 6640: XXXX 1768835167697, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167699 XXXX 1768835167699, Thread 6640: XXXX 1768835167699, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167699 XXXX 1768835167699, Thread 6640: XXXX 1768835167699, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167699 XXXX 1768835167699, Thread 6640: XXXX 1768835167699, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167704 XXXX 1768835167704, Thread 6640: XXXX 1768835167704, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167704 XXXX 1768835167704, Thread 6640: XXXX 1768835167704, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167704 XXXX 1768835167704, Thread 6640: XXXX 1768835167704, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167707 XXXX 1768835167707, Thread 6640: XXXX 1768835167707, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167707 XXXX 1768835167707, Thread 6640: XXXX 1768835167707, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167707 XXXX 1768835167707, Thread 6640: XXXX 1768835167707, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167712 XXXX 1768835167712, Thread 6640: XXXX 1768835167712, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167712 XXXX 1768835167712, Thread 6640: XXXX 1768835167712, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167712 XXXX 1768835167712, Thread 6640: XXXX 1768835167712, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167715 XXXX 1768835167715, Thread 6640: XXXX 1768835167715, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167715 XXXX 1768835167715, Thread 6640: XXXX 1768835167715, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167715 XXXX 1768835167715, Thread 6640: XXXX 1768835167715, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167720 XXXX 1768835167720, Thread 6640: XXXX 1768835167720, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167720 XXXX 1768835167720, Thread 6640: XXXX 1768835167720, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167720 XXXX 1768835167720, Thread 6640: XXXX 1768835167720, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167724 XXXX 1768835167724, Thread 6640: XXXX 1768835167724, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167724 XXXX 1768835167724, Thread 6640: XXXX 1768835167724, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167724 XXXX 1768835167724, Thread 6640: XXXX 1768835167724, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167729 XXXX 1768835167729, Thread 6640: XXXX 1768835167729, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167729 XXXX 1768835167729, Thread 6640: XXXX 1768835167729, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167729 XXXX 1768835167729, Thread 6640: XXXX 1768835167729, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167732 XXXX 1768835167732, Thread 6640: XXXX 1768835167732, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167732 XXXX 1768835167732, Thread 6640: XXXX 1768835167732, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167732 XXXX 1768835167732, Thread 6640: XXXX 1768835167732, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167737 XXXX 1768835167737, Thread 6640: XXXX 1768835167737, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167737 XXXX 1768835167737, Thread 6640: XXXX 1768835167737, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167737 XXXX 1768835167737, Thread 6640: XXXX 1768835167737, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167740 XXXX 1768835167740, Thread 6640: XXXX 1768835167740, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167740 XXXX 1768835167740, Thread 6640: XXXX 1768835167740, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167740 XXXX 1768835167740, Thread 6640: XXXX 1768835167740, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167745 XXXX 1768835167745, Thread 6640: XXXX 1768835167745, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167745 XXXX 1768835167745, Thread 6640: XXXX 1768835167745, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167745 XXXX 1768835167745, Thread 6640: XXXX 1768835167745, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167747 XXXX 1768835167747, Thread 6640: XXXX 1768835167747, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167747 XXXX 1768835167747, Thread 6640: XXXX 1768835167747, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167747 XXXX 1768835167747, Thread 6640: XXXX 1768835167747, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167752 XXXX 1768835167752, Thread 6640: XXXX 1768835167752, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167752 XXXX 1768835167752, Thread 6640: XXXX 1768835167752, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167752 XXXX 1768835167752, Thread 6640: XXXX 1768835167752, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167755 XXXX 1768835167755, Thread 6640: XXXX 1768835167755, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167755 XXXX 1768835167755, Thread 6640: XXXX 1768835167755, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167755 XXXX 1768835167755, Thread 6640: XXXX 1768835167755, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167760 XXXX 1768835167760, Thread 6640: XXXX 1768835167760, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167760 XXXX 1768835167760, Thread 6640: XXXX 1768835167760, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167760 XXXX 1768835167760, Thread 6640: XXXX 1768835167760, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167763 XXXX 1768835167763, Thread 6640: XXXX 1768835167763, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167763 XXXX 1768835167763, Thread 6640: XXXX 1768835167763, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167763 XXXX 1768835167763, Thread 6640: XXXX 1768835167763, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167768 XXXX 1768835167768, Thread 6640: XXXX 1768835167768, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167768 XXXX 1768835167768, Thread 6640: XXXX 1768835167768, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167768 XXXX 1768835167768, Thread 6640: XXXX 1768835167768, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167771 XXXX 1768835167771, Thread 6640: XXXX 1768835167771, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167771 XXXX 1768835167771, Thread 6640: XXXX 1768835167771, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167771 XXXX 1768835167771, Thread 6640: XXXX 1768835167771, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167776 XXXX 1768835167776, Thread 6640: XXXX 1768835167776, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167776 XXXX 1768835167776, Thread 6640: XXXX 1768835167776, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167776 XXXX 1768835167776, Thread 6640: XXXX 1768835167776, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167778 XXXX 1768835167778, Thread 6640: XXXX 1768835167778, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167778 XXXX 1768835167778, Thread 6640: XXXX 1768835167778, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167778 XXXX 1768835167778, Thread 6640: XXXX 1768835167778, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167783 XXXX 1768835167783, Thread 6640: XXXX 1768835167783, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167783 XXXX 1768835167783, Thread 6640: XXXX 1768835167783, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167783 XXXX 1768835167783, Thread 6640: XXXX 1768835167783, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167785 XXXX 1768835167785, Thread 6640: XXXX 1768835167785, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167785 XXXX 1768835167785, Thread 6640: XXXX 1768835167785, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167785 XXXX 1768835167785, Thread 6640: XXXX 1768835167785, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167790 XXXX 1768835167790, Thread 6640: XXXX 1768835167790, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167790 XXXX 1768835167790, Thread 6640: XXXX 1768835167790, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167790 XXXX 1768835167790, Thread 6640: XXXX 1768835167790, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167793 XXXX 1768835167793, Thread 6640: XXXX 1768835167793, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167793 XXXX 1768835167793, Thread 6640: XXXX 1768835167793, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167793 XXXX 1768835167793, Thread 6640: XXXX 1768835167793, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167798 XXXX 1768835167798, Thread 6640: XXXX 1768835167798, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167798 XXXX 1768835167798, Thread 6640: XXXX 1768835167798, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167798 XXXX 1768835167798, Thread 6640: XXXX 1768835167798, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167801 XXXX 1768835167801, Thread 6640: XXXX 1768835167801, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167801 XXXX 1768835167801, Thread 6640: XXXX 1768835167801, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167801 XXXX 1768835167801, Thread 6640: XXXX 1768835167801, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167806 XXXX 1768835167806, Thread 6640: XXXX 1768835167806, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167806 XXXX 1768835167806, Thread 6640: XXXX 1768835167806, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167806 XXXX 1768835167806, Thread 6640: XXXX 1768835167806, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167808 XXXX 1768835167808, Thread 6640: XXXX 1768835167808, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167808 XXXX 1768835167808, Thread 6640: XXXX 1768835167808, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167808 XXXX 1768835167808, Thread 6640: XXXX 1768835167808, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167813 XXXX 1768835167813, Thread 6640: XXXX 1768835167813, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167813 XXXX 1768835167813, Thread 6640: XXXX 1768835167813, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167813 XXXX 1768835167813, Thread 6640: XXXX 1768835167813, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167816 XXXX 1768835167816, Thread 6640: XXXX 1768835167816, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167816 XXXX 1768835167816, Thread 6640: XXXX 1768835167816, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167816 XXXX 1768835167816, Thread 6640: XXXX 1768835167816, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167821 XXXX 1768835167821, Thread 6640: XXXX 1768835167821, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167821 XXXX 1768835167821, Thread 6640: XXXX 1768835167821, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167821 XXXX 1768835167821, Thread 6640: XXXX 1768835167821, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167823 XXXX 1768835167823, Thread 6640: XXXX 1768835167823, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167823 XXXX 1768835167823, Thread 6640: XXXX 1768835167823, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167823 XXXX 1768835167823, Thread 6640: XXXX 1768835167823, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167828 XXXX 1768835167828, Thread 6640: XXXX 1768835167828, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167828 XXXX 1768835167828, Thread 6640: XXXX 1768835167828, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167828 XXXX 1768835167828, Thread 6640: XXXX 1768835167828, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167830 XXXX 1768835167830, Thread 6640: XXXX 1768835167830, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167830 XXXX 1768835167830, Thread 6640: XXXX 1768835167830, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167830 XXXX 1768835167830, Thread 6640: XXXX 1768835167830, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167835 XXXX 1768835167835, Thread 6640: XXXX 1768835167835, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167835 XXXX 1768835167835, Thread 6640: XXXX 1768835167835, Entering Thread 6640: Commands::runScriptWithUpload, script name = ReadSFR  
+6640 1768835167835 XXXX 1768835167835, Thread 6640: XXXX 1768835167835, Entering Thread 6640: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6640 1768835167837 XXXX 1768835167837, Thread 6640: XXXX 1768835167837, Exiting Thread 6640: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6640 1768835167837 XXXX 1768835167837, Thread 6640: XXXX 1768835167837, Exiting Thread 6640: Commands::runScriptWithUpload  
+6640 1768835167837 XXXX 1768835167837, Thread 6640: XXXX 1768835167837, Entering Thread 6640: Commands::runScriptWithDownload, script name = WriteSFR  
+6640 1768835167842 XXXX 1768835167842, Thread 6640: XXXX 1768835167842, Exiting Thread 6640: Commands::runScriptWithDownload(WriteSFR)  
+6640 1768835167842 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:SetFreezePerihperalInfo
+6640 1768835167842 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6640 1768835167842 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 none
+6640 1768835167842 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
 
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:DebugReadTargetMemory
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 FileRegs
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 0
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 1
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Length = 2
-7272 1768550902028 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
-7272 1768550902028 XXXX 1768550902028, Thread 7272: XXXX 1768550902028, Entering Thread 7272: Commands::runScriptWithUpload, script name = ReadSFR  
-7272 1768550902028 XXXX 1768550902028, Thread 7272: XXXX 1768550902028, Entering Thread 7272: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
-7272 1768550902039 XXXX 1768550902039, Thread 7272: com.Send returned false 
-7272 1768550902039 XXXX 1768550902039, Thread 7272: readTransfer: exception after writeHeaderAndGetAck null 
-7272 1768550902039 XXXX 1768550902039, Thread 7272: XXXX 1768550902039, Entering Thread 7272: ToolCommUsb::recoverFromProtocolError, type = NO_SCRIPT  
-7272 1768550902040 XXXX 1768550902040, Thread 7272: Send Abort Script Engine Command 
-7272 1768550902040 XXXX 1768550902040, Thread 7272: XXXX 1768550902040, Entering Thread 7272: ToolCommUsb::killScriptEngine  
-7272 1768550902053 XXXX 1768550902053, Thread 7272: com.Send returned false 
-7272 1768550902053 XXXX 1768550902053, Thread 7272: Failed sending Abort Script Engine Command. Set nuclear option = true 
-7272 1768550902053 XXXX 1768550902053, Thread 7272: About to nuke 
-7272 1768550902053 XXXX 1768550902053, Thread 7272: XXXX 1768550902053, Entering Thread 7272: ToolCommUsb::nuclearOption  
-7272 1768550902068 XXXX 1768550902068, Thread 7272: com.Send returned false 
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:setTraceDescriptor
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 com.microchip.mplab.libs.RI4ToolsController.DataClasses.TraceDescriptor@6be7ae0b
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:setTraceDescriptor
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 none
+6782 1768835167869 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:DebugReadTargetMemory
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Emulation
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 fd0000
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 fd000b
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Length = 12
+6782 1768835167870 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835167870 XXXX 1768835167870, Thread 6782: XXXX 1768835167870, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadEmu  
+6782 1768835167870 XXXX 1768835167870, Thread 6782: XXXX 1768835167870, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0xc bytes long  
+6782 1768835167873 XXXX 1768835167873, Thread 6782: XXXX 1768835167873, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167873 XXXX 1768835167873, Thread 6782: XXXX 1768835167873, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:DebugReadTargetMemory
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 true
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:DebugWriteTargetMemory
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Emulation
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 fd0000
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 fd006b
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Length = 108
+6782 1768835167873 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835167873 XXXX 1768835167873, Thread 6782: XXXX 1768835167873, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadEmu  
+6782 1768835167873 XXXX 1768835167873, Thread 6782: XXXX 1768835167873, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x6c bytes long  
+6782 1768835167875 XXXX 1768835167875, Thread 6782: XXXX 1768835167875, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167875 XXXX 1768835167875, Thread 6782: XXXX 1768835167875, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167875 XXXX 1768835167875, Thread 6782: XXXX 1768835167875, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteEmu  
+6782 1768835167879 XXXX 1768835167879, Thread 6782: XXXX 1768835167879, Exiting Thread 6782: Commands::runScriptWithDownload(WriteEmu)  
+6782 1768835167879 XXXX 1768835167879, Thread 6782: XXXX 1768835167879, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteEmu  
+6782 1768835167882 XXXX 1768835167882, Thread 6782: XXXX 1768835167882, Exiting Thread 6782: Commands::runScriptWithDownload(WriteEmu)  
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:DebugWriteTargetMemory
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 true
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:SetFreezePerihperalInfo
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 104, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 110, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 112, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 11e, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 120, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 12c, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 12e, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 13a, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 13c, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 140, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 148, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 150, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 158, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 160, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 168, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 170, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 178, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 180, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 188, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 190, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 198, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 1a0, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 1a8, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 1b0, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 1b8, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 206, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 216, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 220, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 230, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 240, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 250, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 260, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 280, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 2a0, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 2b0, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 2c0, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 320, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 360, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 4dc, Mask = 20, SetVal = 20, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 600, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 626, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 640, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 900, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 90a, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 914, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 91e, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 928, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 932, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 93c, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 946, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 950, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 95a, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 964, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 96e, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 978, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 982, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 98c, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = 996, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = a80, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = c00, Mask = 4000, SetVal = 4000, Type = FileRegs
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Values:
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 BitSetInfo: Address = fd0036, Mask = 1, SetVal = 1, Type = Emulation
+6782 1768835167882 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835167882 XXXX 1768835167882, Thread 6782: XXXX 1768835167882, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167882 XXXX 1768835167882, Thread 6782: XXXX 1768835167882, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167886 XXXX 1768835167886, Thread 6782: XXXX 1768835167886, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167886 XXXX 1768835167886, Thread 6782: XXXX 1768835167886, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167886 XXXX 1768835167886, Thread 6782: XXXX 1768835167886, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167891 XXXX 1768835167891, Thread 6782: XXXX 1768835167891, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167891 XXXX 1768835167891, Thread 6782: XXXX 1768835167891, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167891 XXXX 1768835167891, Thread 6782: XXXX 1768835167891, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167894 XXXX 1768835167894, Thread 6782: XXXX 1768835167894, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167894 XXXX 1768835167894, Thread 6782: XXXX 1768835167894, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167894 XXXX 1768835167894, Thread 6782: XXXX 1768835167894, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167899 XXXX 1768835167899, Thread 6782: XXXX 1768835167899, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167899 XXXX 1768835167899, Thread 6782: XXXX 1768835167899, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167899 XXXX 1768835167899, Thread 6782: XXXX 1768835167899, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167901 XXXX 1768835167901, Thread 6782: XXXX 1768835167901, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167901 XXXX 1768835167901, Thread 6782: XXXX 1768835167901, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167901 XXXX 1768835167901, Thread 6782: XXXX 1768835167901, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167906 XXXX 1768835167906, Thread 6782: XXXX 1768835167906, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167906 XXXX 1768835167906, Thread 6782: XXXX 1768835167906, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167906 XXXX 1768835167906, Thread 6782: XXXX 1768835167906, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167909 XXXX 1768835167909, Thread 6782: XXXX 1768835167909, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167909 XXXX 1768835167909, Thread 6782: XXXX 1768835167909, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167909 XXXX 1768835167909, Thread 6782: XXXX 1768835167909, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167914 XXXX 1768835167914, Thread 6782: XXXX 1768835167914, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167914 XXXX 1768835167914, Thread 6782: XXXX 1768835167914, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167914 XXXX 1768835167914, Thread 6782: XXXX 1768835167914, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167916 XXXX 1768835167916, Thread 6782: XXXX 1768835167916, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167916 XXXX 1768835167916, Thread 6782: XXXX 1768835167916, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167916 XXXX 1768835167916, Thread 6782: XXXX 1768835167916, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167921 XXXX 1768835167921, Thread 6782: XXXX 1768835167921, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167921 XXXX 1768835167921, Thread 6782: XXXX 1768835167921, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167921 XXXX 1768835167921, Thread 6782: XXXX 1768835167921, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167924 XXXX 1768835167924, Thread 6782: XXXX 1768835167924, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167924 XXXX 1768835167924, Thread 6782: XXXX 1768835167924, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167924 XXXX 1768835167924, Thread 6782: XXXX 1768835167924, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167929 XXXX 1768835167929, Thread 6782: XXXX 1768835167929, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167929 XXXX 1768835167929, Thread 6782: XXXX 1768835167929, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167929 XXXX 1768835167929, Thread 6782: XXXX 1768835167929, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167932 XXXX 1768835167932, Thread 6782: XXXX 1768835167932, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167932 XXXX 1768835167932, Thread 6782: XXXX 1768835167932, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167932 XXXX 1768835167932, Thread 6782: XXXX 1768835167932, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167937 XXXX 1768835167937, Thread 6782: XXXX 1768835167937, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167937 XXXX 1768835167937, Thread 6782: XXXX 1768835167937, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167937 XXXX 1768835167937, Thread 6782: XXXX 1768835167937, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167940 XXXX 1768835167940, Thread 6782: XXXX 1768835167940, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167940 XXXX 1768835167940, Thread 6782: XXXX 1768835167940, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167940 XXXX 1768835167940, Thread 6782: XXXX 1768835167940, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167945 XXXX 1768835167945, Thread 6782: XXXX 1768835167945, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167945 XXXX 1768835167945, Thread 6782: XXXX 1768835167945, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167945 XXXX 1768835167945, Thread 6782: XXXX 1768835167945, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167948 XXXX 1768835167948, Thread 6782: XXXX 1768835167948, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167948 XXXX 1768835167948, Thread 6782: XXXX 1768835167948, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167948 XXXX 1768835167948, Thread 6782: XXXX 1768835167948, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167953 XXXX 1768835167953, Thread 6782: XXXX 1768835167953, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167953 XXXX 1768835167953, Thread 6782: XXXX 1768835167953, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167953 XXXX 1768835167953, Thread 6782: XXXX 1768835167953, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167956 XXXX 1768835167956, Thread 6782: XXXX 1768835167956, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167956 XXXX 1768835167956, Thread 6782: XXXX 1768835167956, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167956 XXXX 1768835167956, Thread 6782: XXXX 1768835167956, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167961 XXXX 1768835167961, Thread 6782: XXXX 1768835167961, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167961 XXXX 1768835167961, Thread 6782: XXXX 1768835167961, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167961 XXXX 1768835167961, Thread 6782: XXXX 1768835167961, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167964 XXXX 1768835167964, Thread 6782: XXXX 1768835167964, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167964 XXXX 1768835167964, Thread 6782: XXXX 1768835167964, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167964 XXXX 1768835167964, Thread 6782: XXXX 1768835167964, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167969 XXXX 1768835167969, Thread 6782: XXXX 1768835167969, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167969 XXXX 1768835167969, Thread 6782: XXXX 1768835167969, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167969 XXXX 1768835167969, Thread 6782: XXXX 1768835167969, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167972 XXXX 1768835167972, Thread 6782: XXXX 1768835167972, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167972 XXXX 1768835167972, Thread 6782: XXXX 1768835167972, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167972 XXXX 1768835167972, Thread 6782: XXXX 1768835167972, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167977 XXXX 1768835167977, Thread 6782: XXXX 1768835167977, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167977 XXXX 1768835167977, Thread 6782: XXXX 1768835167977, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167977 XXXX 1768835167977, Thread 6782: XXXX 1768835167977, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167981 XXXX 1768835167981, Thread 6782: XXXX 1768835167981, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167981 XXXX 1768835167981, Thread 6782: XXXX 1768835167981, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167981 XXXX 1768835167981, Thread 6782: XXXX 1768835167981, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167986 XXXX 1768835167986, Thread 6782: XXXX 1768835167986, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167986 XXXX 1768835167986, Thread 6782: XXXX 1768835167986, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167986 XXXX 1768835167986, Thread 6782: XXXX 1768835167986, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167989 XXXX 1768835167989, Thread 6782: XXXX 1768835167989, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167989 XXXX 1768835167989, Thread 6782: XXXX 1768835167989, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167989 XXXX 1768835167989, Thread 6782: XXXX 1768835167989, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835167994 XXXX 1768835167994, Thread 6782: XXXX 1768835167994, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835167994 XXXX 1768835167994, Thread 6782: XXXX 1768835167994, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835167994 XXXX 1768835167994, Thread 6782: XXXX 1768835167994, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835167997 XXXX 1768835167997, Thread 6782: XXXX 1768835167997, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835167997 XXXX 1768835167997, Thread 6782: XXXX 1768835167997, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835167997 XXXX 1768835167997, Thread 6782: XXXX 1768835167997, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168002 XXXX 1768835168002, Thread 6782: XXXX 1768835168002, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168002 XXXX 1768835168002, Thread 6782: XXXX 1768835168002, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168002 XXXX 1768835168002, Thread 6782: XXXX 1768835168002, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168004 XXXX 1768835168004, Thread 6782: XXXX 1768835168004, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168004 XXXX 1768835168004, Thread 6782: XXXX 1768835168004, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168004 XXXX 1768835168004, Thread 6782: XXXX 1768835168004, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168009 XXXX 1768835168009, Thread 6782: XXXX 1768835168009, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168009 XXXX 1768835168009, Thread 6782: XXXX 1768835168009, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168009 XXXX 1768835168009, Thread 6782: XXXX 1768835168009, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168012 XXXX 1768835168012, Thread 6782: XXXX 1768835168012, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168012 XXXX 1768835168012, Thread 6782: XXXX 1768835168012, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168012 XXXX 1768835168012, Thread 6782: XXXX 1768835168012, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168017 XXXX 1768835168017, Thread 6782: XXXX 1768835168017, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168017 XXXX 1768835168017, Thread 6782: XXXX 1768835168017, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168017 XXXX 1768835168017, Thread 6782: XXXX 1768835168017, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168020 XXXX 1768835168020, Thread 6782: XXXX 1768835168020, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168020 XXXX 1768835168020, Thread 6782: XXXX 1768835168020, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168020 XXXX 1768835168020, Thread 6782: XXXX 1768835168020, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168025 XXXX 1768835168025, Thread 6782: XXXX 1768835168025, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168025 XXXX 1768835168025, Thread 6782: XXXX 1768835168025, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168025 XXXX 1768835168025, Thread 6782: XXXX 1768835168025, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168028 XXXX 1768835168028, Thread 6782: XXXX 1768835168028, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168028 XXXX 1768835168028, Thread 6782: XXXX 1768835168028, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168028 XXXX 1768835168028, Thread 6782: XXXX 1768835168028, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168033 XXXX 1768835168033, Thread 6782: XXXX 1768835168033, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168033 XXXX 1768835168033, Thread 6782: XXXX 1768835168033, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168033 XXXX 1768835168033, Thread 6782: XXXX 1768835168033, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168035 XXXX 1768835168035, Thread 6782: XXXX 1768835168035, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168035 XXXX 1768835168035, Thread 6782: XXXX 1768835168035, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168035 XXXX 1768835168035, Thread 6782: XXXX 1768835168035, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168040 XXXX 1768835168040, Thread 6782: XXXX 1768835168040, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168040 XXXX 1768835168040, Thread 6782: XXXX 1768835168040, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168040 XXXX 1768835168040, Thread 6782: XXXX 1768835168040, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168043 XXXX 1768835168043, Thread 6782: XXXX 1768835168043, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168043 XXXX 1768835168043, Thread 6782: XXXX 1768835168043, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168043 XXXX 1768835168043, Thread 6782: XXXX 1768835168043, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168048 XXXX 1768835168048, Thread 6782: XXXX 1768835168048, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168048 XXXX 1768835168048, Thread 6782: XXXX 1768835168048, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168048 XXXX 1768835168048, Thread 6782: XXXX 1768835168048, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168051 XXXX 1768835168051, Thread 6782: XXXX 1768835168051, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168051 XXXX 1768835168051, Thread 6782: XXXX 1768835168051, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168051 XXXX 1768835168051, Thread 6782: XXXX 1768835168051, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168056 XXXX 1768835168056, Thread 6782: XXXX 1768835168056, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168056 XXXX 1768835168056, Thread 6782: XXXX 1768835168056, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168056 XXXX 1768835168056, Thread 6782: XXXX 1768835168056, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168059 XXXX 1768835168059, Thread 6782: XXXX 1768835168059, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168059 XXXX 1768835168059, Thread 6782: XXXX 1768835168059, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168059 XXXX 1768835168059, Thread 6782: XXXX 1768835168059, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168064 XXXX 1768835168064, Thread 6782: XXXX 1768835168064, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168064 XXXX 1768835168064, Thread 6782: XXXX 1768835168064, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168064 XXXX 1768835168064, Thread 6782: XXXX 1768835168064, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168067 XXXX 1768835168067, Thread 6782: XXXX 1768835168067, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168067 XXXX 1768835168067, Thread 6782: XXXX 1768835168067, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168067 XXXX 1768835168067, Thread 6782: XXXX 1768835168067, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168072 XXXX 1768835168072, Thread 6782: XXXX 1768835168072, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168072 XXXX 1768835168072, Thread 6782: XXXX 1768835168072, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168072 XXXX 1768835168072, Thread 6782: XXXX 1768835168072, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168074 XXXX 1768835168074, Thread 6782: XXXX 1768835168074, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168074 XXXX 1768835168074, Thread 6782: XXXX 1768835168074, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168074 XXXX 1768835168074, Thread 6782: XXXX 1768835168074, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168079 XXXX 1768835168079, Thread 6782: XXXX 1768835168079, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168079 XXXX 1768835168079, Thread 6782: XXXX 1768835168079, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168079 XXXX 1768835168079, Thread 6782: XXXX 1768835168079, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168082 XXXX 1768835168082, Thread 6782: XXXX 1768835168082, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168082 XXXX 1768835168082, Thread 6782: XXXX 1768835168082, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168082 XXXX 1768835168082, Thread 6782: XXXX 1768835168082, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168087 XXXX 1768835168087, Thread 6782: XXXX 1768835168087, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168087 XXXX 1768835168087, Thread 6782: XXXX 1768835168087, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168087 XXXX 1768835168087, Thread 6782: XXXX 1768835168087, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168090 XXXX 1768835168090, Thread 6782: XXXX 1768835168090, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168090 XXXX 1768835168090, Thread 6782: XXXX 1768835168090, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168090 XXXX 1768835168090, Thread 6782: XXXX 1768835168090, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168095 XXXX 1768835168095, Thread 6782: XXXX 1768835168095, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168095 XXXX 1768835168095, Thread 6782: XXXX 1768835168095, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168095 XXXX 1768835168095, Thread 6782: XXXX 1768835168095, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168097 XXXX 1768835168097, Thread 6782: XXXX 1768835168097, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168097 XXXX 1768835168097, Thread 6782: XXXX 1768835168097, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168097 XXXX 1768835168097, Thread 6782: XXXX 1768835168097, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168102 XXXX 1768835168102, Thread 6782: XXXX 1768835168102, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168102 XXXX 1768835168102, Thread 6782: XXXX 1768835168102, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168102 XXXX 1768835168102, Thread 6782: XXXX 1768835168102, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168104 XXXX 1768835168104, Thread 6782: XXXX 1768835168104, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168104 XXXX 1768835168104, Thread 6782: XXXX 1768835168104, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168104 XXXX 1768835168104, Thread 6782: XXXX 1768835168104, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168109 XXXX 1768835168109, Thread 6782: XXXX 1768835168109, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168109 XXXX 1768835168109, Thread 6782: XXXX 1768835168109, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168109 XXXX 1768835168109, Thread 6782: XXXX 1768835168109, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168111 XXXX 1768835168111, Thread 6782: XXXX 1768835168111, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168111 XXXX 1768835168111, Thread 6782: XXXX 1768835168111, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168111 XXXX 1768835168111, Thread 6782: XXXX 1768835168111, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168116 XXXX 1768835168116, Thread 6782: XXXX 1768835168116, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168116 XXXX 1768835168116, Thread 6782: XXXX 1768835168116, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168116 XXXX 1768835168116, Thread 6782: XXXX 1768835168116, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168118 XXXX 1768835168118, Thread 6782: XXXX 1768835168118, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168118 XXXX 1768835168118, Thread 6782: XXXX 1768835168118, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168118 XXXX 1768835168118, Thread 6782: XXXX 1768835168118, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168123 XXXX 1768835168123, Thread 6782: XXXX 1768835168123, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168123 XXXX 1768835168123, Thread 6782: XXXX 1768835168123, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168123 XXXX 1768835168123, Thread 6782: XXXX 1768835168123, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168125 XXXX 1768835168125, Thread 6782: XXXX 1768835168125, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168125 XXXX 1768835168125, Thread 6782: XXXX 1768835168125, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168125 XXXX 1768835168125, Thread 6782: XXXX 1768835168125, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168130 XXXX 1768835168130, Thread 6782: XXXX 1768835168130, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168130 XXXX 1768835168130, Thread 6782: XXXX 1768835168130, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168130 XXXX 1768835168130, Thread 6782: XXXX 1768835168130, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168133 XXXX 1768835168133, Thread 6782: XXXX 1768835168133, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168133 XXXX 1768835168133, Thread 6782: XXXX 1768835168133, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168133 XXXX 1768835168133, Thread 6782: XXXX 1768835168133, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168138 XXXX 1768835168138, Thread 6782: XXXX 1768835168138, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168138 XXXX 1768835168138, Thread 6782: XXXX 1768835168138, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168138 XXXX 1768835168138, Thread 6782: XXXX 1768835168138, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168141 XXXX 1768835168141, Thread 6782: XXXX 1768835168141, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168141 XXXX 1768835168141, Thread 6782: XXXX 1768835168141, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168141 XXXX 1768835168141, Thread 6782: XXXX 1768835168141, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168146 XXXX 1768835168146, Thread 6782: XXXX 1768835168146, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168146 XXXX 1768835168146, Thread 6782: XXXX 1768835168146, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168146 XXXX 1768835168146, Thread 6782: XXXX 1768835168146, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168149 XXXX 1768835168149, Thread 6782: XXXX 1768835168149, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168149 XXXX 1768835168149, Thread 6782: XXXX 1768835168149, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168149 XXXX 1768835168149, Thread 6782: XXXX 1768835168149, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168154 XXXX 1768835168154, Thread 6782: XXXX 1768835168154, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168154 XXXX 1768835168154, Thread 6782: XXXX 1768835168154, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168154 XXXX 1768835168154, Thread 6782: XXXX 1768835168154, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168156 XXXX 1768835168156, Thread 6782: XXXX 1768835168156, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168156 XXXX 1768835168156, Thread 6782: XXXX 1768835168156, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168156 XXXX 1768835168156, Thread 6782: XXXX 1768835168156, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168161 XXXX 1768835168161, Thread 6782: XXXX 1768835168161, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168161 XXXX 1768835168161, Thread 6782: XXXX 1768835168161, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168161 XXXX 1768835168161, Thread 6782: XXXX 1768835168161, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168163 XXXX 1768835168163, Thread 6782: XXXX 1768835168163, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168163 XXXX 1768835168163, Thread 6782: XXXX 1768835168163, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168163 XXXX 1768835168163, Thread 6782: XXXX 1768835168163, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168168 XXXX 1768835168168, Thread 6782: XXXX 1768835168168, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168168 XXXX 1768835168168, Thread 6782: XXXX 1768835168168, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168168 XXXX 1768835168168, Thread 6782: XXXX 1768835168168, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168170 XXXX 1768835168170, Thread 6782: XXXX 1768835168170, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168170 XXXX 1768835168170, Thread 6782: XXXX 1768835168170, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168170 XXXX 1768835168170, Thread 6782: XXXX 1768835168170, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168175 XXXX 1768835168175, Thread 6782: XXXX 1768835168175, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168175 XXXX 1768835168175, Thread 6782: XXXX 1768835168175, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168175 XXXX 1768835168175, Thread 6782: XXXX 1768835168175, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168177 XXXX 1768835168177, Thread 6782: XXXX 1768835168177, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168177 XXXX 1768835168177, Thread 6782: XXXX 1768835168177, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168177 XXXX 1768835168177, Thread 6782: XXXX 1768835168177, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168182 XXXX 1768835168182, Thread 6782: XXXX 1768835168182, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168182 XXXX 1768835168182, Thread 6782: XXXX 1768835168182, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168182 XXXX 1768835168182, Thread 6782: XXXX 1768835168182, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168185 XXXX 1768835168185, Thread 6782: XXXX 1768835168185, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168185 XXXX 1768835168185, Thread 6782: XXXX 1768835168185, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168185 XXXX 1768835168185, Thread 6782: XXXX 1768835168185, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168190 XXXX 1768835168190, Thread 6782: XXXX 1768835168190, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168190 XXXX 1768835168190, Thread 6782: XXXX 1768835168190, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168190 XXXX 1768835168190, Thread 6782: XXXX 1768835168190, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168192 XXXX 1768835168192, Thread 6782: XXXX 1768835168192, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168192 XXXX 1768835168192, Thread 6782: XXXX 1768835168192, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168192 XXXX 1768835168192, Thread 6782: XXXX 1768835168192, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168197 XXXX 1768835168197, Thread 6782: XXXX 1768835168197, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168197 XXXX 1768835168197, Thread 6782: XXXX 1768835168197, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168197 XXXX 1768835168197, Thread 6782: XXXX 1768835168197, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168200 XXXX 1768835168200, Thread 6782: XXXX 1768835168200, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168200 XXXX 1768835168200, Thread 6782: XXXX 1768835168200, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168200 XXXX 1768835168200, Thread 6782: XXXX 1768835168200, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168205 XXXX 1768835168205, Thread 6782: XXXX 1768835168205, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168205 XXXX 1768835168205, Thread 6782: XXXX 1768835168205, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168205 XXXX 1768835168205, Thread 6782: XXXX 1768835168205, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168208 XXXX 1768835168208, Thread 6782: XXXX 1768835168208, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168208 XXXX 1768835168208, Thread 6782: XXXX 1768835168208, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168208 XXXX 1768835168208, Thread 6782: XXXX 1768835168208, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168213 XXXX 1768835168213, Thread 6782: XXXX 1768835168213, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168213 XXXX 1768835168213, Thread 6782: XXXX 1768835168213, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168213 XXXX 1768835168213, Thread 6782: XXXX 1768835168213, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168216 XXXX 1768835168216, Thread 6782: XXXX 1768835168216, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168216 XXXX 1768835168216, Thread 6782: XXXX 1768835168216, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168216 XXXX 1768835168216, Thread 6782: XXXX 1768835168216, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168221 XXXX 1768835168221, Thread 6782: XXXX 1768835168221, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168221 XXXX 1768835168221, Thread 6782: XXXX 1768835168221, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168221 XXXX 1768835168221, Thread 6782: XXXX 1768835168221, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168224 XXXX 1768835168224, Thread 6782: XXXX 1768835168224, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168224 XXXX 1768835168224, Thread 6782: XXXX 1768835168224, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168224 XXXX 1768835168224, Thread 6782: XXXX 1768835168224, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168229 XXXX 1768835168229, Thread 6782: XXXX 1768835168229, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168229 XXXX 1768835168229, Thread 6782: XXXX 1768835168229, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168229 XXXX 1768835168229, Thread 6782: XXXX 1768835168229, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168232 XXXX 1768835168232, Thread 6782: XXXX 1768835168232, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168232 XXXX 1768835168232, Thread 6782: XXXX 1768835168232, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168232 XXXX 1768835168232, Thread 6782: XXXX 1768835168232, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168237 XXXX 1768835168237, Thread 6782: XXXX 1768835168237, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168237 XXXX 1768835168237, Thread 6782: XXXX 1768835168237, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168237 XXXX 1768835168237, Thread 6782: XXXX 1768835168237, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168240 XXXX 1768835168240, Thread 6782: XXXX 1768835168240, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168240 XXXX 1768835168240, Thread 6782: XXXX 1768835168240, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168240 XXXX 1768835168240, Thread 6782: XXXX 1768835168240, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168245 XXXX 1768835168245, Thread 6782: XXXX 1768835168245, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168245 XXXX 1768835168245, Thread 6782: XXXX 1768835168245, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168245 XXXX 1768835168245, Thread 6782: XXXX 1768835168245, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168248 XXXX 1768835168248, Thread 6782: XXXX 1768835168248, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168248 XXXX 1768835168248, Thread 6782: XXXX 1768835168248, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168248 XXXX 1768835168248, Thread 6782: XXXX 1768835168248, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168253 XXXX 1768835168253, Thread 6782: XXXX 1768835168253, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168253 XXXX 1768835168253, Thread 6782: XXXX 1768835168253, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168253 XXXX 1768835168253, Thread 6782: XXXX 1768835168253, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168255 XXXX 1768835168255, Thread 6782: XXXX 1768835168255, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168255 XXXX 1768835168255, Thread 6782: XXXX 1768835168255, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168255 XXXX 1768835168255, Thread 6782: XXXX 1768835168255, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168260 XXXX 1768835168260, Thread 6782: XXXX 1768835168260, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168260 XXXX 1768835168260, Thread 6782: XXXX 1768835168260, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168260 XXXX 1768835168260, Thread 6782: XXXX 1768835168260, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168263 XXXX 1768835168263, Thread 6782: XXXX 1768835168263, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168263 XXXX 1768835168263, Thread 6782: XXXX 1768835168263, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168263 XXXX 1768835168263, Thread 6782: XXXX 1768835168263, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168268 XXXX 1768835168268, Thread 6782: XXXX 1768835168268, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168268 XXXX 1768835168268, Thread 6782: XXXX 1768835168268, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168268 XXXX 1768835168268, Thread 6782: XXXX 1768835168268, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168270 XXXX 1768835168270, Thread 6782: XXXX 1768835168270, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168270 XXXX 1768835168270, Thread 6782: XXXX 1768835168270, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168270 XXXX 1768835168270, Thread 6782: XXXX 1768835168270, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168277 XXXX 1768835168277, Thread 6782: XXXX 1768835168277, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168277 XXXX 1768835168277, Thread 6782: XXXX 1768835168277, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168277 XXXX 1768835168277, Thread 6782: XXXX 1768835168277, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168284 XXXX 1768835168284, Thread 6782: XXXX 1768835168284, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168284 XXXX 1768835168284, Thread 6782: XXXX 1768835168284, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168284 XXXX 1768835168284, Thread 6782: XXXX 1768835168284, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168289 XXXX 1768835168289, Thread 6782: XXXX 1768835168289, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168289 XXXX 1768835168289, Thread 6782: XXXX 1768835168289, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168289 XXXX 1768835168289, Thread 6782: XXXX 1768835168289, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168292 XXXX 1768835168292, Thread 6782: XXXX 1768835168292, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168292 XXXX 1768835168292, Thread 6782: XXXX 1768835168292, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168292 XXXX 1768835168292, Thread 6782: XXXX 1768835168292, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168297 XXXX 1768835168297, Thread 6782: XXXX 1768835168297, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168297 XXXX 1768835168297, Thread 6782: XXXX 1768835168297, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168297 XXXX 1768835168297, Thread 6782: XXXX 1768835168297, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168299 XXXX 1768835168299, Thread 6782: XXXX 1768835168299, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168299 XXXX 1768835168299, Thread 6782: XXXX 1768835168299, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168299 XXXX 1768835168299, Thread 6782: XXXX 1768835168299, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168304 XXXX 1768835168304, Thread 6782: XXXX 1768835168304, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168304 XXXX 1768835168304, Thread 6782: XXXX 1768835168304, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168304 XXXX 1768835168304, Thread 6782: XXXX 1768835168304, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168307 XXXX 1768835168307, Thread 6782: XXXX 1768835168307, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168307 XXXX 1768835168307, Thread 6782: XXXX 1768835168307, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168307 XXXX 1768835168307, Thread 6782: XXXX 1768835168307, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168312 XXXX 1768835168312, Thread 6782: XXXX 1768835168312, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168312 XXXX 1768835168312, Thread 6782: XXXX 1768835168312, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168312 XXXX 1768835168312, Thread 6782: XXXX 1768835168312, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168315 XXXX 1768835168315, Thread 6782: XXXX 1768835168315, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168315 XXXX 1768835168315, Thread 6782: XXXX 1768835168315, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168315 XXXX 1768835168315, Thread 6782: XXXX 1768835168315, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168320 XXXX 1768835168320, Thread 6782: XXXX 1768835168320, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168320 XXXX 1768835168320, Thread 6782: XXXX 1768835168320, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168320 XXXX 1768835168320, Thread 6782: XXXX 1768835168320, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168323 XXXX 1768835168323, Thread 6782: XXXX 1768835168323, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168323 XXXX 1768835168323, Thread 6782: XXXX 1768835168323, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168323 XXXX 1768835168323, Thread 6782: XXXX 1768835168323, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168328 XXXX 1768835168328, Thread 6782: XXXX 1768835168328, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168328 XXXX 1768835168328, Thread 6782: XXXX 1768835168328, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168328 XXXX 1768835168328, Thread 6782: XXXX 1768835168328, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168331 XXXX 1768835168331, Thread 6782: XXXX 1768835168331, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168331 XXXX 1768835168331, Thread 6782: XXXX 1768835168331, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168331 XXXX 1768835168331, Thread 6782: XXXX 1768835168331, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168336 XXXX 1768835168336, Thread 6782: XXXX 1768835168336, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168336 XXXX 1768835168336, Thread 6782: XXXX 1768835168336, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168336 XXXX 1768835168336, Thread 6782: XXXX 1768835168336, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168338 XXXX 1768835168338, Thread 6782: XXXX 1768835168338, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168338 XXXX 1768835168338, Thread 6782: XXXX 1768835168338, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168338 XXXX 1768835168338, Thread 6782: XXXX 1768835168338, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168343 XXXX 1768835168343, Thread 6782: XXXX 1768835168343, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168343 XXXX 1768835168343, Thread 6782: XXXX 1768835168343, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168343 XXXX 1768835168343, Thread 6782: XXXX 1768835168343, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168346 XXXX 1768835168346, Thread 6782: XXXX 1768835168346, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168346 XXXX 1768835168346, Thread 6782: XXXX 1768835168346, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168346 XXXX 1768835168346, Thread 6782: XXXX 1768835168346, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168351 XXXX 1768835168351, Thread 6782: XXXX 1768835168351, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168351 XXXX 1768835168351, Thread 6782: XXXX 1768835168351, Entering Thread 6782: Commands::runScriptWithUpload, script name = ReadSFR  
+6782 1768835168351 XXXX 1768835168351, Thread 6782: XXXX 1768835168351, Entering Thread 6782: ToolCommUsb::readTransfer, sideData is 0x18 bytes long, transferDataLength is 0x2 bytes long  
+6782 1768835168354 XXXX 1768835168354, Thread 6782: XXXX 1768835168354, Exiting Thread 6782: ToolCommUsb::readTransfer,  cr.status = 0x0  
+6782 1768835168354 XXXX 1768835168354, Thread 6782: XXXX 1768835168354, Exiting Thread 6782: Commands::runScriptWithUpload  
+6782 1768835168354 XXXX 1768835168354, Thread 6782: XXXX 1768835168354, Entering Thread 6782: Commands::runScriptWithDownload, script name = WriteSFR  
+6782 1768835168359 XXXX 1768835168359, Thread 6782: XXXX 1768835168359, Exiting Thread 6782: Commands::runScriptWithDownload(WriteSFR)  
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:SetFreezePerihperalInfo
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 none
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:GetPC
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 null
+6782 1768835168359 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835168359 XXXX 1768835168359, Thread 6782: XXXX 1768835168359, Entering Thread 6782: Commands::runScriptBasic, script name = GetPC, timeOut = -1 ms  
+6782 1768835168361 XXXX 1768835168361, Thread 6782: XXXX 1768835168361, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835168361 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:GetPC
+6782 1768835168361 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835168361 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 0
+6782 1768835168361 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+
+6782 1768835168382 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Pre:RunTarget
+6782 1768835168382 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload
+6782 1768835168382 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 com.microchip.mplab.mdbcore.RI4Tool.DebugHandler@4af55b7f
+6782 1768835168382 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Payload End
+6782 1768835168382 XXXX 1768835168382, Thread 6782: XXXX 1768835168382, Entering Thread 6782: Commands::runScriptBasic, script name = Run, timeOut = -1 ms  
+6782 1768835168383 XXXX 1768835168383, Thread 6782: XXXX 1768835168383, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835168383 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Post:RunTarget
+6782 1768835168383 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return Value
+6782 1768835168383 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 true
+6782 1768835168383 GEN4_TO_CONTROLLER_LOG:GEN4_DEBUG_INT_LOG_dsPIC33EP512MU814 Return End
+6782 1768835168641 XXXX 1768835168641, Thread 6782: XXXX 1768835168641, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835168643 XXXX 1768835168643, Thread 6782: XXXX 1768835168643, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835168742 XXXX 1768835168742, Thread 6782: XXXX 1768835168742, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835168744 XXXX 1768835168744, Thread 6782: XXXX 1768835168744, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835168845 XXXX 1768835168845, Thread 6782: XXXX 1768835168845, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835168847 XXXX 1768835168847, Thread 6782: XXXX 1768835168847, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835168945 XXXX 1768835168945, Thread 6782: XXXX 1768835168945, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835168947 XXXX 1768835168947, Thread 6782: XXXX 1768835168947, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169045 XXXX 1768835169045, Thread 6782: XXXX 1768835169045, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169047 XXXX 1768835169047, Thread 6782: XXXX 1768835169047, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169146 XXXX 1768835169146, Thread 6782: XXXX 1768835169146, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169148 XXXX 1768835169148, Thread 6782: XXXX 1768835169148, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169250 XXXX 1768835169250, Thread 6782: XXXX 1768835169250, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169252 XXXX 1768835169252, Thread 6782: XXXX 1768835169252, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169355 XXXX 1768835169355, Thread 6782: XXXX 1768835169355, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169357 XXXX 1768835169357, Thread 6782: XXXX 1768835169357, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169455 XXXX 1768835169455, Thread 6782: XXXX 1768835169455, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169457 XXXX 1768835169457, Thread 6782: XXXX 1768835169457, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169555 XXXX 1768835169555, Thread 6782: XXXX 1768835169555, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169557 XXXX 1768835169557, Thread 6782: XXXX 1768835169557, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169657 XXXX 1768835169657, Thread 6782: XXXX 1768835169657, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169659 XXXX 1768835169659, Thread 6782: XXXX 1768835169659, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169768 XXXX 1768835169768, Thread 6782: XXXX 1768835169768, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169770 XXXX 1768835169770, Thread 6782: XXXX 1768835169770, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169877 XXXX 1768835169877, Thread 6782: XXXX 1768835169877, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169879 XXXX 1768835169879, Thread 6782: XXXX 1768835169879, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835169977 XXXX 1768835169977, Thread 6782: XXXX 1768835169977, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835169979 XXXX 1768835169979, Thread 6782: XXXX 1768835169979, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170077 XXXX 1768835170077, Thread 6782: XXXX 1768835170077, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170079 XXXX 1768835170079, Thread 6782: XXXX 1768835170079, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170178 XXXX 1768835170178, Thread 6782: XXXX 1768835170178, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170180 XXXX 1768835170180, Thread 6782: XXXX 1768835170180, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170293 XXXX 1768835170293, Thread 6782: XXXX 1768835170293, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170295 XXXX 1768835170295, Thread 6782: XXXX 1768835170295, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170394 XXXX 1768835170394, Thread 6782: XXXX 1768835170394, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170396 XXXX 1768835170396, Thread 6782: XXXX 1768835170396, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170494 XXXX 1768835170494, Thread 6782: XXXX 1768835170494, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170496 XXXX 1768835170496, Thread 6782: XXXX 1768835170496, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170595 XXXX 1768835170595, Thread 6782: XXXX 1768835170595, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170597 XXXX 1768835170597, Thread 6782: XXXX 1768835170597, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170699 XXXX 1768835170699, Thread 6782: XXXX 1768835170699, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170701 XXXX 1768835170701, Thread 6782: XXXX 1768835170701, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170799 XXXX 1768835170799, Thread 6782: XXXX 1768835170799, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170801 XXXX 1768835170801, Thread 6782: XXXX 1768835170801, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835170899 XXXX 1768835170899, Thread 6782: XXXX 1768835170899, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835170901 XXXX 1768835170901, Thread 6782: XXXX 1768835170901, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171000 XXXX 1768835171000, Thread 6782: XXXX 1768835171000, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171002 XXXX 1768835171002, Thread 6782: XXXX 1768835171002, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171100 XXXX 1768835171100, Thread 6782: XXXX 1768835171100, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171102 XXXX 1768835171102, Thread 6782: XXXX 1768835171102, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171201 XXXX 1768835171201, Thread 6782: XXXX 1768835171201, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171203 XXXX 1768835171203, Thread 6782: XXXX 1768835171203, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171312 XXXX 1768835171312, Thread 6782: XXXX 1768835171312, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171314 XXXX 1768835171314, Thread 6782: XXXX 1768835171314, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171424 XXXX 1768835171424, Thread 6782: XXXX 1768835171424, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171426 XXXX 1768835171426, Thread 6782: XXXX 1768835171426, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171525 XXXX 1768835171525, Thread 6782: XXXX 1768835171525, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171527 XXXX 1768835171527, Thread 6782: XXXX 1768835171527, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171626 XXXX 1768835171626, Thread 6782: XXXX 1768835171626, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171628 XXXX 1768835171628, Thread 6782: XXXX 1768835171628, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171727 XXXX 1768835171727, Thread 6782: XXXX 1768835171727, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171729 XXXX 1768835171729, Thread 6782: XXXX 1768835171729, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171827 XXXX 1768835171827, Thread 6782: XXXX 1768835171827, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171829 XXXX 1768835171829, Thread 6782: XXXX 1768835171829, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835171932 XXXX 1768835171932, Thread 6782: XXXX 1768835171932, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835171934 XXXX 1768835171934, Thread 6782: XXXX 1768835171934, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172033 XXXX 1768835172033, Thread 6782: XXXX 1768835172033, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172035 XXXX 1768835172035, Thread 6782: XXXX 1768835172035, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172134 XXXX 1768835172134, Thread 6782: XXXX 1768835172134, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172136 XXXX 1768835172136, Thread 6782: XXXX 1768835172136, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172235 XXXX 1768835172235, Thread 6782: XXXX 1768835172235, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172237 XXXX 1768835172237, Thread 6782: XXXX 1768835172237, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172336 XXXX 1768835172336, Thread 6782: XXXX 1768835172336, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172338 XXXX 1768835172338, Thread 6782: XXXX 1768835172338, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172436 XXXX 1768835172436, Thread 6782: XXXX 1768835172436, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172438 XXXX 1768835172438, Thread 6782: XXXX 1768835172438, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172537 XXXX 1768835172537, Thread 6782: XXXX 1768835172537, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172539 XXXX 1768835172539, Thread 6782: XXXX 1768835172539, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172638 XXXX 1768835172638, Thread 6782: XXXX 1768835172638, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172640 XXXX 1768835172640, Thread 6782: XXXX 1768835172640, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172744 XXXX 1768835172744, Thread 6782: XXXX 1768835172744, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172746 XXXX 1768835172746, Thread 6782: XXXX 1768835172746, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172851 XXXX 1768835172851, Thread 6782: XXXX 1768835172851, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172853 XXXX 1768835172853, Thread 6782: XXXX 1768835172853, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835172951 XXXX 1768835172951, Thread 6782: XXXX 1768835172951, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835172953 XXXX 1768835172953, Thread 6782: XXXX 1768835172953, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173052 XXXX 1768835173052, Thread 6782: XXXX 1768835173052, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173054 XXXX 1768835173054, Thread 6782: XXXX 1768835173054, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173152 XXXX 1768835173152, Thread 6782: XXXX 1768835173152, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173154 XXXX 1768835173154, Thread 6782: XXXX 1768835173154, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173255 XXXX 1768835173255, Thread 6782: XXXX 1768835173255, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173257 XXXX 1768835173257, Thread 6782: XXXX 1768835173257, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173356 XXXX 1768835173356, Thread 6782: XXXX 1768835173356, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173358 XXXX 1768835173358, Thread 6782: XXXX 1768835173358, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173456 XXXX 1768835173456, Thread 6782: XXXX 1768835173456, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173458 XXXX 1768835173458, Thread 6782: XXXX 1768835173458, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173556 XXXX 1768835173556, Thread 6782: XXXX 1768835173556, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173558 XXXX 1768835173558, Thread 6782: XXXX 1768835173558, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173657 XXXX 1768835173657, Thread 6782: XXXX 1768835173657, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173659 XXXX 1768835173659, Thread 6782: XXXX 1768835173659, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173758 XXXX 1768835173758, Thread 6782: XXXX 1768835173758, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173760 XXXX 1768835173760, Thread 6782: XXXX 1768835173760, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173860 XXXX 1768835173860, Thread 6782: XXXX 1768835173860, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173862 XXXX 1768835173862, Thread 6782: XXXX 1768835173862, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835173960 XXXX 1768835173960, Thread 6782: XXXX 1768835173960, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835173962 XXXX 1768835173962, Thread 6782: XXXX 1768835173962, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174061 XXXX 1768835174061, Thread 6782: XXXX 1768835174061, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174063 XXXX 1768835174063, Thread 6782: XXXX 1768835174063, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174162 XXXX 1768835174162, Thread 6782: XXXX 1768835174162, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174164 XXXX 1768835174164, Thread 6782: XXXX 1768835174164, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174275 XXXX 1768835174275, Thread 6782: XXXX 1768835174275, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174277 XXXX 1768835174277, Thread 6782: XXXX 1768835174277, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174375 XXXX 1768835174375, Thread 6782: XXXX 1768835174375, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174377 XXXX 1768835174377, Thread 6782: XXXX 1768835174377, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174475 XXXX 1768835174475, Thread 6782: XXXX 1768835174475, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174477 XXXX 1768835174477, Thread 6782: XXXX 1768835174477, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174576 XXXX 1768835174576, Thread 6782: XXXX 1768835174576, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174578 XXXX 1768835174578, Thread 6782: XXXX 1768835174578, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174678 XXXX 1768835174678, Thread 6782: XXXX 1768835174678, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174680 XXXX 1768835174680, Thread 6782: XXXX 1768835174680, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174784 XXXX 1768835174784, Thread 6782: XXXX 1768835174784, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174786 XXXX 1768835174786, Thread 6782: XXXX 1768835174786, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174895 XXXX 1768835174895, Thread 6782: XXXX 1768835174895, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174898 XXXX 1768835174898, Thread 6782: XXXX 1768835174898, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835174996 XXXX 1768835174996, Thread 6782: XXXX 1768835174996, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835174998 XXXX 1768835174998, Thread 6782: XXXX 1768835174998, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175097 XXXX 1768835175097, Thread 6782: XXXX 1768835175097, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175099 XXXX 1768835175099, Thread 6782: XXXX 1768835175099, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175197 XXXX 1768835175197, Thread 6782: XXXX 1768835175197, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175199 XXXX 1768835175199, Thread 6782: XXXX 1768835175199, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175303 XXXX 1768835175303, Thread 6782: XXXX 1768835175303, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175305 XXXX 1768835175305, Thread 6782: XXXX 1768835175305, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175404 XXXX 1768835175404, Thread 6782: XXXX 1768835175404, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175406 XXXX 1768835175406, Thread 6782: XXXX 1768835175406, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175505 XXXX 1768835175505, Thread 6782: XXXX 1768835175505, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175507 XXXX 1768835175507, Thread 6782: XXXX 1768835175507, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175605 XXXX 1768835175605, Thread 6782: XXXX 1768835175605, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175607 XXXX 1768835175607, Thread 6782: XXXX 1768835175607, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175709 XXXX 1768835175709, Thread 6782: XXXX 1768835175709, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175711 XXXX 1768835175711, Thread 6782: XXXX 1768835175711, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175811 XXXX 1768835175811, Thread 6782: XXXX 1768835175811, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175813 XXXX 1768835175813, Thread 6782: XXXX 1768835175813, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835175916 XXXX 1768835175916, Thread 6782: XXXX 1768835175916, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835175918 XXXX 1768835175918, Thread 6782: XXXX 1768835175918, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176016 XXXX 1768835176016, Thread 6782: XXXX 1768835176016, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176018 XXXX 1768835176018, Thread 6782: XXXX 1768835176018, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176116 XXXX 1768835176116, Thread 6782: XXXX 1768835176116, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176118 XXXX 1768835176118, Thread 6782: XXXX 1768835176118, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176217 XXXX 1768835176217, Thread 6782: XXXX 1768835176217, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176219 XXXX 1768835176219, Thread 6782: XXXX 1768835176219, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176325 XXXX 1768835176325, Thread 6782: XXXX 1768835176325, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176327 XXXX 1768835176327, Thread 6782: XXXX 1768835176327, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176426 XXXX 1768835176426, Thread 6782: XXXX 1768835176426, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176428 XXXX 1768835176428, Thread 6782: XXXX 1768835176428, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176526 XXXX 1768835176526, Thread 6782: XXXX 1768835176526, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176528 XXXX 1768835176528, Thread 6782: XXXX 1768835176528, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176627 XXXX 1768835176627, Thread 6782: XXXX 1768835176627, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176629 XXXX 1768835176629, Thread 6782: XXXX 1768835176629, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176729 XXXX 1768835176729, Thread 6782: XXXX 1768835176729, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176731 XXXX 1768835176731, Thread 6782: XXXX 1768835176731, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176830 XXXX 1768835176830, Thread 6782: XXXX 1768835176830, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176832 XXXX 1768835176832, Thread 6782: XXXX 1768835176832, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835176930 XXXX 1768835176930, Thread 6782: XXXX 1768835176930, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835176932 XXXX 1768835176932, Thread 6782: XXXX 1768835176932, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177032 XXXX 1768835177032, Thread 6782: XXXX 1768835177032, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177034 XXXX 1768835177034, Thread 6782: XXXX 1768835177034, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177132 XXXX 1768835177132, Thread 6782: XXXX 1768835177132, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177134 XXXX 1768835177134, Thread 6782: XXXX 1768835177134, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177233 XXXX 1768835177233, Thread 6782: XXXX 1768835177233, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177235 XXXX 1768835177235, Thread 6782: XXXX 1768835177235, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177345 XXXX 1768835177345, Thread 6782: XXXX 1768835177345, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177347 XXXX 1768835177347, Thread 6782: XXXX 1768835177347, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177445 XXXX 1768835177445, Thread 6782: XXXX 1768835177445, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177447 XXXX 1768835177447, Thread 6782: XXXX 1768835177447, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177546 XXXX 1768835177546, Thread 6782: XXXX 1768835177546, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177548 XXXX 1768835177548, Thread 6782: XXXX 1768835177548, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177647 XXXX 1768835177647, Thread 6782: XXXX 1768835177647, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177649 XXXX 1768835177649, Thread 6782: XXXX 1768835177649, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177747 XXXX 1768835177747, Thread 6782: XXXX 1768835177747, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177752 XXXX 1768835177752, Thread 6782: XXXX 1768835177752, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177849 XXXX 1768835177849, Thread 6782: XXXX 1768835177849, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177851 XXXX 1768835177851, Thread 6782: XXXX 1768835177851, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835177949 XXXX 1768835177949, Thread 6782: XXXX 1768835177949, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835177951 XXXX 1768835177951, Thread 6782: XXXX 1768835177951, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178050 XXXX 1768835178050, Thread 6782: XXXX 1768835178050, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178052 XXXX 1768835178052, Thread 6782: XXXX 1768835178052, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178151 XXXX 1768835178151, Thread 6782: XXXX 1768835178151, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178153 XXXX 1768835178153, Thread 6782: XXXX 1768835178153, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178260 XXXX 1768835178260, Thread 6782: XXXX 1768835178260, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178262 XXXX 1768835178262, Thread 6782: XXXX 1768835178262, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178362 XXXX 1768835178362, Thread 6782: XXXX 1768835178362, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178364 XXXX 1768835178364, Thread 6782: XXXX 1768835178364, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178462 XXXX 1768835178462, Thread 6782: XXXX 1768835178462, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178464 XXXX 1768835178464, Thread 6782: XXXX 1768835178464, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178563 XXXX 1768835178563, Thread 6782: XXXX 1768835178563, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178565 XXXX 1768835178565, Thread 6782: XXXX 1768835178565, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178663 XXXX 1768835178663, Thread 6782: XXXX 1768835178663, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178665 XXXX 1768835178665, Thread 6782: XXXX 1768835178665, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178764 XXXX 1768835178764, Thread 6782: XXXX 1768835178764, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178766 XXXX 1768835178766, Thread 6782: XXXX 1768835178766, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178865 XXXX 1768835178865, Thread 6782: XXXX 1768835178865, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178867 XXXX 1768835178867, Thread 6782: XXXX 1768835178867, Exiting Thread 6782: Commands::runScriptBasic  
+6782 1768835178965 XXXX 1768835178965, Thread 6782: XXXX 1768835178965, Entering Thread 6782: Commands::runScriptBasic, script name = GetHaltStatus, timeOut = -1 ms  
+6782 1768835178976 XXXX 1768835178976, Thread 6782: com.Send returned false 
+6782 1768835178976 XXXX 1768835178976, Thread 6782: transfer: exception after writeHeaderAndGetResult null 
+6782 1768835178976 XXXX 1768835178976, Thread 6782: XXXX 1768835178976, Entering Thread 6782: ToolCommUsb::recoverFromProtocolError, type = NO_SCRIPT  
+6782 1768835178976 XXXX 1768835178976, Thread 6782: Send Abort Script Engine Command 
+6782 1768835178976 XXXX 1768835178976, Thread 6782: XXXX 1768835178976, Entering Thread 6782: ToolCommUsb::killScriptEngine  
+6782 1768835178984 XXXX 1768835178984, Thread 6782: com.Send returned false 
+6782 1768835178984 XXXX 1768835178984, Thread 6782: Failed sending Abort Script Engine Command. Set nuclear option = true 
+6782 1768835178984 XXXX 1768835178984, Thread 6782: About to nuke 
+6782 1768835178984 XXXX 1768835178984, Thread 6782: XXXX 1768835178984, Entering Thread 6782: ToolCommUsb::nuclearOption  
+6782 1768835178993 XXXX 1768835178993, Thread 6782: com.Send returned false 
