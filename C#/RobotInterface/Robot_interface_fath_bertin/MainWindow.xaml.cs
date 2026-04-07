@@ -47,12 +47,16 @@ namespace Robot_interface_fath_bertin
         double M1 = 0;
         double M2 = 0;
 
+        //07/04 vitesses mineaire et angulaire
+        double VL = 1; //= 11; //sur le tableau c'est X
+        double VA = 1;  //= 11; //sur le tableau c'est Theta
+
         public MainWindow()
         {
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM12", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -69,8 +73,8 @@ namespace Robot_interface_fath_bertin
             _globalKeyboardHook.KeyPressed += _globalKeyboardHook_KeyPressed;
 
             //Initialisation de la classe WPF (oscilloscope)
-    
             
+
             //oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
             //oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
 
@@ -100,6 +104,13 @@ namespace Robot_interface_fath_bertin
             }
             //Pour afficher des données dans l’oscilloscope (WPF)
             oscilloSpeed.AddPointToLine(lineId, 3 , 2);
+
+            //07/04 : affichage des données simulées de vitesse et asservissement en polaire et en indépendant dans le tableau
+            asservSpeedDisplay.UpdatePolarSpeedConsigneValues(2,1);
+            asservSpeedDisplay.UpdateIndependantSpeedConsigneValues(3,4);
+            asservSpeedDisplay.UpdatePolarOdometrySpeed(VL,VA);
+            asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
+
 
         }
 
@@ -486,13 +497,17 @@ namespace Robot_interface_fath_bertin
                 Vy = BitConverter.ToSingle(msgPayload, 8);
                 Vx = BitConverter.ToSingle(msgPayload, 4);
 
-                asservSpeedDisplay.UpdatePolarOdometrySpeed(BitConverter.ToSingle(msgPayload, 16), BitConverter.ToSingle(msgPayload, 20));
+                //asservSpeedDisplay.UpdatePolarOdometrySpeed(BitConverter.ToSingle(msgPayload, 16), BitConverter.ToSingle(msgPayload, 20));
 
                 //double M1 = (BitConverter.ToSingle(msgPayload, 16) - (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur gauche
                 //double M2 = (BitConverter.ToSingle(msgPayload, 16) + (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur droit
+                VL = BitConverter.ToSingle(msgPayload, 16);
+                VA = BitConverter.ToSingle(msgPayload, 20);
                 M1 = BitConverter.ToSingle(msgPayload, 24);
                 M2 = BitConverter.ToSingle(msgPayload, 28);
-                asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
+                //asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
+
+
 
 
 

@@ -47,8 +47,8 @@
                     <TextBlock x:Name="TextBoxIRDroit" Text="IR Droit : " Margin="5"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Moteurs" Margin="5">
-                <StackPanel Orientation="Vertical" Margin="5">
+            <GroupBox Header="Moteurs" Margin="4">
+                <StackPanel Orientation="Vertical" Margin="0">
                     <TextBlock x:Name="TextBoxVitesseGauche" Text ="Vitesse Gauche : " Margin="5"/>
                     <TextBlock x:Name="TextBoxVitesseDroit" Text="Vitesse Droit : " Margin="5"/>
                 </StackPanel>

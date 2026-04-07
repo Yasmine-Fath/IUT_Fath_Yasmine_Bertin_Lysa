@@ -10,19 +10,19 @@
 
 typedef struct _PidCorrector
 {
-    double Kp;
-    double Ki;
-    double Kd;
-    double erreurProportionelleMax;
-    double erreurIntegraleMax;
-    double erreurDeriveeMax;
-    double erreurIntegrale;
-    double epsilon_1;
-    double erreur;
+    float Kp;
+    float Ki;
+    float Kd;
+    float erreurProportionelleMax;
+    float erreurIntegraleMax;
+    float erreurDeriveeMax;
+    float erreurIntegrale;
+    float epsilon_1;
+    float erreur;
     //For Debug only
-    double corrP;
-    double corrI;
-    double corrD;
+    float corrP;
+    float corrI;
+    float corrD;
 }PidCorrector;
 void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double pro);
 
