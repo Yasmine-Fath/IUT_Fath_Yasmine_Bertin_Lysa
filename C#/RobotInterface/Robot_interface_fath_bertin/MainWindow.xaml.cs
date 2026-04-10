@@ -51,6 +51,10 @@ namespace Robot_interface_fath_bertin
         double VL = 1; //= 11; //sur le tableau c'est X
         double VA = 1;  //= 11; //sur le tableau c'est Theta
 
+        //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
+        double Kp= 1.1 , Ki = 2.2, Kd = 3.3, proportionelleMax = 4.4, integralMax= 5.5 , deriveeMax = 6.6;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -108,6 +112,7 @@ namespace Robot_interface_fath_bertin
             //07/04 : affichage des données simulées de vitesse et asservissement en polaire et en indépendant dans le tableau
             asservSpeedDisplay.UpdatePolarSpeedConsigneValues(2,1);
             asservSpeedDisplay.UpdateIndependantSpeedConsigneValues(3,4);
+
             asservSpeedDisplay.UpdatePolarOdometrySpeed(VL,VA);
             asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
 
@@ -199,11 +204,23 @@ namespace Robot_interface_fath_bertin
 
             ////Vitesse
             //UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
+
+            var payload = new byte[12];
+
+            var data = BitConverter.GetBytes(Kp);
+            Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes(Ki);
+            Array.Copy(data, 0, payload, 4, 4);
+            data = BitConverter.GetBytes(Kd);
+            Array.Copy(data, 0, payload, 8, 4);
+
+            UartEncodeAndSendMessage(0x0070, payload.Length, payload);
         }
 
         private void buttonAuto_Click(object sender, RoutedEventArgs e)
         {
             UartEncodeAndSendMessage(0x0052, 1, new byte[] { (byte)StateRobot.STATE_ATTENTE_EN_COURS });        //STATE_ATTENTE_EN_COURS pour avoir un payload = 1 -> auto
+
         }
 
 
@@ -507,7 +524,7 @@ namespace Robot_interface_fath_bertin
                 M2 = BitConverter.ToSingle(msgPayload, 28);
                 //asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
 
-
+                
 
 
 
