@@ -1,6 +1,8 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
+#include "asservissement.h"
+
 typedef struct robotStateBITS {
     union {
         struct {
@@ -26,7 +28,9 @@ typedef struct robotStateBITS {
             double angleRadianFromOdometry;
             double angleRadianFromOdometry_1;
             
-            
+            // Asservissement polaire
+            PidCorrector PidX;      // PID pour vitesse linéaire (VL)
+            PidCorrector PidTheta;  // PID pour vitesse angulaire (VA)            
         };
     };
 } ROBOT_STATE_BITS;

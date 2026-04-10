@@ -52,7 +52,8 @@ namespace Robot_interface_fath_bertin
         double VA = 1;  //= 11; //sur le tableau c'est Theta
 
         //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
-        double Kp= 1.1 , Ki = 2.2, Kd = 3.3, proportionelleMax = 4.4, integralMax= 5.5 , deriveeMax = 6.6;
+        double Kp= 1 , Ki = 2, Kd = 3, proportionelleMax = 4.4, integralMax= 5.5 , deriveeMax = 6.6;
+        double Kprecu, Kirecu, Kdrecu;
 
 
         public MainWindow()
@@ -207,11 +208,11 @@ namespace Robot_interface_fath_bertin
 
             var payload = new byte[12];
 
-            var data = BitConverter.GetBytes(Kp);
+            var data = BitConverter.GetBytes((float)Kp);
             Array.Copy(data, 0, payload, 0, 4);
-            data = BitConverter.GetBytes(Ki);
+            data = BitConverter.GetBytes((float)Ki);
             Array.Copy(data, 0, payload, 4, 4);
-            data = BitConverter.GetBytes(Kd);
+            data = BitConverter.GetBytes((float)Kd);
             Array.Copy(data, 0, payload, 8, 4);
 
             UartEncodeAndSendMessage(0x0070, payload.Length, payload);
@@ -508,8 +509,8 @@ namespace Robot_interface_fath_bertin
             {
                 TextBoxXPosition.Text = "x : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2") + " m";
                 TextBoxYPosition.Text = "y : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2") + " m";
-                TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12)*180/float.Pi).ToString("N2") + " °";
-                TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2")+" m/s";
+                TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
+                TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2") + " m/s";
                 TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
                 Vy = BitConverter.ToSingle(msgPayload, 8);
                 Vx = BitConverter.ToSingle(msgPayload, 4);
@@ -524,13 +525,25 @@ namespace Robot_interface_fath_bertin
                 M2 = BitConverter.ToSingle(msgPayload, 28);
                 //asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
 
-                
-
-
 
             }
+
+
+            if (msgFunction == 0x0070)
+            {
+                //Kprecu = BitConverter.ToSingle(msgPayload, 0);
+                //Kirecu = BitConverter.ToSingle(msgPayload, 4);
+                //Kdrecu = BitConverter.ToSingle(msgPayload, 8);
+
+                TextBoxKp.Text = "Kp : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2");
+                TextBoxKi.Text = "Ki : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2");
+                TextBoxKd.Text = "Kd : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2");
+
+            }
+
         }
-        
+
+
         private void SendStepInfo(byte stepNumber, uint timestampMs)
         {
             // Préparer la payload de 5 octets

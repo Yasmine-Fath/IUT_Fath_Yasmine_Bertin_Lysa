@@ -3,6 +3,7 @@
 #include "CB_TX1.h"
 #include "Robot.h"
 #include "main.h"
+#include "asservissement.h"
 
 #define StateRobotWaiting 0
 #define StateRobotFunctionMSB 1
@@ -11,6 +12,8 @@
 #define StateRobotPayloadLengthLSB 4
 #define StateRobotPayload 5
 #define StateRobotCheckSum 6
+
+int n = 1;
 
 unsigned char UartCalculateChecksum(int msgFunction, int msgPayloadLength, unsigned char* msgPayload) {
     //Fonction prenant entree la trame et sa longueur pour calculer le checksum
@@ -132,10 +135,14 @@ void UartDecodeMessage(unsigned char c) {
     }
 }
 
-void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPayloadLength, unsigned char msgPayload[]) {
+void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPayloadLength, unsigned char* msgPayload) {
     //Fonction appelée après le édcodage pour éxcuter l'action
     //correspondant au message reçu
     switch (msgFunction) {
+        case ASSERVISSEMENT :
+            SetupAsservissement(msgPayload);
+
+            break;
         case SET_ROBOT_STATE:
             SetRobotState(msgPayload[0]);
             break;
@@ -160,4 +167,18 @@ void SetRobotState(unsigned char msgPayload) {
 
 int SetRobotAutoControlState(unsigned char msgPayload) {
     return robotState.Mode = MODE_AUTO;
+}
+
+void SetupAsservissement(unsigned char* msgPayload){
+    
+    robotState.PidX.Kp = getFloat(msgPayload, 0);
+    robotState.PidX.Ki = getFloat(msgPayload, 4);
+    robotState.PidX.Kd = getFloat(msgPayload, 8);
+    //unsigned char* tab[]
+    
+    UartEncodeAndSendMessage(0x0070, 12,msgPayload );
+    
+    
+    
+    
 }

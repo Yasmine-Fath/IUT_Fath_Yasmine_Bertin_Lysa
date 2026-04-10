@@ -24,8 +24,8 @@ typedef struct _PidCorrector
     float corrI;
     float corrD;
 }PidCorrector;
-void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax);
 
+void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax);
 
 #endif	/* ASSERVISSEMENT_H */
 
