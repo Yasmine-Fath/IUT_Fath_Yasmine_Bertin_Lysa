@@ -5,6 +5,7 @@
 #include "Utilities.h"
 
 #define PWMPER 24.0
+#define M_TO_PERCENT 10
 
 double talon = 50;
 int acceleration = 5;
@@ -99,6 +100,13 @@ void PWMUpdateSpeed() {
         SDC2 = talon;
         PDC2 = -robotState.vitesseDroiteCommandeCourante * PWMPER + talon;
     }
+}
+
+void PWMSetSpeedConsignePolaire(float vitesseLineaire, float vitesseAngulaire) {
+    robotState.vitesseDroiteConsigne = -M_TO_PERCENT * (...);
+    robotState.vitesseGaucheConsigne = M_TO_PERCENT * (...);
+    LimitToInterval(robotState.vitesseDroiteConsigne , -100, 100);
+    LimitToInterval(robotState.vitesseGaucheConsigne , -100, 100);
 }
 
 

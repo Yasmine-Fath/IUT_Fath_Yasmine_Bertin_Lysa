@@ -4,6 +4,7 @@
 #include "Robot.h"
 #include "main.h"
 #include "asservissement.h"
+#include "Utilities.h"
 
 #define StateRobotWaiting 0
 #define StateRobotFunctionMSB 1
@@ -58,7 +59,7 @@ void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, unsigned ch
 
     // 8?? Envoyer la trame sur l'UART
     //serialPort1.Write(frame, 0, totalLength);
-    SendMessage(frame, totalLength);
+    SendMessage(frame, index);
 }
 
 
@@ -139,6 +140,12 @@ void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPaylo
     //Fonction appelée après le édcodage pour éxcuter l'action
     //correspondant au message reçu
     switch (msgFunction) {
+//        case CONSIGNES :
+//            ValeurConsigne(unsigned char* msgPayload);
+//            
+//            
+//            break;
+        
         case ASSERVISSEMENT :
             SetupAsservissement(msgPayload);
 
@@ -174,11 +181,32 @@ void SetupAsservissement(unsigned char* msgPayload){
     robotState.PidX.Kp = getFloat(msgPayload, 0);
     robotState.PidX.Ki = getFloat(msgPayload, 4);
     robotState.PidX.Kd = getFloat(msgPayload, 8);
-    //unsigned char* tab[]
     
-    UartEncodeAndSendMessage(0x0070, 12,msgPayload );
+    robotState.PidTheta.Kp = getFloat(msgPayload, 12);
+    robotState.PidTheta.Ki = getFloat(msgPayload, 16);
+    robotState.PidTheta.Kd = getFloat(msgPayload, 20);
+    unsigned char payload[24];
+            
+    getBytesFromFloat(payload, 0, robotState.PidX.Kp);
+    getBytesFromFloat(payload, 4, robotState.PidX.Ki);
+    getBytesFromFloat(payload, 8, robotState.PidX.Kd);
     
+    getBytesFromFloat(payload, 12, robotState.PidTheta.Kp);
+    getBytesFromFloat(payload, 16, robotState.PidTheta.Ki);
+    getBytesFromFloat(payload, 20, robotState.PidTheta.Kd);
     
+    UartEncodeAndSendMessage(0x0070, 24, payload );
     
-    
+//    unsigned char payload[] = {'B', 'o', 'n', 'j', 'o', 'u', 'r'};
+//    UartEncodeAndSendMessage(0x0080,7,payload);
+       
 }
+
+
+//void ValeurConsigne(unsigned char* msgPayload){
+//    
+//    robotState.PidX.Kp = getFloat(msgPayload, 0); //a modif
+//    robotState.PidX.Ki = getFloat(msgPayload, 4);//a modif 
+//
+//
+//}

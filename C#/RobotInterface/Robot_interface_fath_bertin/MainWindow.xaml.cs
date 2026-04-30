@@ -50,10 +50,11 @@ namespace Robot_interface_fath_bertin
         //07/04 vitesses mineaire et angulaire
         double VL = 1; //= 11; //sur le tableau c'est X
         double VA = 1;  //= 11; //sur le tableau c'est Theta
+        double VAConsigne = 24 , VLConsigne = 42;  //X et Theta 
 
         //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
-        double Kp= 1 , Ki = 2, Kd = 3, proportionelleMax = 4.4, integralMax= 5.5 , deriveeMax = 6.6;
-        double Kprecu, Kirecu, Kdrecu;
+        double KpX = 1, KiX = 2, KdX = 3, KpTheta = 3, KiTheta = 2, KdTheta = 1, proportionelleMax = 4.4, integralMax = 5.5, deriveeMax = 6.6;
+        double KpXrecu, KiXrecu, KdXrecu, KpThetarecu, KiThetarecu, KdThetarecu;
 
 
         public MainWindow()
@@ -78,7 +79,7 @@ namespace Robot_interface_fath_bertin
             _globalKeyboardHook.KeyPressed += _globalKeyboardHook_KeyPressed;
 
             //Initialisation de la classe WPF (oscilloscope)
-            
+
 
             //oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
             //oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
@@ -90,7 +91,7 @@ namespace Robot_interface_fath_bertin
             //throw new NotImplementedException();
             if (robot.receivedText != "")
             {
-                textBoxReception.AppendText(" Message Reçu : " + robot.receivedText);
+                //textBoxReception.AppendText(" Message Reçu : " + robot.receivedText);
                 robot.receivedText = "";
             }
             if (robot.byteListReceived.Count > 0)
@@ -108,14 +109,18 @@ namespace Robot_interface_fath_bertin
                 //textBoxReception.AppendText(sbHex.ToString());
             }
             //Pour afficher des données dans l’oscilloscope (WPF)
-            oscilloSpeed.AddPointToLine(lineId, 3 , 2);
+            oscilloSpeed.AddPointToLine(lineId, 3, 2);
 
             //07/04 : affichage des données simulées de vitesse et asservissement en polaire et en indépendant dans le tableau
-            asservSpeedDisplay.UpdatePolarSpeedConsigneValues(2,1);
-            asservSpeedDisplay.UpdateIndependantSpeedConsigneValues(3,4);
+            asservSpeedDisplay.UpdatePolarSpeedConsigneValues(VLConsigne, VAConsigne);
+            asservSpeedDisplay.UpdateIndependantSpeedConsigneValues(3, 4);
 
-            asservSpeedDisplay.UpdatePolarOdometrySpeed(VL,VA);
+            asservSpeedDisplay.UpdatePolarOdometrySpeed(VL, VA);
             asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
+
+            //30/04 : Affichage dans le tableau des correcteurs Kp/ Ki /Kd
+            asservSpeedDisplay.UpdatePolarSpeedCorrectionGains(KpXrecu, KpThetarecu,  KiXrecu, KiThetarecu, KdXrecu, KdThetarecu);
+            //UpdatePolarSpeedCorrectionGains(double KpX, double KpTheta,double KiX, double KiTheta,double KdX, double KdTheta)
 
 
         }
@@ -206,16 +211,32 @@ namespace Robot_interface_fath_bertin
             ////Vitesse
             //UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
 
-            var payload = new byte[12];
+            var payload = new byte[24];
 
-            var data = BitConverter.GetBytes((float)Kp);
+            var data = BitConverter.GetBytes((float)KpX);
             Array.Copy(data, 0, payload, 0, 4);
-            data = BitConverter.GetBytes((float)Ki);
+            data = BitConverter.GetBytes((float)KiX);
             Array.Copy(data, 0, payload, 4, 4);
-            data = BitConverter.GetBytes((float)Kd);
+            data = BitConverter.GetBytes((float)KdX);
             Array.Copy(data, 0, payload, 8, 4);
 
+            data = BitConverter.GetBytes((float)KpTheta);
+            Array.Copy(data, 0, payload, 12, 4);
+            data = BitConverter.GetBytes((float)KiTheta);
+            Array.Copy(data, 0, payload, 16, 4);
+            data = BitConverter.GetBytes((float)KdTheta);
+            Array.Copy(data, 0, payload, 20, 4);
+
             UartEncodeAndSendMessage(0x0070, payload.Length, payload);
+            //textBoxReception.AppendText(" Message envoyé !!!!!!");
+
+            var payload2 = new byte[8];
+            var data2 = BitConverter.GetBytes((float)VAConsigne);
+            Array.Copy(data2, 0, payload2, 0, 4);
+            data2 = BitConverter.GetBytes((float)VLConsigne);
+            Array.Copy(data2, 0, payload2, 4, 4);
+            UartEncodeAndSendMessage(0x0080, payload2.Length, payload2);
+
         }
 
         private void buttonAuto_Click(object sender, RoutedEventArgs e)
@@ -379,8 +400,12 @@ namespace Robot_interface_fath_bertin
                     {
                         //Success, on a un message valide
                         //textBoxReception.AppendText("Success, on a un message valide"); // désactiver l’affichage de caractères reçus dans la console de réception
-                                                                                         //en C# afin de ne pas surcharger l’affichage.
+                        //en C# afin de ne pas surcharger l’affichage.
                         ProcessDecodedMessage(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
+                    }
+                    else
+                    {
+                        ;
                     }
                     rcvState = StateReception.Waiting;
 
@@ -419,128 +444,146 @@ namespace Robot_interface_fath_bertin
 
         void ProcessDecodedMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
-            if (msgFunction == 0x0020)
+            
+            switch (msgFunction)
             {
-                if (msgPayload[0] == 1)
-                {
-                    if (msgPayload[1] == 1)
+                case 0x0020:
                     {
-                        checkBoxLed1.IsChecked = true;
+                        if (msgPayload[0] == 1)
+                        {
+                            if (msgPayload[1] == 1)
+                            {
+                                checkBoxLed1.IsChecked = true;
+                            }
+                            else if (msgPayload[1] == 0)
+                            {
+                                checkBoxLed1.IsChecked = false;
+                            }
+                        }
+
+                        if (msgPayload[0] == 2)
+                        {
+                            if (msgPayload[1] == 1)
+                            {
+                                checkBoxLed2.IsChecked = true;
+                            }
+                            else if (msgPayload[1] == 0)
+                            {
+                                checkBoxLed2.IsChecked = false;
+                            }
+                        }
+
+                        if (msgPayload[0] == 3)
+                        {
+                            if (msgPayload[1] == 1)
+                            {
+                                checkBoxLed3.IsChecked = true;
+                            }
+                            else if (msgPayload[1] == 0)
+                            {
+                                checkBoxLed3.IsChecked = false;
+                            }
+                        }
+
+
                     }
-                    else if (msgPayload[1] == 0)
+                    break;
+
+                case 0x0030:
                     {
-                        checkBoxLed1.IsChecked = false;
+                        TextBoxIRGauche.Text = $"IR Gauche : {msgPayload[0]} cm";
+                        TextBoxIRCentre.Text = $"IR Centre : {msgPayload[1]} cm";
+                        TextBoxIRDroit.Text = $"IR Droit : {msgPayload[2]} cm";
                     }
-                }
+                    break;
 
-                if (msgPayload[0] == 2)
-                {
-                    if (msgPayload[1] == 1)
+                case 0x0040:
                     {
-                        checkBoxLed2.IsChecked = true;
+                        TextBoxVitesseGauche.Text = $"Vitesse Gauche : {msgPayload[0]} %";
+                        TextBoxVitesseDroit.Text = $"Vitesse Droit : {msgPayload[1]} %";
+                        if (msgPayload[0] != previousStateRobot)
+                        {
+                            SendStepInfo(msgPayload[0], timestamp);
+                            previousStateRobot = msgPayload[0];
+                        }
+                        if (msgPayload[1] != previousStateRobot)
+                        {
+                            SendStepInfo(msgPayload[1], timestamp);
+                            previousStateRobot = msgPayload[1];
+                        }
+
+
+
                     }
-                    else if (msgPayload[1] == 0)
+                    break;
+
+                case 0x0050:
                     {
-                        checkBoxLed2.IsChecked = false;
+                        int instant = (((int)msgPayload[1]) << 24) + (((int)msgPayload[2]) << 16) + (((int)msgPayload[3]) << 8) + ((int)msgPayload[4]);
+                        //rtbReception.Text += "\nRobot␣State␣:␣" + ((StateRobot)(msgPayload[0])).ToString() + "␣-␣" + instant.ToString() + "␣ms";
+                        textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
                     }
-                }
+                    break;
 
-                if (msgPayload[0] == 3)
-                {
-                    if (msgPayload[1] == 1)
+                case 0x0051:
                     {
-                        checkBoxLed3.IsChecked = true;
+                        checkBoxModeM.IsChecked = true;
+                        checkBoxModeA.IsChecked = false;
                     }
-                    else if (msgPayload[1] == 0)
+                    break;
+
+                case 0x0052:
                     {
-                        checkBoxLed3.IsChecked = false;
+                        checkBoxModeA.IsChecked = true;
+                        checkBoxModeM.IsChecked = false;
                     }
-                }
+                    break;
+
+                case 0x0061:
+                    {
+                        TextBoxXPosition.Text = "x : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2") + " m";
+                        TextBoxYPosition.Text = "y : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2") + " m";
+                        TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
+                        TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2") + " m/s";
+                        TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
+                        Vy = BitConverter.ToSingle(msgPayload, 8);
+                        Vx = BitConverter.ToSingle(msgPayload, 4);
+
+                        //asservSpeedDisplay.UpdatePolarOdometrySpeed(BitConverter.ToSingle(msgPayload, 16), BitConverter.ToSingle(msgPayload, 20));
+
+                        //double M1 = (BitConverter.ToSingle(msgPayload, 16) - (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur gauche
+                        //double M2 = (BitConverter.ToSingle(msgPayload, 16) + (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur droit
+                        VL = BitConverter.ToSingle(msgPayload, 16);
+                        VA = BitConverter.ToSingle(msgPayload, 20);
+                        M1 = BitConverter.ToSingle(msgPayload, 24);
+                        M2 = BitConverter.ToSingle(msgPayload, 28);
+                        //asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
 
 
+                    }
+                    break;
+
+                case 0x0070:
+                    {
+                        KpXrecu = BitConverter.ToSingle(msgPayload, 0);
+                        KiXrecu = BitConverter.ToSingle(msgPayload, 4);
+                        KdXrecu = BitConverter.ToSingle(msgPayload, 8);
+
+                        KpThetarecu = BitConverter.ToSingle(msgPayload, 12);
+                        KiThetarecu = BitConverter.ToSingle(msgPayload, 16);
+                        KdThetarecu = BitConverter.ToSingle(msgPayload, 20);
+
+                        TextBoxKp.Text = "Kp : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2");
+                        TextBoxKi.Text = "Ki : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2");
+                        TextBoxKd.Text = "Kd : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2");
+
+
+
+                    }
+                    break;
+                default:
+                    break;
             }
-
-            if (msgFunction == 0x0030)
-            {
-                TextBoxIRGauche.Text = $"IR Gauche : {msgPayload[0]} cm";
-                TextBoxIRCentre.Text = $"IR Centre : {msgPayload[1]} cm";
-                TextBoxIRDroit.Text = $"IR Droit : {msgPayload[2]} cm";
-            }
-
-            if (msgFunction == 0x0040)
-            {
-                TextBoxVitesseGauche.Text = $"Vitesse Gauche : {msgPayload[0]} %";
-                TextBoxVitesseDroit.Text = $"Vitesse Droit : {msgPayload[1]} %";
-                if (msgPayload[0] != previousStateRobot)
-                {
-                    SendStepInfo(msgPayload[0], timestamp);
-                    previousStateRobot = msgPayload[0];
-                }
-                if (msgPayload[1] != previousStateRobot)
-                {
-                    SendStepInfo(msgPayload[1], timestamp);
-                    previousStateRobot = msgPayload[1];
-                }
-
-
-
-            }
-
-            if (msgFunction == 0x0050)
-            {
-                int instant = (((int)msgPayload[1]) << 24) + (((int)msgPayload[2]) << 16) + (((int)msgPayload[3]) << 8) + ((int)msgPayload[4]);
-                //rtbReception.Text += "\nRobot␣State␣:␣" + ((StateRobot)(msgPayload[0])).ToString() + "␣-␣" + instant.ToString() + "␣ms";
-                textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
-            }
-
-            if (msgFunction == 0x0051)
-            {
-                checkBoxModeM.IsChecked = true;
-                checkBoxModeA.IsChecked = false;
-            }
-
-            if (msgFunction == 0x0052)
-            {
-                checkBoxModeA.IsChecked = true;
-                checkBoxModeM.IsChecked = false;
-            }
-
-            if (msgFunction == 0x0061)
-            {
-                TextBoxXPosition.Text = "x : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2") + " m";
-                TextBoxYPosition.Text = "y : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2") + " m";
-                TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
-                TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2") + " m/s";
-                TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
-                Vy = BitConverter.ToSingle(msgPayload, 8);
-                Vx = BitConverter.ToSingle(msgPayload, 4);
-
-                //asservSpeedDisplay.UpdatePolarOdometrySpeed(BitConverter.ToSingle(msgPayload, 16), BitConverter.ToSingle(msgPayload, 20));
-
-                //double M1 = (BitConverter.ToSingle(msgPayload, 16) - (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur gauche
-                //double M2 = (BitConverter.ToSingle(msgPayload, 16) + (L / 2.0) * BitConverter.ToSingle(msgPayload, 20)) / r; // moteur droit
-                VL = BitConverter.ToSingle(msgPayload, 16);
-                VA = BitConverter.ToSingle(msgPayload, 20);
-                M1 = BitConverter.ToSingle(msgPayload, 24);
-                M2 = BitConverter.ToSingle(msgPayload, 28);
-                //asservSpeedDisplay.UpdateIndependantOdometrySpeed(M1, M2);
-
-
-            }
-
-
-            if (msgFunction == 0x0070)
-            {
-                //Kprecu = BitConverter.ToSingle(msgPayload, 0);
-                //Kirecu = BitConverter.ToSingle(msgPayload, 4);
-                //Kdrecu = BitConverter.ToSingle(msgPayload, 8);
-
-                TextBoxKp.Text = "Kp : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2");
-                TextBoxKi.Text = "Ki : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2");
-                TextBoxKd.Text = "Kd : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2");
-
-            }
-
         }
 
 

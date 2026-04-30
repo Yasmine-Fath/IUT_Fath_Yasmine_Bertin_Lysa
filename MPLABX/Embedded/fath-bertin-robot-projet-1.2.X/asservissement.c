@@ -43,3 +43,20 @@ void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki
     PidCorr->erreurDeriveeMax = deriveeMax;
 }
 
+//double Correcteur(volatile PidCorrector* PidCorr, double erreur)
+//{
+//    PidCorr->erreur = erreur;
+//    double erreurProportionnelle = LimitToInterval(...);
+//    PidCorr->corrP = PidCorr->Kp * ;
+//    
+//    PidCorr->erreurIntegrale += ...;
+//    PidCorr->erreurIntegrale = LimitToInterval(...);
+//    PidCorr->corrI = ...;
+//    
+//    double erreurDerivee = (erreur - PidCorr->epsilon_1)*FREQ_ECH_QEI;
+//    double deriveeBornee = LimitToInterval(erreurDerivee, -PidCorr->erreurDeriveeMax/PidCorr->Kd,Pi
+//    PidCorr->epsilon_1 = erreur;
+//    PidCorr->corrD = deriveeBornee * PidCorr->Kd;
+//    
+//    return PidCorr->corrP+PidCorr->corrI+PidCorr->corrD;
+//}

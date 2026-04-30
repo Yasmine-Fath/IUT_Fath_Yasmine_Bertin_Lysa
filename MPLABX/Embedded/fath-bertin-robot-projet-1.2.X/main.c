@@ -140,7 +140,7 @@ int main(void) {
 
             unsigned char c = CB_RX1_Get();
             UartDecodeMessage(c);
-            SendMessage(&c, 1);
+            //SendMessage(&c, 1);
         }
         __delay32(10000);
 
