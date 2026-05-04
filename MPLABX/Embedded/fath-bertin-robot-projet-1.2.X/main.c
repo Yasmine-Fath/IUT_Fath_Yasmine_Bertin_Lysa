@@ -134,15 +134,17 @@ int main(void) {
 //        
         
 //        unsigned char payload[2] = {20,10};
-//        UartEncodeAndSendMessage(0x0040, 2, payload);
-        int i;
-        for (i = 0; i < CB_RX1_GetDataSize(); i++) {
-
-            unsigned char c = CB_RX1_Get();
-            UartDecodeMessage(c);
-            //SendMessage(&c, 1);
-        }
-        __delay32(10000);
+//        UartEncodeAndSendMessage(0x0040, 2, payload); 
+//        int i;
+//        for (i = 0; i < CB_RX1_GetDataSize(); i++) {
+//
+//            unsigned char c = CB_RX1_Get();
+//            UartDecodeMessage(c);
+//            //SendMessage(&c, 1);
+//        }
+//        __delay32(10000);
+        
+        PWMSetSpeedConsignePolaire(0, 6.28);
 
     }
     
@@ -153,8 +155,7 @@ void OperatingSystemLoop(void) {
     switch (stateRobot) {
         case STATE_ATTENTE:
             timestamp = 0;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(0, 0);
             stateRobot = STATE_ATTENTE_EN_COURS;
 
         case STATE_ATTENTE_EN_COURS:
@@ -166,8 +167,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_AVANCE:
-            PWMSetSpeedConsigne(30, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(30, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(30, 0);
             stateRobot = STATE_AVANCE_EN_COURS;
             break;
 
@@ -177,8 +177,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsigne(15, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(15/2, 15/(2*DISTROUES));
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
 
@@ -188,8 +187,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(15, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(15/2, -15/(2*DISTROUES));
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
 
@@ -199,8 +197,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            PWMSetSpeedConsigne(15, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(-15, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(0, 15/DISTROUES);
             if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             }
@@ -212,8 +209,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_SUR_PLACE_DROITE:
-            PWMSetSpeedConsigne(-15, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(15, MOTEUR_GAUCHE);
+            PWMSetSpeedConsignePolaire(0, - 15/DISTROUES);
             if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
             }

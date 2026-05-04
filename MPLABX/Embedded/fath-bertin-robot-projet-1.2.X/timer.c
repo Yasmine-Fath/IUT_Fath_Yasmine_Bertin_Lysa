@@ -116,7 +116,7 @@ void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     IFS1bits.T4IF = 0;
     //LED_BLEUE_1 = !LED_BLEUE_1;
     timestamp++;
-    OperatingSystemLoop();
+    //OperatingSystemLoop();    //pour le mode automatique
 }
 
 void SetFreqTimer4(float freq) {

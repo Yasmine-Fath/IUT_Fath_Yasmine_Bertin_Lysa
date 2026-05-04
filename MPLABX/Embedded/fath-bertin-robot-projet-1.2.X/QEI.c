@@ -8,8 +8,6 @@
 #include "main.h"
 #include <xc.h>
 
-
-#define DISTROUES 0.218    //distance entre les roues (m))
 #define POSITION_DATA 0x0061
 
 //definitions rajoutes
