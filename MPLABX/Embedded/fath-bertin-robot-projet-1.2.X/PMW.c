@@ -109,8 +109,8 @@ void PWMSetSpeedConsignePolaire(float vitesseLineaire, float vitesseAngulaire) {
     robotState.vitesseDroiteConsignePercent = -M_TO_PERCENT * robotState.vitesseDroiteConsigne;
     robotState.vitesseGaucheConsignePercent = M_TO_PERCENT * robotState.vitesseGaucheConsigne;
 
-    LimitToInterval(robotState.vitesseDroiteConsignePercent , -100, 100);
-    LimitToInterval(robotState.vitesseGaucheConsignePercent , -100, 100);
+    robotState.vitesseDroiteConsignePercent = LimitToInterval(robotState.vitesseDroiteConsignePercent , -100, 100);
+    robotState.vitesseGaucheConsignePercent = LimitToInterval(robotState.vitesseGaucheConsignePercent , -100, 100);
 }
 
 

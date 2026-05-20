@@ -50,10 +50,10 @@ namespace Robot_interface_fath_bertin
         //07/04 vitesses mineaire et angulaire
         double VL = 1; //= 11; //sur le tableau c'est X
         double VA = 1;  //= 11; //sur le tableau c'est Theta
-        double VAConsigne = 24 , VLConsigne = 42;  //X et Theta 
+        double VAConsigne = 0 , VLConsigne = 0;  //X et Theta 
 
         //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
-        double KpX = 1, KiX = 2, KdX = 3, KpTheta = 3, KiTheta = 2, KdTheta = 1, proportionelleMax = 4.4, integralMax = 5.5, deriveeMax = 6.6;
+        double KpX = 0, KiX = 0, KdX = 0, KpTheta = 3, KiTheta = 0, KdTheta = 0, proportionelleMax = 100, integralMax = 100, deriveeMax = 100;
         double KpXrecu, KiXrecu, KdXrecu, KpThetarecu, KiThetarecu, KdThetarecu;
         double KpXcorr, KiXcorr, KdXcorr, KpThetacorr, KiThetacorr, KdThetacorr;
         double KpXcorrmax, KiXcorrmax, KdXcorrmax, KpThetacorrmax, KiThetacorrmax, KdThetacorrmax;
@@ -125,6 +125,13 @@ namespace Robot_interface_fath_bertin
             asservSpeedDisplay.UpdatePolarSpeedCorrectionGains(KpXrecu, KpThetarecu,  KiXrecu, KiThetarecu, KdXrecu, KdThetarecu);
             //UpdatePolarSpeedCorrectionGains(double KpX, double KpTheta,double KiX, double KiTheta,double KdX, double KdTheta)
 
+            asservSpeedDisplay.UpdatePolarSpeedCorrectionLimits(KpXcorrmax, KpThetacorrmax, KiXcorrmax, KiThetacorrmax, KdXcorrmax, KdThetacorrmax);
+            asservSpeedDisplay.UpdatePolarSpeedErrorValues(erreurX, erreurTheta);
+            asservSpeedDisplay.UpdatePolarSpeedCorrectionValues(KpXcorr, KpThetacorr, KiXcorr, KiThetacorr, KdXcorr, KdThetacorr);
+
+            //asservSpeedDisplay.UpdatePolarSpeedCorrectionLimits(1, 2, 3, 4, 5, 6);
+            //asservSpeedDisplay.UpdatePolarSpeedErrorValues(13, 14);
+            //asservSpeedDisplay.UpdatePolarSpeedCorrectionValues(7, 8, 9, 10, 11, 12);
 
         }
 
@@ -218,12 +225,19 @@ namespace Robot_interface_fath_bertin
             //****************KP,KD,KI, consignes de vitesse linéaire et angulaire *****************
             var payload = new byte[24];
 
+
+            KpX = 8;
+            KiX = 120;
+
             var data = BitConverter.GetBytes((float)KpX);
             Array.Copy(data, 0, payload, 0, 4);
             data = BitConverter.GetBytes((float)KiX);
             Array.Copy(data, 0, payload, 4, 4);
             data = BitConverter.GetBytes((float)KdX);
             Array.Copy(data, 0, payload, 8, 4);
+
+            KpTheta = 8;
+            KiTheta = 120;
 
             data = BitConverter.GetBytes((float)KpTheta);
             Array.Copy(data, 0, payload, 12, 4);
@@ -389,9 +403,14 @@ namespace Robot_interface_fath_bertin
 
                 case StateReception.PayloadLengthLSB:
                     msgDecodedPayloadLength |= c;
-                    msgDecodedPayload = new byte[msgDecodedPayloadLength];
-                    msgDecodedPayloadIndex = 0;
-                    rcvState = StateReception.Payload;
+                    if (msgDecodedPayloadLength == 0)
+                        rcvState = StateReception.CheckSum;
+                    else
+                    {
+                        msgDecodedPayload = new byte[msgDecodedPayloadLength];
+                        msgDecodedPayloadIndex = 0;
+                        rcvState = StateReception.Payload;
+                    }
                     break;
 
                 case StateReception.Payload:
@@ -624,9 +643,6 @@ namespace Robot_interface_fath_bertin
                         //****************KP,KD,KI, correction max de vitesse linéaire et angulaire *****************
                         erreurX = BitConverter.ToSingle(msgPayload, 0);
                         erreurTheta = BitConverter.ToSingle(msgPayload, 4);
-
-
-
                     }
                     break;
 

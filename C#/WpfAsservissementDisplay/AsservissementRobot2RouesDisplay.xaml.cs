@@ -387,8 +387,7 @@ namespace WpfAsservissementDisplay_NS
             double KdX, double KdTheta)
         {
             this.KpX = KpX;
-            this.KpTheta = KpTheta;
-            this.KiX = KiX;
+            this.KpTheta = KpTheta;           this.KiX = KiX;
             this.KiTheta = KiTheta;
             this.KdX = KdX;
             this.KdTheta = KdTheta;

@@ -22,5 +22,5 @@ void UartProcessDecodedMessage(unsigned char msgFunction,unsigned char msgPayloa
 int SetRobotAutoControlState(unsigned char msgPayload);
 void SetRobotState(unsigned char msgPayload);
 void SetupAsservissement(unsigned char* msgPayload);
-//void ValeurConsigne(unsigned char* msgPayload);
+void ValeurConsigne(unsigned char* msgPayload);
 #endif

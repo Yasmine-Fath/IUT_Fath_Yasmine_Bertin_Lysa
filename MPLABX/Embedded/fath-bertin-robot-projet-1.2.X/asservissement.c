@@ -67,7 +67,7 @@ double Correcteur(volatile PidCorrector* PidCorr, double erreur)
 
 void UpdateAsservissement()
 {
-   robotState.PidX.erreur = robotState.vitesseLineaireConsigne- robotState.vitesseLineaireFromOdometry;
+   robotState.PidX.erreur = 0; //robotState.vitesseLineaireConsigne- robotState.vitesseLineaireFromOdometry;
    robotState.PidTheta.erreur = robotState.vitesseAngulaireConsigne - robotState.vitesseAngulaireFromOdometry;
 
     // --- Calcul des corrections via le PID ---
@@ -76,6 +76,7 @@ void UpdateAsservissement()
 
     // --- Application des corrections aux moteurs ---
     PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,robotState.CorrectionVitesseAngulaire);
+    AffichagePID();
 }
 
 

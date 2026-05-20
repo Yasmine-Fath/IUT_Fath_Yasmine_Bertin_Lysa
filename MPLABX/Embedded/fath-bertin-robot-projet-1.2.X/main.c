@@ -137,20 +137,12 @@ int main(void) {
 //        UartEncodeAndSendMessage(0x0040, 2, payload); 
         int i;
         for (i = 0; i < CB_RX1_GetDataSize(); i++) {
-
             unsigned char c = CB_RX1_Get();
             UartDecodeMessage(c);
             //SendMessage(&c, 1);
         }
-        __delay32(1000);
-        
-        //PWMSetSpeedConsignePolaire(0, 6.28);
-        
-        UpdateAsservissement();
-        
-
-    }
-    
+        __delay32(1000);        
+    }    
 }
 
 

@@ -189,6 +189,10 @@ void SetupAsservissement(unsigned char* msgPayload){
     robotState.PidTheta.Kp = getFloat(msgPayload, 12);
     robotState.PidTheta.Ki = getFloat(msgPayload, 16);
     robotState.PidTheta.Kd = getFloat(msgPayload, 20);
+    
+    SetupPidAsservissement(&robotState.PidTheta, robotState.PidTheta.Kp, robotState.PidTheta.Ki, robotState.PidTheta.Kd, 100, 100, 100);
+    SetupPidAsservissement(&robotState.PidX, robotState.PidX.Kp, robotState.PidX.Ki, robotState.PidX.Kd, 100, 100, 100);
+    
     unsigned char payload[24];
             
     getBytesFromFloat(payload, 0, robotState.PidX.Kp);
@@ -205,7 +209,6 @@ void SetupAsservissement(unsigned char* msgPayload){
 //    UartEncodeAndSendMessage(0x0080,7,payload);
        
 }
-
 
 void ValeurConsigne(unsigned char* msgPayload){
     robotState.vitesseLineaireConsigne   = getFloat(msgPayload, 0); 
