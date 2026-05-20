@@ -55,6 +55,9 @@ namespace Robot_interface_fath_bertin
         //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
         double KpX = 1, KiX = 2, KdX = 3, KpTheta = 3, KiTheta = 2, KdTheta = 1, proportionelleMax = 4.4, integralMax = 5.5, deriveeMax = 6.6;
         double KpXrecu, KiXrecu, KdXrecu, KpThetarecu, KiThetarecu, KdThetarecu;
+        double KpXcorr, KiXcorr, KdXcorr, KpThetacorr, KiThetacorr, KdThetacorr;
+        double KpXcorrmax, KiXcorrmax, KdXcorrmax, KpThetacorrmax, KiThetacorrmax, KdThetacorrmax;
+        double erreurTheta, erreurX;
 
 
         public MainWindow()
@@ -211,6 +214,8 @@ namespace Robot_interface_fath_bertin
             ////Vitesse
             //UartEncodeAndSendMessage(0x0040, 2, new byte[] { 50, 100 });
 
+
+            //****************KP,KD,KI, consignes de vitesse linéaire et angulaire *****************
             var payload = new byte[24];
 
             var data = BitConverter.GetBytes((float)KpX);
@@ -565,6 +570,7 @@ namespace Robot_interface_fath_bertin
 
                 case 0x0070:
                     {
+                        //****************KP,KD,KI, consignes de vitesse linéaire et angulaire *****************
                         KpXrecu = BitConverter.ToSingle(msgPayload, 0);
                         KiXrecu = BitConverter.ToSingle(msgPayload, 4);
                         KdXrecu = BitConverter.ToSingle(msgPayload, 8);
@@ -573,14 +579,60 @@ namespace Robot_interface_fath_bertin
                         KiThetarecu = BitConverter.ToSingle(msgPayload, 16);
                         KdThetarecu = BitConverter.ToSingle(msgPayload, 20);
 
-                        TextBoxKp.Text = "Kp : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2");
-                        TextBoxKi.Text = "Ki : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2");
-                        TextBoxKd.Text = "Kd : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2");
+                        //TextBoxKp.Text = "Kp : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2");
+                        //TextBoxKi.Text = "Ki : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2");
+                        //TextBoxKd.Text = "Kd : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2");
 
 
 
                     }
                     break;
+                case 0x0071:
+                    {
+                        //****************KP,KD,KI, correction de vitesse linéaire et angulaire *****************
+                        KpXcorr = BitConverter.ToSingle(msgPayload, 0);
+                        KiXcorr = BitConverter.ToSingle(msgPayload, 4);
+                        KdXcorr = BitConverter.ToSingle(msgPayload, 8);
+
+                        KpThetacorr = BitConverter.ToSingle(msgPayload, 12);
+                        KiThetacorr = BitConverter.ToSingle(msgPayload, 16);
+                        KdThetacorr = BitConverter.ToSingle(msgPayload, 20);
+
+
+
+                    }
+                    break;
+
+                case 0x0072:
+                    {
+                        //****************KP,KD,KI, correction max de vitesse linéaire et angulaire *****************
+                        KpXcorrmax = BitConverter.ToSingle(msgPayload, 0);
+                        KiXcorrmax = BitConverter.ToSingle(msgPayload, 4);
+                        KdXcorrmax = BitConverter.ToSingle(msgPayload, 8);
+
+                        KpThetacorrmax = BitConverter.ToSingle(msgPayload, 12);
+                        KiThetacorrmax = BitConverter.ToSingle(msgPayload, 16);
+                        KdThetacorrmax = BitConverter.ToSingle(msgPayload, 20);
+
+
+
+                    }
+                    break;
+
+                case 0x0073:
+                    {
+                        //****************KP,KD,KI, correction max de vitesse linéaire et angulaire *****************
+                        erreurX = BitConverter.ToSingle(msgPayload, 0);
+                        erreurTheta = BitConverter.ToSingle(msgPayload, 4);
+
+
+
+                    }
+                    break;
+
+
+
+
                 default:
                     break;
             }

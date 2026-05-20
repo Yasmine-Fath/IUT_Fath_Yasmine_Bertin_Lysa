@@ -17,7 +17,7 @@ double QeiDroitPosition_T_1;
 double QeiGauchePosition_T_1;
 double delta_d;
 double delta_g;
-double FREQ_ECH_QEI = 250;  //freq
+
 
 void InitQEI1()
 {
@@ -51,16 +51,19 @@ void QEIUpdateData()
     //Calcul des deltas de position
     delta_d = QeiDroitPosition - QeiDroitPosition_T_1;
     delta_g = QeiGauchePosition - QeiGauchePosition_T_1;
+    
     //Calcul des vitesses
     //attention a remultiplier par la frequence d echantillonnage
     robotState.vitesseDroitFromOdometry = delta_d*FREQ_ECH_QEI;
     robotState.vitesseGaucheFromOdometry = delta_g*FREQ_ECH_QEI;
     robotState.vitesseLineaireFromOdometry = (robotState.vitesseDroitFromOdometry + robotState.vitesseGaucheFromOdometry)/2.0;
     robotState.vitesseAngulaireFromOdometry = (robotState.vitesseDroitFromOdometry - robotState.vitesseGaucheFromOdometry)/DISTROUES;
+    
     //Mise a jour du positionnement terrain a t-1
     robotState.xPosFromOdometry_1 = robotState.xPosFromOdometry;
     robotState.yPosFromOdometry_1 = robotState.yPosFromOdometry;
     robotState.angleRadianFromOdometry_1 = robotState.angleRadianFromOdometry;
+    
     //Calcul des positions dans le referentiel du terrain
     robotState.xPosFromOdometry = robotState.xPosFromOdometry_1 + (robotState.vitesseLineaireFromOdometry * cos(robotState.angleRadianFromOdometry_1)) / FREQ_ECH_QEI;
     robotState.yPosFromOdometry = robotState.yPosFromOdometry_1 + (robotState.vitesseLineaireFromOdometry * sin(robotState.angleRadianFromOdometry_1)) / FREQ_ECH_QEI;

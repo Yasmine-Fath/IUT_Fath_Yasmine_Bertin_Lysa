@@ -15,7 +15,7 @@ void UartDecodeMessage(unsigned char c);
 #define SET_ROBOT_STATE 0x0051
 #define SET_ROBOT_MANUAL_CONTROL 0x0052
 #define ASSERVISSEMENT 0x0070
-//#define CONSIGNES 0x0080
+#define CONSIGNES 0x0080
 
 void UartProcessDecodedMessage(unsigned char msgFunction,unsigned char msgPayloadLength, unsigned char* msgPayload);
 

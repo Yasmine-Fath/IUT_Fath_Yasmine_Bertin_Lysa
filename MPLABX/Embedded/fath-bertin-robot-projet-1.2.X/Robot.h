@@ -30,6 +30,12 @@ typedef struct robotStateBITS {
             double angleRadianFromOdometry;
             double angleRadianFromOdometry_1;
             
+            double vitesseLineaireConsigne;
+            double vitesseAngulaireConsigne;
+            
+            double CorrectionVitesseAngulaire;
+            double CorrectionVitesseLineaire;
+            
             // Asservissement polaire
             PidCorrector PidX;      // PID pour vitesse linéaire (VL)
             PidCorrector PidTheta;  // PID pour vitesse angulaire (VA)            

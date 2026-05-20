@@ -150,6 +150,10 @@ void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPaylo
             SetupAsservissement(msgPayload);
 
             break;
+        case CONSIGNES :
+            ValeurConsigne(msgPayload);
+
+            break;
         case SET_ROBOT_STATE:
             SetRobotState(msgPayload[0]);
             break;
@@ -177,7 +181,7 @@ int SetRobotAutoControlState(unsigned char msgPayload) {
 }
 
 void SetupAsservissement(unsigned char* msgPayload){
-    
+    //CONSIGNES DE KP KI KD
     robotState.PidX.Kp = getFloat(msgPayload, 0);
     robotState.PidX.Ki = getFloat(msgPayload, 4);
     robotState.PidX.Kd = getFloat(msgPayload, 8);
@@ -203,10 +207,7 @@ void SetupAsservissement(unsigned char* msgPayload){
 }
 
 
-//void ValeurConsigne(unsigned char* msgPayload){
-//    
-//    robotState.PidX.Kp = getFloat(msgPayload, 0); //a modif
-//    robotState.PidX.Ki = getFloat(msgPayload, 4);//a modif 
-//
-//
-//}
+void ValeurConsigne(unsigned char* msgPayload){
+    robotState.vitesseLineaireConsigne   = getFloat(msgPayload, 0); 
+    robotState.vitesseAngulaireConsigne = getFloat(msgPayload, 4);
+}

@@ -5,7 +5,9 @@
 #include "Robot.h"
 #include "main.h"
 #include "CB_TX1.h"
-
+#include "QEI.h"
+#include "Utilities.h"
+#include "PWM.h"
 
 
 
@@ -65,29 +67,49 @@ double Correcteur(volatile PidCorrector* PidCorr, double erreur)
 
 void UpdateAsservissement()
 {
-    // --- Conversion des consignes roues ? polaire ---
-    // Vitesse linéaire consigne  = moyenne des deux roues
-    // Vitesse angulaire consigne = différence des deux roues
-    double consigneVitesseLineaire  = (robotState.vitesseDroiteConsigne 
-                                     + robotState.vitesseGaucheConsigne) / 2.0;
-    double consigneVitesseAngulaire = (robotState.vitesseDroiteConsigne 
-                                     - robotState.vitesseGaucheConsigne) / 2.0;
-
-    // --- Calcul des erreurs (consigne - mesure odométrie) ---
-    robotState.PidX.erreur     = consigneVitesseLineaire  
-                                - robotState.vitesseLineaireFromOdometry;
-
-    robotState.PidTheta.erreur = consigneVitesseAngulaire 
-                                - robotState.vitesseAngulaireFromOdometry;
+   robotState.PidX.erreur = robotState.vitesseLineaireConsigne- robotState.vitesseLineaireFromOdometry;
+   robotState.PidTheta.erreur = robotState.vitesseAngulaireConsigne - robotState.vitesseAngulaireFromOdometry;
 
     // --- Calcul des corrections via le PID ---
-    double CorrectionVitesseLineaire  = Correcteur(&robotState.PidX,
-                                                    robotState.PidX.erreur);
-
-    double CorrectionVitesseAngulaire = Correcteur(&robotState.PidTheta,
-                                                    robotState.PidTheta.erreur);
+    robotState.CorrectionVitesseLineaire  = Correcteur(&robotState.PidX,robotState.PidX.erreur);
+    robotState.CorrectionVitesseAngulaire = Correcteur(&robotState.PidTheta,robotState.PidTheta.erreur);
 
     // --- Application des corrections aux moteurs ---
-    PWMSetSpeedConsignePolaire(CorrectionVitesseLineaire,
-                               CorrectionVitesseAngulaire);
+    PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,robotState.CorrectionVitesseAngulaire);
+}
+
+
+void AffichagePID(){
+     unsigned char payload[24];
+    //*****************correcteurs ****************
+    getBytesFromFloat(payload, 0, robotState.PidX.corrP);
+    getBytesFromFloat(payload, 4, robotState.PidX.corrI);
+    getBytesFromFloat(payload, 8, robotState.PidX.corrD);
+    
+    getBytesFromFloat(payload, 12, robotState.PidTheta.corrP);
+    getBytesFromFloat(payload, 16, robotState.PidTheta.corrI);
+    getBytesFromFloat(payload, 20, robotState.PidTheta.corrD);
+    
+    UartEncodeAndSendMessage(0x0071, 24, payload );
+    
+    //*****************correction max ****************
+    unsigned char payload1[24];
+    getBytesFromFloat(payload1, 0, robotState.PidX.erreurProportionelleMax);
+    getBytesFromFloat(payload1, 4, robotState.PidX.erreurIntegraleMax);
+    getBytesFromFloat(payload1, 8, robotState.PidX.erreurDeriveeMax);
+    
+    getBytesFromFloat(payload1, 12, robotState.PidTheta.erreurProportionelleMax);
+    getBytesFromFloat(payload1, 16, robotState.PidTheta.erreurIntegraleMax);
+    getBytesFromFloat(payload1, 20, robotState.PidTheta.erreurDeriveeMax);
+    
+    UartEncodeAndSendMessage(0x0072, 24, payload );
+    
+    //***********************erreurs**********************
+    unsigned char payload2[8];
+    getBytesFromFloat(payload2, 0, robotState.PidX.erreur);
+    getBytesFromFloat(payload2, 4, robotState.PidTheta.erreur);
+    
+    UartEncodeAndSendMessage(0x0073, 8, payload );
+
+
 }
