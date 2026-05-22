@@ -141,7 +141,8 @@ int main(void) {
             UartDecodeMessage(c);
             //SendMessage(&c, 1);
         }
-        __delay32(1000);        
+        __delay32(1000);  
+        
     }    
 }
 

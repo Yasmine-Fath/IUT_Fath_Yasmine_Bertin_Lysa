@@ -53,7 +53,7 @@ namespace Robot_interface_fath_bertin
         double VAConsigne = 0 , VLConsigne = 0;  //X et Theta 
 
         //10/04 : définition des correcteurs pour l’asservissement pour les envoyer en embarquée (en C)
-        double KpX = 0, KiX = 0, KdX = 0, KpTheta = 3, KiTheta = 0, KdTheta = 0, proportionelleMax = 100, integralMax = 100, deriveeMax = 100;
+        double KpX = 8, KiX = 120, KdX = 0, KpTheta = 3, KiTheta = 0, KdTheta = 0, proportionelleMax = 100, integralMax = 100, deriveeMax = 100;
         double KpXrecu, KiXrecu, KdXrecu, KpThetarecu, KiThetarecu, KdThetarecu;
         double KpXcorr, KiXcorr, KdXcorr, KpThetacorr, KiThetacorr, KdThetacorr;
         double KpXcorrmax, KiXcorrmax, KdXcorrmax, KpThetacorrmax, KiThetacorrmax, KdThetacorrmax;
