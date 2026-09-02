@@ -56,7 +56,7 @@ namespace Robot_interface_fath_bertin
         double KpX = 8, KiX = 120, KdX = 0, KpTheta = 3, KiTheta = 0, KdTheta = 0, proportionelleMax = 100, integralMax = 100, deriveeMax = 100;
         double KpXrecu, KiXrecu, KdXrecu, KpThetarecu, KiThetarecu, KdThetarecu;
         double KpXcorr, KiXcorr, KdXcorr, KpThetacorr, KiThetacorr, KdThetacorr;
-        double KpXcorrmax, KiXcorrmax, KdXcorrmax, KpThetacorrmax, KiThetacorrmax, KdThetacorrmax;
+        double KpXcorrmax =100, KiXcorrmax = 100, KdXcorrmax = 100, KpThetacorrmax = 100, KiThetacorrmax = 100, KdThetacorrmax = 100;
         double erreurTheta, erreurX;
 
 
@@ -65,7 +65,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM4", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
