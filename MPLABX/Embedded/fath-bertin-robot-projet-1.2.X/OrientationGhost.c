@@ -64,3 +64,20 @@ void compteurGhost (){
     if (GhostState.VTheta == 0 && |GhostState.ThetaRestant| < 0.01){
         GhostState.ThetaGhost = GhostState.ThetaWayPoint;
     }
+    
+}  
+
+
+
+// 03/09
+/// AFFICHAGE DU GHOST
+
+void AffichageGHOST(){
+    unsigned char payload[4];
+     
+    //*****************Theta Ghost ****************
+    getBytesFromFloat(payload, 0, GhostState.ThetaGhost);
+   
+    UartEncodeAndSendMessage(0x0090, 4, payload );
+    
+}

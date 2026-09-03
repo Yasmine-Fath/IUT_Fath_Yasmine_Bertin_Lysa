@@ -36,5 +36,8 @@ extern volatile GHOST_STATE ghostState;
 
 void SetupGhostState(volatile GHOST_STATE* GHOST, double Theta, double vitesse, double accel, double vitessemax);
 
+// 03/09
+void AffichageGHOST();
+
 #endif	/* ORIENTATIONGHOST_H */
 

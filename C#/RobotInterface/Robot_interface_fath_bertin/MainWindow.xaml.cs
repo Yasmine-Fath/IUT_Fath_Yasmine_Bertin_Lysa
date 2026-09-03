@@ -60,6 +60,10 @@ namespace Robot_interface_fath_bertin
         double erreurTheta, erreurX;
 
 
+        // 03/09
+        double ThetaGhost;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -643,6 +647,14 @@ namespace Robot_interface_fath_bertin
                         //****************KP,KD,KI, correction max de vitesse linéaire et angulaire *****************
                         erreurX = BitConverter.ToSingle(msgPayload, 0);
                         erreurTheta = BitConverter.ToSingle(msgPayload, 4);
+                    }
+                    break;
+
+                //////// ***************03/09**************
+                case 0x0090:
+                    {
+                        //****************Récupération du theta ghost*****************
+                        ThetaGhost = BitConverter.ToSingle(msgPayload, 0);
                     }
                     break;
 
