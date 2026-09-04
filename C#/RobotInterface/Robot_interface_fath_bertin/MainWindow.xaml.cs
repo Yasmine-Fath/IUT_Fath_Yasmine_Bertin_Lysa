@@ -69,7 +69,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM4", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -269,6 +269,27 @@ namespace Robot_interface_fath_bertin
         }
 
 
+        //04/09
+        private void buttonUnitaire1_Click(object sender, RoutedEventArgs e)
+        {
+            ThetaGhost = ThetaGhost + double.Pi / 2;
+
+            if (ThetaGhost >= 2 * double.Pi) {
+                ThetaGhost = 0;
+            }
+
+            var payload = new byte[4];
+
+            var data = BitConverter.GetBytes((float)ThetaGhost);
+            Array.Copy(data, 0, payload, 0, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
+
+            TextBoxAngleThetaGhost.Text = "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad";
+
+        }
+
+
         private void TextBoxEmission_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             // Vérifie si la touche pressée est Entrée
@@ -372,8 +393,8 @@ namespace Robot_interface_fath_bertin
 
 
         int calculatedChecksum = 0;
-        byte receivedChecksum = 0;
-        int VG = 0, VD = 0, DG = 0, DC = 0, DD = 0;
+        //byte receivedChecksum = 0;
+        //int VG = 0, VD = 0, DG = 0, DC = 0, DD = 0;
 
 
         private void DecodeMessage(byte c)
@@ -555,15 +576,15 @@ namespace Robot_interface_fath_bertin
 
                 case 0x0051:
                     {
-                        checkBoxModeM.IsChecked = true;
-                        checkBoxModeA.IsChecked = false;
+                        //checkBoxModeM.IsChecked = true;  //04/09   pour espace ghost
+                        //checkBoxModeA.IsChecked = false; //04/09   pour espace ghost
                     }
                     break;
 
                 case 0x0052:
                     {
-                        checkBoxModeA.IsChecked = true;
-                        checkBoxModeM.IsChecked = false;
+                        //checkBoxModeA.IsChecked = true;  //04/09   pour espace ghost
+                        //checkBoxModeM.IsChecked = false;  //04/09   pour espace ghost
                     }
                     break;
 
@@ -571,7 +592,7 @@ namespace Robot_interface_fath_bertin
                     {
                         TextBoxXPosition.Text = "x : " + BitConverter.ToSingle(msgPayload, 4).ToString("N2") + " m";
                         TextBoxYPosition.Text = "y : " + BitConverter.ToSingle(msgPayload, 8).ToString("N2") + " m";
-                        TextBoxAnglePosition.Text = "angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
+                        TextBoxAnglePosition.Text = "Angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
                         TextBoxVitesseLineaire.Text = "VL : " + BitConverter.ToSingle(msgPayload, 16).ToString("N2") + " m/s";
                         TextBoxVitesseAngulaire.Text = "VA : " + BitConverter.ToSingle(msgPayload, 20).ToString("N2") + " rad/s";
                         Vy = BitConverter.ToSingle(msgPayload, 8);

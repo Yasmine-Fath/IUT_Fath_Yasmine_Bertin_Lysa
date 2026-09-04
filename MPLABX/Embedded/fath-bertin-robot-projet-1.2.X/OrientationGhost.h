@@ -28,6 +28,8 @@ typedef struct GhostState {
             float Tsampling;
             float FQEI = 250.0;
             
+            float GhostRecu;    //Theta ghost recu
+            
                      
         };
     };

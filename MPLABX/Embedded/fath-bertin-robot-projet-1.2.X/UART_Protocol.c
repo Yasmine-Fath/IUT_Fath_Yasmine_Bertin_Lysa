@@ -5,6 +5,7 @@
 #include "main.h"
 #include "asservissement.h"
 #include "Utilities.h"
+#include "OrientationGhost.h"
 
 #define StateRobotWaiting 0
 #define StateRobotFunctionMSB 1
@@ -161,6 +162,10 @@ void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPaylo
         case SET_ROBOT_MANUAL_CONTROL:
             SetRobotAutoControlState(msgPayload[0]);
             break;
+            
+        case GHOST_MODIFIED :
+            RecepetionGhost(msgPayload);
+            break;
 
         default:
             break;
@@ -213,4 +218,9 @@ void SetupAsservissement(unsigned char* msgPayload){
 void ValeurConsigne(unsigned char* msgPayload){
     robotState.vitesseLineaireConsigne   = getFloat(msgPayload, 0); 
     robotState.vitesseAngulaireConsigne = getFloat(msgPayload, 4);
+}
+
+//04/09
+void RecepetionGhost(unsigned char* msgPayload){
+    GhostState.GhostRecu = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
 }
