@@ -35,5 +35,7 @@ extern unsigned char stateRobot;
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode();
 
+
+
 #endif	/* MAIN_H */
 

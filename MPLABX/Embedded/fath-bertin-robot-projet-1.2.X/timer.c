@@ -7,9 +7,10 @@
 #include "main.h"
 #include "ChipConfig.h"
 #include "QEI.h"
+#include "Ghost.h"
 
 unsigned char toggle = 0;
-float f1 = 250.0;
+float f1 = 10.0;
 int cpt = 1;
 unsigned long timestamp;
 
@@ -23,7 +24,7 @@ void InitTimer1(void) {
     IEC0bits.T1IE = 1; // Enable Timer interrupt
     SetFreqTimer1(f1);
     T1CONbits.TON = 1; // Enable Timer
-    
+      
  
 }
 //Interruption du timer 1
@@ -39,7 +40,8 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     if(cpt++ % 25 == 0){
         SendPositionData();
     }
-
+    GhostComputation(ghostState);
+    AffichageGHOST(ghostState);
 }
 //Initialisation d?un timer 32 bits
 

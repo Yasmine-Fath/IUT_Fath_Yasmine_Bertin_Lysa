@@ -5,41 +5,38 @@
  * Created on 2 septembre 2026, 16:11
  */
 
-#ifndef ORIENTATIONGHOST_H
-#define	ORIENTATIONGHOST_H
+#ifndef GHOST_H
+#define	GHOST_H
 
 
-typedef struct GhostState {
+typedef struct GState {
     union {
         struct {
-            double Theta;
-            double vitesse;
-            double accel;
-            double vitessemax;
-            
             float ThetaGhost;
             float ThetaWayPoint;
             float ThetaRestant;
             float ThetaArret;
-            float incrementTheta;
+            float IncrementTheta;
             float VTheta;
             float VThetamax;
             float AccTheta;
             float Tsampling;
-            float FQEI = 250.0;
+            float FQEI;
             
             float GhostRecu;    //Theta ghost recu
             
                      
         };
     };
-} GHOST_STATE;
-extern volatile GHOST_STATE ghostState;
+} GSTATE;
 
-void SetupGhostState(volatile GHOST_STATE* GHOST, double Theta, double vitesse, double accel, double vitessemax);
+extern volatile GSTATE ghostState;
+void SetupGhostState(GSTATE* gState, float theta, float vitesse, float accel, float vitesseMax, float waypoint);
+void GhostComputation(GSTATE gState);
 
 // 03/09
-void AffichageGHOST();
+void AffichageGHOST(GSTATE gState);
 
-#endif	/* ORIENTATIONGHOST_H */
+
+#endif	/* GHOST_H */
 

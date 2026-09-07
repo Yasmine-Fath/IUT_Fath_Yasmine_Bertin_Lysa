@@ -2,6 +2,7 @@
 #define ROBOT_H
 
 #include "asservissement.h"
+#include "Ghost.h"
 
 typedef struct robotStateBITS {
     union {
@@ -35,6 +36,8 @@ typedef struct robotStateBITS {
             
             double CorrectionVitesseAngulaire;
             double CorrectionVitesseLineaire;
+            
+            GSTATE gState;
             
             // Asservissement polaire
             PidCorrector PidX;      // PID pour vitesse linéaire (VL)

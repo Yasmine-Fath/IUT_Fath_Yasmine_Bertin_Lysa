@@ -15,9 +15,9 @@
 #include "main.h"
 #include "QEI.h"
 #include "asservissement.h"
+#include "Ghost.h"
 
 //derniere modif : 4/
-
 unsigned int ADCValue0, ADCValue1, ADCValue2, ADCValue3, ADCValue4;
 
 int N = 0x667; // valeur ADC pour une distance de 20cm
@@ -40,7 +40,7 @@ int main(void) {
     InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
-
+    SetupGhostState(&ghostState, 0, 1.0, 1.0, 2.0, 3.14);
     PWM_ENABLE = 1;
 
     robotState.Mode = MODE_MANUEL;
@@ -58,6 +58,8 @@ int main(void) {
     //    LED_ORANGE_2 = 1;
     //    LED_ROUGE_2 = 1;
     //    LED_VERTE_2 = 1;
+    
+
 
 
     // Boucle Principale
@@ -141,8 +143,6 @@ int main(void) {
             UartDecodeMessage(c);
             //SendMessage(&c, 1);
         }
-        __delay32(1000);  
-        
     }    
 }
 

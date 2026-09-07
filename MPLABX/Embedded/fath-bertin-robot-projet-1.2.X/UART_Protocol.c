@@ -5,7 +5,7 @@
 #include "main.h"
 #include "asservissement.h"
 #include "Utilities.h"
-#include "OrientationGhost.h"
+#include "Ghost.h"
 
 #define StateRobotWaiting 0
 #define StateRobotFunctionMSB 1
@@ -222,5 +222,5 @@ void ValeurConsigne(unsigned char* msgPayload){
 
 //04/09
 void RecepetionGhost(unsigned char* msgPayload){
-    GhostState.GhostRecu = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
+    ghostState.ThetaGhost = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
 }

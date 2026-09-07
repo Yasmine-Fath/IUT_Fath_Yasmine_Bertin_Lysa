@@ -278,6 +278,8 @@ namespace Robot_interface_fath_bertin
                 ThetaGhost = 0;
             }
 
+
+            //renvoie du Theta Ghost sur MPLAB
             var payload = new byte[4];
 
             var data = BitConverter.GetBytes((float)ThetaGhost);
@@ -285,7 +287,7 @@ namespace Robot_interface_fath_bertin
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);
 
-            TextBoxAngleThetaGhost.Text = "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad";
+            
 
         }
 
@@ -676,6 +678,7 @@ namespace Robot_interface_fath_bertin
                     {
                         //****************Récupération du theta ghost*****************
                         ThetaGhost = BitConverter.ToSingle(msgPayload, 0);
+                        TextBoxAngleThetaGhost.Text = "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad";
                     }
                     break;
 
