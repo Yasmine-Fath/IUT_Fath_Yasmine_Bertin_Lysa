@@ -62,6 +62,7 @@ namespace Robot_interface_fath_bertin
 
         // 03/09
         double ThetaGhost;
+        double ThetaWayPoint = 0;
 
 
         public MainWindow()
@@ -272,17 +273,17 @@ namespace Robot_interface_fath_bertin
         //04/09
         private void buttonUnitaire1_Click(object sender, RoutedEventArgs e)
         {
-            ThetaGhost = ThetaGhost + double.Pi / 2;
+            ThetaWayPoint = ThetaGhost + double.Pi / 2;
 
-            if (ThetaGhost >= 2 * double.Pi) {
-                ThetaGhost = 0;
+            if (ThetaWayPoint >= 2 * double.Pi) {
+                ThetaWayPoint = 0;
             }
 
 
-            //renvoie du Theta Ghost sur MPLAB
-            var payload = new byte[4];
+           //renvoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[4];
 
-            var data = BitConverter.GetBytes((float)ThetaGhost);
+            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
             Array.Copy(data, 0, payload, 0, 4);
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);

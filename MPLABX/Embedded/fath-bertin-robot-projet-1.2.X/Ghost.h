@@ -31,8 +31,8 @@ typedef struct GState {
 } GSTATE;
 
 extern volatile GSTATE ghostState;
-void SetupGhostState(GSTATE* gState, float theta, float vitesse, float accel, float vitesseMax, float waypoint);
-void GhostComputation(GSTATE gState);
+void SetupGhostState(GSTATE* gState, float theta, float vitesse, float accel, float vitesseMax);
+void GhostComputation(GSTATE* gState);
 
 // 03/09
 void AffichageGHOST(GSTATE gState);

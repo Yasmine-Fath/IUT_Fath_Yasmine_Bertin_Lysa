@@ -40,7 +40,7 @@ int main(void) {
     InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
-    SetupGhostState(&ghostState, 0, 1.0, 1.0, 2.0, 3.14);
+    SetupGhostState(&ghostState, 0, 1.0, 1.0, 2.0);
     PWM_ENABLE = 1;
 
     robotState.Mode = MODE_MANUEL;

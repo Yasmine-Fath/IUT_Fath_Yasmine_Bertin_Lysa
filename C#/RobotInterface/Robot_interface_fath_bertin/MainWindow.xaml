@@ -31,7 +31,7 @@
             <Button x:Name="buttonTest" Grid.Column="1" Content="Test" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonTest_Click"  Margin="5"/>
             <!--//04/09   pour espace ghost-->
             <!--<Button x:Name="buttonAuto" Grid.Column="1" Content="Auto" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonAuto_Click"  Margin="5"/>-->
-            <Button x:Name="buttonUnitaire1" Grid.Column="1" Content="+90" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonAuto_Click"  Margin="5"/>
+            <Button x:Name="buttonUnitaire1" Grid.Column="1" Content="+90" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonUnitaire1_Click"  Margin="5"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
