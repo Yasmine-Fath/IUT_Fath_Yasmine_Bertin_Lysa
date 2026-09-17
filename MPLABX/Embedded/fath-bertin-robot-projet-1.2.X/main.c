@@ -28,7 +28,7 @@ unsigned int flagrobot;
 unsigned char stateRobot = STATE_ATTENTE;
 
 int main(void) {
-
+    
     //Initialisation oscillateur
     InitOscillator();
     InitIO();
@@ -40,7 +40,8 @@ int main(void) {
     InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
-    SetupGhostState(&ghostState, 0, 1.0, 1.0, 2.0);
+    SetupGhostState(0, 20, 6, 2);
+    
     PWM_ENABLE = 1;
 
     robotState.Mode = MODE_MANUEL;

@@ -40,8 +40,9 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     if(cpt++ % 25 == 0){
         SendPositionData();
     }
-    GhostComputation(&ghostState);
-    AffichageGHOST(ghostState);
+    GhostComputation();
+    //AffichageGHOST(ghostState);
+    AffichageGHOST();
 }
 //Initialisation d?un timer 32 bits
 

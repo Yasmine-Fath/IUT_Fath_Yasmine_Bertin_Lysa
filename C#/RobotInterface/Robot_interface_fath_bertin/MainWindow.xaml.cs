@@ -679,7 +679,8 @@ namespace Robot_interface_fath_bertin
                     {
                         //****************Récupération du theta ghost*****************
                         ThetaGhost = BitConverter.ToSingle(msgPayload, 0);
-                        TextBoxAngleThetaGhost.Text = "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad";
+                        TextBoxAngleThetaGhost.Text = "Theta Ghost : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2") + " rad";
+                        //TextBoxAnglePosition.Text = "Angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
                     }
                     break;
 

@@ -30,12 +30,13 @@ typedef struct GState {
     };
 } GSTATE;
 
-extern volatile GSTATE ghostState;
-void SetupGhostState(GSTATE* gState, float theta, float vitesse, float accel, float vitesseMax);
-void GhostComputation(GSTATE* gState);
+extern GSTATE RobotGstate;
+void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax);
+void GhostComputation();
 
 // 03/09
-void AffichageGHOST(GSTATE gState);
+//void AffichageGHOST(GSTATE gState);
+void AffichageGHOST();
 
 
 #endif	/* GHOST_H */

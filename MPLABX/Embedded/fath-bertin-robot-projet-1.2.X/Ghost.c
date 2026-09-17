@@ -7,66 +7,75 @@
 #include "UART_Protocol.h"
 #include "timer.h"
 
-volatile GSTATE ghostState;
+GSTATE RobotGstate;
 
-void SetupGhostState(GSTATE* gState, float theta, float vitesse, float accel, float vitesseMax){
+
+//void SetupGhostState(GSTATE* RobotGstate, float theta, float vitesse, float accel, float vitesseMax){
+    void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax){
+
+    RobotGstate.ThetaGhost = theta;
+    RobotGstate.VTheta = vitesse; 
+    RobotGstate.AccTheta = accel;
+    RobotGstate.VThetamax = vitesseMax;
+    RobotGstate.FQEI = 250;
+    RobotGstate.Tsampling = 1/RobotGstate.FQEI;
+    RobotGstate.ThetaWayPoint = M_PI/2;
     
-    gState->ThetaGhost = theta;
-    gState->VTheta = vitesse; 
-    gState->AccTheta = accel;
-    gState->VThetamax = vitesseMax;
 }
 
-void GhostComputation(GSTATE*  gState){
+void GhostComputation(){
 
-    gState->ThetaRestant = ModuloByAngle(gState->ThetaGhost, gState->ThetaWayPoint) - gState->ThetaGhost;
+    RobotGstate.ThetaRestant = ModuloByAngle(RobotGstate.ThetaGhost, RobotGstate.ThetaWayPoint) - RobotGstate.ThetaGhost;
 
-    gState->ThetaArret = (gState->VTheta*gState->VTheta)/(2*gState->AccTheta);
-    gState->IncrementTheta = gState->VTheta*gState->Tsampling;
+    RobotGstate.ThetaArret = (RobotGstate.VTheta*RobotGstate.VTheta)/(2*RobotGstate.AccTheta);
+    RobotGstate.IncrementTheta = RobotGstate.VTheta/250;
     
     
-    if (gState->VTheta < 0) {
-       gState->ThetaArret = - gState->ThetaArret;
+    if (RobotGstate.VTheta < 0) {
+       RobotGstate.ThetaArret = - RobotGstate.ThetaArret;
     
     }
     
-    if (((gState->ThetaArret >= 0 && gState->ThetaRestant >=    0) || (gState->ThetaArret <= 0 && gState->ThetaRestant <= 0)) && Abs(gState->ThetaRestant)>=gState->ThetaArret) { 
+    if (((RobotGstate.ThetaArret >= 0 && RobotGstate.ThetaRestant >=    0) || (RobotGstate.ThetaArret <= 0 && RobotGstate.ThetaRestant <= 0)) && Abs(RobotGstate.ThetaRestant)>=RobotGstate.ThetaArret) { 
         // On accélère en rampe saturée
-        if (gState->ThetaRestant > 0){
+        if (RobotGstate.ThetaRestant > 0){
             // Si la destination est devant, on accélère en positif en saturant la vitesse à V?Max
-            gState->VTheta = Min(gState->VTheta + gState->AccTheta/gState->FQEI, gState->VThetamax); 
+            RobotGstate.VTheta = Min(RobotGstate.VTheta + RobotGstate.AccTheta/RobotGstate.FQEI, RobotGstate.VThetamax); 
         }
         
-        else if(gState->ThetaRestant < 0) {
+        else if(RobotGstate.ThetaRestant < 0) {
           //Si la destination est derrière, on accélère en négatif en saturant la vitesse à ?V?Max
-            gState->VTheta = Max(gState->VTheta - gState->AccTheta/gState->FQEI, - gState->VThetamax);
+            RobotGstate.VTheta = Max(RobotGstate.VTheta - RobotGstate.AccTheta/RobotGstate.FQEI, - RobotGstate.VThetamax);
         
         }
     }
     
     else {
         // On freine en rampe saturée
-        if (gState->VTheta > 0) {
+        if (RobotGstate.VTheta > 0) {
         //Si la vitesse positive est positive, on freine en positif en saturant la vitesse à 0
-        gState->VTheta = Min(gState->VTheta - gState->AccTheta/gState->FQEI, 0); 
+        RobotGstate.VTheta = Min(RobotGstate.VTheta - RobotGstate.AccTheta/RobotGstate.FQEI, 0); 
         }
-        else if (gState->VTheta < 0) {
+        else if (RobotGstate.VTheta < 0) {
         //Si la vitesse est négative, on freine en négatif en saturant la vitesse à 0
-        gState->VTheta = Max(gState->VTheta + gState->AccTheta/gState->FQEI, 0);
-                
+        RobotGstate.VTheta = Max(RobotGstate.VTheta + RobotGstate.AccTheta/RobotGstate.FQEI, 0);                
         }
         
-        if (Abs(gState->ThetaRestant) < Abs(gState->IncrementTheta)){
-            gState->IncrementTheta = gState->ThetaRestant;   
+        if (Abs(RobotGstate.ThetaRestant) < Abs(RobotGstate.IncrementTheta))
+        {
+            RobotGstate.IncrementTheta = RobotGstate.ThetaRestant;   
         }
     }
     
     // On intègre le déplacement
-    gState->ThetaGhost = gState->ThetaGhost + gState->IncrementTheta;
+    RobotGstate.ThetaGhost = RobotGstate.ThetaGhost + RobotGstate.IncrementTheta;
+
+    
     
     // On gère les erreurs numériques d?arrondis
-    if (gState->VTheta == 0 && Abs(gState->ThetaRestant) < 0.01){
-        gState->ThetaGhost = gState->ThetaWayPoint;
+    if (RobotGstate.VTheta == 0 && Abs(RobotGstate.ThetaRestant) < 0.01){
+        RobotGstate.ThetaGhost = RobotGstate.ThetaWayPoint;
+        
     }
     
 }  
@@ -76,12 +85,12 @@ void GhostComputation(GSTATE*  gState){
 // 03/09
 /// AFFICHAGE DU GHOST
 
-void AffichageGHOST(GSTATE gState){
-    unsigned char payload[4];
-     
+//void AffichageGHOST(GSTATE RobotGstate){
+void AffichageGHOST(){
+    unsigned char payload[8];
+ 
     //*****************Theta Ghost ****************
-    getBytesFromFloat(payload, 0, gState.ThetaGhost);
-   
-    UartEncodeAndSendMessage(0x0090, 4, payload );
+    getBytesFromFloat(payload, 0, RobotGstate.ThetaGhost);
+    UartEncodeAndSendMessage(0x0090, 8, payload );
     
 }
