@@ -40,7 +40,7 @@ int main(void) {
     InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
-    SetupGhostState(0, 20, 6, 2);
+    SetupGhostState(0, 1, 6, 2);
     
     PWM_ENABLE = 1;
 

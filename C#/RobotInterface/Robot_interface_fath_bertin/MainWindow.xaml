@@ -18,7 +18,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <GroupBox Header="Réception" Grid.Column="1" Grid.Row="0" Margin="5">
             <TextBox x:Name="textBoxReception" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged" IsReadOnly="True" AcceptsReturn="True"/>
         </GroupBox>
@@ -26,12 +26,12 @@
             <TextBox x:Name="textBoxEmission" TextWrapping="Wrap" Text="" AcceptsReturn="True" PreviewKeyDown="TextBoxEmission_PreviewKeyDown"/>
         </GroupBox>
         <StackPanel  Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-           <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Envoyer" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonEnvoyer_Click" Margin="5" />
+            <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Envoyer" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonEnvoyer_Click" Margin="5" />
             <Button x:Name="buttonClear" Grid.Column="3" Content="Clear" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonClear_Click" Margin="5"/>
             <Button x:Name="buttonTest" Grid.Column="1" Content="Test" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonTest_Click"  Margin="5"/>
             <!--//04/09   pour espace ghost-->
             <!--<Button x:Name="buttonAuto" Grid.Column="1" Content="Auto" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonAuto_Click"  Margin="5"/>-->
-            <Button x:Name="buttonUnitaire1" Grid.Column="1" Content="+90" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonUnitaire1_Click"  Margin="5"/>
+
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
@@ -42,11 +42,20 @@
                     <CheckBox Name="checkBoxLed3" Content="Led3" Margin="5" />
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Télèmetres IR" Margin="5">
+            <!--<GroupBox Header="Télèmetres IR" Margin="5">
                 <StackPanel Orientation="Vertical" Margin="5">
                     <TextBlock x:Name="TextBoxIRGauche" Text ="IR Gauche : " Margin="5"/>
                     <TextBlock x:Name="TextBoxIRCentre" Text="IR Centre : " Margin="5"/>
                     <TextBlock x:Name="TextBoxIRDroit" Text="IR Droit : " Margin="5"/>
+                </StackPanel>
+            </GroupBox>-->
+            <GroupBox Header="Orientation" Grid.Column="2" Grid.Row="0" Margin="5">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock x:Name="TextBoxXGhostOrientation" Text ="xG : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxYGhostOrientation" Text="yG : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxAngleThetaGhost" Text="ThetaG : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxXWayPointOrientation" Text ="xWP : " Margin="5"/>
+                    <TextBlock x:Name="TextBoxYWayPointOrientation" Text="yWP : " Margin="5"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Moteurs" Margin="4">
@@ -67,7 +76,6 @@
                     <TextBlock x:Name="TextBoxXPosition" Text ="x : " Margin="5"/>
                     <TextBlock x:Name="TextBoxYPosition" Text="y : " Margin="5"/>
                     <TextBlock x:Name="TextBoxAnglePosition" Text="Angle : " Margin="5"/>
-                    <TextBlock x:Name="TextBoxAngleThetaGhost" Text="Theta Ghost : " Margin="5"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Vitesse" Margin="5">
@@ -78,10 +86,18 @@
             </GroupBox>
 
 
+
+
         </StackPanel>
 
+        <Button x:Name="buttonUnitaire1" Grid.Column="2" Content="Point 1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire1_Click"  Margin="10,134,0,0"/>
+        <Button x:Name="buttonUnitaire2" Grid.Column="2" Content="Point 0,1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire2_Click"  Margin="157,134,0,0"/>
+        <Button x:Name="buttonUnitaire3" Grid.Column="2" Content="Point -1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire3_Click"  Margin="10,164,0,0"/>
+        <Button x:Name="buttonUnitaire4" Grid.Column="2" Content="Point 0,-1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire4_Click"  Margin="157,164,0,0"/>
 
-        <oscillo:WpfOscilloscope Grid.Column="2" x:Name="oscilloSpeed" />
+
+
+        <!--<oscillo:WpfOscilloscope Grid.Column="2" x:Name="oscilloSpeed" />-->
         <AsservDisplay:AsservissementRobot2RouesDisplayControl Grid.Column="2"  Grid.Row="2" x:Name="asservSpeedDisplay"/>
 
     </Grid>

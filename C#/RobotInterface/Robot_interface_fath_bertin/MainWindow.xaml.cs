@@ -61,8 +61,14 @@ namespace Robot_interface_fath_bertin
 
 
         // 03/09
-        double ThetaGhost;
+        double ThetaGhost = 0;
         double ThetaWayPoint = 0;
+        double xG = 1;
+        double yG = 0;
+        double xWP = 0;
+        double yWP = 0;
+
+
 
 
         public MainWindow()
@@ -117,7 +123,7 @@ namespace Robot_interface_fath_bertin
                 //textBoxReception.AppendText(sbHex.ToString());
             }
             //Pour afficher des données dans l’oscilloscope (WPF)
-            oscilloSpeed.AddPointToLine(lineId, 3, 2);
+            //oscilloSpeed.AddPointToLine(lineId, 3, 2);
 
             //07/04 : affichage des données simulées de vitesse et asservissement en polaire et en indépendant dans le tableau
             asservSpeedDisplay.UpdatePolarSpeedConsigneValues(VLConsigne, VAConsigne);
@@ -273,14 +279,13 @@ namespace Robot_interface_fath_bertin
         //04/09
         private void buttonUnitaire1_Click(object sender, RoutedEventArgs e)
         {
-            ThetaWayPoint = ThetaGhost + double.Pi / 2;
+            xWP = 1;
+            yWP = 0;
+            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
+            xG = xWP;
+            yG = yWP;
 
-            if (ThetaWayPoint >= 2 * double.Pi) {
-                ThetaWayPoint = 0;
-            }
-
-
-           //renvoie du Theta Ghost sur MPLAB
+            //renvoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[4];
 
             byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
@@ -292,6 +297,71 @@ namespace Robot_interface_fath_bertin
 
         }
 
+        private void buttonUnitaire2_Click(object sender, RoutedEventArgs e)
+        {
+            xWP = 0;
+            yWP = 1;
+            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
+            xG = xWP;
+            yG = yWP;
+
+            // Affichage des coordonnées du Ghost
+            TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
+            TextBoxYGhostOrientation.Text = "yG : " + yG.ToString("N2");
+
+            //renvoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[4];
+
+            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            Array.Copy(data, 0, payload, 0, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
+
+        }
+
+        private void buttonUnitaire3_Click(object sender, RoutedEventArgs e)
+        {
+            xWP = -1;
+            yWP = 0;
+            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
+            xG = xWP;
+            yG = yWP;
+
+            // Affichage des coordonnées du Ghost
+            TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
+            TextBoxYGhostOrientation.Text = "yG : " + yG.ToString("N2");
+
+            //renvoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[4];
+
+            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            Array.Copy(data, 0, payload, 0, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
+
+        }
+
+        private void buttonUnitaire4_Click(object sender, RoutedEventArgs e)
+        {
+            xWP = 0;
+            yWP = -1;
+            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
+            xG = xWP;
+            yG = yWP;
+
+            // Affichage des coordonnées du Ghost
+            TextBoxXGhostOrientation.Text ="xG : " + xG.ToString("N2");
+            TextBoxYGhostOrientation.Text ="yG : " + yG.ToString("N2");
+
+            //renvoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[4];
+
+            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            Array.Copy(data, 0, payload, 0, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
+
+        }
 
         private void TextBoxEmission_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -543,9 +613,9 @@ namespace Robot_interface_fath_bertin
 
                 case 0x0030:
                     {
-                        TextBoxIRGauche.Text = $"IR Gauche : {msgPayload[0]} cm";
-                        TextBoxIRCentre.Text = $"IR Centre : {msgPayload[1]} cm";
-                        TextBoxIRDroit.Text = $"IR Droit : {msgPayload[2]} cm";
+                        //TextBoxIRGauche.Text = $"IR Gauche : {msgPayload[0]} cm";
+                        //TextBoxIRCentre.Text = $"IR Centre : {msgPayload[1]} cm";
+                        //TextBoxIRDroit.Text = $"IR Droit : {msgPayload[2]} cm";
                     }
                     break;
 
@@ -679,10 +749,26 @@ namespace Robot_interface_fath_bertin
                     {
                         //****************Récupération du theta ghost*****************
                         ThetaGhost = BitConverter.ToSingle(msgPayload, 0);
-                        TextBoxAngleThetaGhost.Text = "Theta Ghost : " + BitConverter.ToSingle(msgPayload, 0).ToString("N2") + " rad";
-                        //TextBoxAnglePosition.Text = "Angle : " + (BitConverter.ToSingle(msgPayload, 12) * 180 / float.Pi).ToString("N2") + " °";
+
+                        // Affichage du Theta Ghost
+                        TextBoxAngleThetaGhost.Text =
+                            "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad, " + (ThetaGhost*180/double.Pi).ToString("N2") + " °";
+
+                        // Affichage des coordonnées du Ghost
+                        TextBoxXGhostOrientation.Text =
+                            "xG : " + xG.ToString("N2");
+
+                        TextBoxYGhostOrientation.Text =
+                            "yG : " + yG.ToString("N2");
+                        // Affichage des coordonnées du WayPoint
+                        TextBoxXWayPointOrientation.Text =
+                            "xWP : " + xWP.ToString("N2");
+
+                        TextBoxYWayPointOrientation.Text =
+                            "yWP : " + yWP.ToString("N2");
                     }
                     break;
+
 
 
 
@@ -730,6 +816,10 @@ namespace Robot_interface_fath_bertin
                     break;
             }
         }
+
+       
+
+
 
     }
 }

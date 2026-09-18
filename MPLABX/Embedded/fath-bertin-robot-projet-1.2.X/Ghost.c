@@ -17,9 +17,9 @@ GSTATE RobotGstate;
     RobotGstate.VTheta = vitesse; 
     RobotGstate.AccTheta = accel;
     RobotGstate.VThetamax = vitesseMax;
-    RobotGstate.FQEI = 250;
-    RobotGstate.Tsampling = 1/RobotGstate.FQEI;
-    RobotGstate.ThetaWayPoint = M_PI/2;
+    RobotGstate.FQEI = 10;
+    RobotGstate.Tsampling = 1.0f/RobotGstate.FQEI;
+    RobotGstate.ThetaWayPoint = 0;
     
 }
 
@@ -28,7 +28,7 @@ void GhostComputation(){
     RobotGstate.ThetaRestant = ModuloByAngle(RobotGstate.ThetaGhost, RobotGstate.ThetaWayPoint) - RobotGstate.ThetaGhost;
 
     RobotGstate.ThetaArret = (RobotGstate.VTheta*RobotGstate.VTheta)/(2*RobotGstate.AccTheta);
-    RobotGstate.IncrementTheta = RobotGstate.VTheta/250;
+    RobotGstate.IncrementTheta = RobotGstate.VTheta*RobotGstate.Tsampling;
     
     
     if (RobotGstate.VTheta < 0) {
