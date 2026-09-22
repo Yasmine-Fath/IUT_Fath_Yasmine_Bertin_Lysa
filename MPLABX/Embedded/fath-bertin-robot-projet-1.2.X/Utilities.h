@@ -14,6 +14,7 @@
     void getBytesFromInt32(unsigned char *p, int index, long in);
     void getBytesFromDouble(unsigned char *p, int index, double d);
     double ModuloByAngle(double angleToCenterAround, double angle);
+    double CalculDistanceProjection(double xRobot, double yRobot, double thetaRobot,double xCible, double yCible);
 
 #endif /*UTILITIES_H*/
 
