@@ -86,34 +86,14 @@ double ModuloByAngle(double angleToCenterAround, double angle)
     return interAngle + angleToCenterAround;
 }
 
-// ---------------------------------------------------------------------
-// CalculDistanceProjection : calcule la distance signee entre le robot
-// et la PROJECTION du point cible sur l'axe d'avance du robot.
-//
-// Parametres :
-//   xRobot, yRobot   : position actuelle du robot (ou du ghost)
-//   thetaRobot       : cap actuel du robot (en radians)
-//   xCible, yCible   : position du point que l'on veut atteindre
-//
-// Retourne :
-//   La distance signee, le long de l'axe du robot, jusqu'au point
-//   projete de la cible sur cet axe.
-//     > 0  => le projete est devant le robot
-//     < 0  => le projete est derriere le robot
-// ---------------------------------------------------------------------
-double CalculDistanceProjection(double xRobot, double yRobot, double thetaRobot,
-                                 double xCible, double yCible)
-{
-    // Vecteur directeur unitaire de l'axe d'avance du robot
-    double ux = cos(thetaRobot);
-    double uy = sin(thetaRobot);
-
-    // Vecteur allant du robot vers la cible
-    double vx = xCible - xRobot;
-    double vy = yCible - yRobot;
-
-    // Produit scalaire v.u : longueur (signee) de la projection de v sur u
-    double distance = vx*ux + vy*uy;
-
-    return distance;
+double distancePointDroite(Point P, Point A, Point B) {
+    double num = fabs((B.x - A.x) * (A.y - P.y) - (A.x - P.x) * (B.y - A.y));
+    double den = sqrt((B.x - A.x) * (B.x - A.x) + (B.y - A.y) * (B.y - A.y));
+    
+    // Vérification pour éviter une division par zéro si A et B sont confondus
+    if (den == 0.0) {
+        return sqrt((P.x - A.x) * (P.x - A.x) + (P.y - A.y) * (P.y - A.y));
+    }
+    
+    return num / den;
 }

@@ -63,11 +63,11 @@ namespace Robot_interface_fath_bertin
         // 03/09
         double ThetaGhost = 0;
         double ThetaWayPoint = 0;
-        double xG = 1;
+        double xG = 0;
         double yG = 0;
         double xWP = 0;
         double yWP = 0;
-
+        double DistanceWP = 0;
 
 
 
@@ -76,7 +76,7 @@ namespace Robot_interface_fath_bertin
             InitializeComponent();
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM4", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -97,6 +97,7 @@ namespace Robot_interface_fath_bertin
 
             //oscilloSpeed.AddOrUpdateLine(lineId, 200, "Ligne1");
             //oscilloSpeed.ChangeLineColor(lineId, Color.FromRgb(255,200,0));
+
 
         }
 
@@ -181,15 +182,15 @@ namespace Robot_interface_fath_bertin
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
             // Vérifie si la TextBox "émission" contient du texte
-            if (!string.IsNullOrEmpty(textBoxEmission.Text))
-            {
-                SendMessage();
-            }
-            else
-            {
-                // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
-                //MessageBox.Show("Veuillez entrer un message dans l'émission.");
-            }
+            //if (!string.IsNullOrEmpty(textBoxEmission.Text))
+            //{
+            //    SendMessage();
+            //}
+            //else
+            //{
+            //    // Si la TextBox "émission" est vide, tu peux afficher un message d'erreur ou autre
+            //    //MessageBox.Show("Veuillez entrer un message dans l'émission.");
+            //}
 
 
         }
@@ -197,10 +198,10 @@ namespace Robot_interface_fath_bertin
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
             // Vérifie si la TextBox "émission" contient du texte
-            if (textBoxReception.Text != "")
-            {
-                textBoxReception.Clear();
-            }
+            //if (textBoxReception.Text != "")
+            //{
+            //    textBoxReception.Clear();
+            //}
 
         }
 
@@ -277,23 +278,42 @@ namespace Robot_interface_fath_bertin
 
 
         //04/09
+        private void buttonUnitaire0_Click(object sender, RoutedEventArgs e)
+        {
+            xWP = 0;
+            yWP = 0;
+
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+
+            // Envoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[8];
+
+            var data = BitConverter.GetBytes((float)xWP);
+            Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes((float)yWP);
+            Array.Copy(data, 0, payload, 4, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
+        }
+
         private void buttonUnitaire1_Click(object sender, RoutedEventArgs e)
         {
             xWP = 1;
             yWP = 0;
-            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
-            xG = xWP;
-            yG = yWP;
 
-            //renvoie du Theta Ghost sur MPLAB
-            byte[] payload = new byte[4];
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
 
-            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            // Envoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[8];
+
+            var data = BitConverter.GetBytes((float)xWP);
             Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes((float)yWP);
+            Array.Copy(data, 0, payload, 4, 4);
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);
-
-            
 
         }
 
@@ -301,19 +321,17 @@ namespace Robot_interface_fath_bertin
         {
             xWP = 0;
             yWP = 1;
-            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
-            xG = xWP;
-            yG = yWP;
 
-            // Affichage des coordonnées du Ghost
-            TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
-            TextBoxYGhostOrientation.Text = "yG : " + yG.ToString("N2");
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
 
-            //renvoie du Theta Ghost sur MPLAB
-            byte[] payload = new byte[4];
+            // Envoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[8];
 
-            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            var data = BitConverter.GetBytes((float)xWP);
             Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes((float)yWP);
+            Array.Copy(data, 0, payload, 4, 4);
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);
 
@@ -323,19 +341,18 @@ namespace Robot_interface_fath_bertin
         {
             xWP = -1;
             yWP = 0;
-            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
-            xG = xWP;
-            yG = yWP;
 
-            // Affichage des coordonnées du Ghost
-            TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
-            TextBoxYGhostOrientation.Text = "yG : " + yG.ToString("N2");
 
-            //renvoie du Theta Ghost sur MPLAB
-            byte[] payload = new byte[4];
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
 
-            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            // Envoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[8];
+
+            var data = BitConverter.GetBytes((float)xWP);
             Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes((float)yWP);
+            Array.Copy(data, 0, payload, 4, 4);
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);
 
@@ -345,19 +362,17 @@ namespace Robot_interface_fath_bertin
         {
             xWP = 0;
             yWP = -1;
-            ThetaWayPoint = Math.Atan2(yWP - yG, xWP - xG);
-            xG = xWP;
-            yG = yWP;
 
-            // Affichage des coordonnées du Ghost
-            TextBoxXGhostOrientation.Text ="xG : " + xG.ToString("N2");
-            TextBoxYGhostOrientation.Text ="yG : " + yG.ToString("N2");
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
 
-            //renvoie du Theta Ghost sur MPLAB
-            byte[] payload = new byte[4];
+            // Envoie du Theta Ghost sur MPLAB
+            byte[] payload = new byte[8];
 
-            byte[] data = BitConverter.GetBytes((float)ThetaWayPoint);
+            var data = BitConverter.GetBytes((float)xWP);
             Array.Copy(data, 0, payload, 0, 4);
+            data = BitConverter.GetBytes((float)yWP);
+            Array.Copy(data, 0, payload, 4, 4);
 
             UartEncodeAndSendMessage(0x0091, payload.Length, payload);
 
@@ -380,14 +395,14 @@ namespace Robot_interface_fath_bertin
 
         private void SendMessage()
         {
-            if (!string.IsNullOrEmpty(textBoxEmission.Text)) // Vérifie que la TextBox n'est pas vide
-            {
-                // Envoi du message via le port série
-                serialPort1.WriteLine(textBoxEmission.Text);
+            //if (!string.IsNullOrEmpty(textBoxEmission.Text)) // Vérifie que la TextBox n'est pas vide
+            //{
+            //    // Envoi du message via le port série
+            //    serialPort1.WriteLine(textBoxEmission.Text);
 
-                // Vide la TextBox "émission" après envoi
-                textBoxEmission.Clear();
-            }
+            //    // Vide la TextBox "émission" après envoi
+            //    textBoxEmission.Clear();
+            //}
         }
 
         private byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
@@ -643,7 +658,7 @@ namespace Robot_interface_fath_bertin
                     {
                         int instant = (((int)msgPayload[1]) << 24) + (((int)msgPayload[2]) << 16) + (((int)msgPayload[3]) << 8) + ((int)msgPayload[4]);
                         //rtbReception.Text += "\nRobot␣State␣:␣" + ((StateRobot)(msgPayload[0])).ToString() + "␣-␣" + instant.ToString() + "␣ms";
-                        textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
+                        //textBoxReception.AppendText($"\nRobot State: {((StateRobot)msgPayload[0]).ToString()} - {instant} ms");
                     }
                     break;
 
@@ -747,25 +762,29 @@ namespace Robot_interface_fath_bertin
                 //////// ***************03/09**************
                 case 0x0090:
                     {
-                        //****************Récupération du theta ghost*****************
-                        ThetaGhost = BitConverter.ToSingle(msgPayload, 0);
+                        //****************Récupération du ghost et WayPoint*****************
+                        xG = BitConverter.ToSingle(msgPayload, 0);
+                        yG = BitConverter.ToSingle(msgPayload, 4);
+                        ThetaGhost = BitConverter.ToSingle(msgPayload, 8);
+                        xWP = BitConverter.ToSingle(msgPayload, 12);
+                        yWP = BitConverter.ToSingle(msgPayload, 16);
+                        ThetaWayPoint = BitConverter.ToSingle(msgPayload, 20);
+                        DistanceWP = BitConverter.ToSingle(msgPayload, 24);
 
                         // Affichage du Theta Ghost
                         TextBoxAngleThetaGhost.Text =
                             "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad, " + (ThetaGhost*180/double.Pi).ToString("N2") + " °";
 
                         // Affichage des coordonnées du Ghost
-                        TextBoxXGhostOrientation.Text =
-                            "xG : " + xG.ToString("N2");
+                        TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
+                        TextBoxYGhostOrientation.Text = "yG : " + yG.ToString("N2");
 
-                        TextBoxYGhostOrientation.Text =
-                            "yG : " + yG.ToString("N2");
                         // Affichage des coordonnées du WayPoint
-                        TextBoxXWayPointOrientation.Text =
-                            "xWP : " + xWP.ToString("N2");
+                        TextBoxXWayPointOrientation.Text = "xWP : " + xWP.ToString("N2");
+                        TextBoxYWayPointOrientation.Text = "yWP : " + yWP.ToString("N2");
+                        // Affichage graphique
+                        robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
 
-                        TextBoxYWayPointOrientation.Text =
-                            "yWP : " + yWP.ToString("N2");
                     }
                     break;
 
@@ -817,7 +836,7 @@ namespace Robot_interface_fath_bertin
             }
         }
 
-       
+
 
 
 

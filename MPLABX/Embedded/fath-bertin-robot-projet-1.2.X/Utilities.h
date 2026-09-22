@@ -14,7 +14,13 @@
     void getBytesFromInt32(unsigned char *p, int index, long in);
     void getBytesFromDouble(unsigned char *p, int index, double d);
     double ModuloByAngle(double angleToCenterAround, double angle);
-    double CalculDistanceProjection(double xRobot, double yRobot, double thetaRobot,double xCible, double yCible);
+    
+    typedef struct {
+        float x;
+        float y;
+    } Point;
+    double distancePointDroite(Point P, Point A, Point B);
+
 
 #endif /*UTILITIES_H*/
 

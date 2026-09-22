@@ -19,12 +19,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Réception" Grid.Column="1" Grid.Row="0" Margin="5">
+        <!--<GroupBox Header="Réception" Grid.Column="1" Grid.Row="0" Margin="5">
             <TextBox x:Name="textBoxReception" TextWrapping="Wrap" Text="" TextChanged="TextBox_TextChanged" IsReadOnly="True" AcceptsReturn="True"/>
         </GroupBox>
         <GroupBox Header="Émission" Grid.Column="0" Grid.Row="0" Margin="5">
             <TextBox x:Name="textBoxEmission" TextWrapping="Wrap" Text="" AcceptsReturn="True" PreviewKeyDown="TextBoxEmission_PreviewKeyDown"/>
-        </GroupBox>
+        </GroupBox>-->
+
+        <local:RobotPositionInterface x:Name="robotPositionInterface" Width="500" Height="500"/>
+
+
+
         <StackPanel  Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Envoyer" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonEnvoyer_Click" Margin="5" />
             <Button x:Name="buttonClear" Grid.Column="3" Content="Clear" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20" Click="buttonClear_Click" Margin="5"/>
@@ -90,10 +95,11 @@
 
         </StackPanel>
 
-        <Button x:Name="buttonUnitaire1" Grid.Column="2" Content="Point 1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire1_Click"  Margin="10,134,0,0"/>
-        <Button x:Name="buttonUnitaire2" Grid.Column="2" Content="Point 0,1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire2_Click"  Margin="157,134,0,0"/>
-        <Button x:Name="buttonUnitaire3" Grid.Column="2" Content="Point -1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire3_Click"  Margin="10,164,0,0"/>
-        <Button x:Name="buttonUnitaire4" Grid.Column="2" Content="Point 0,-1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire4_Click"  Margin="157,164,0,0"/>
+        <Button x:Name="buttonUnitaire0" Grid.Column="2" Content="Point 0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire0_Click"  Margin="0,119,0,0"/>
+        <Button x:Name="buttonUnitaire1" Grid.Column="2" Content="Point 1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire1_Click"  Margin="10,82,0,0"/>
+        <Button x:Name="buttonUnitaire2" Grid.Column="2" Content="Point 0,1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire2_Click"  Margin="157,82,0,0"/>
+        <Button x:Name="buttonUnitaire3" Grid.Column="2" Content="Point -1,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire3_Click"  Margin="10,159,0,0"/>
+        <Button x:Name="buttonUnitaire4" Grid.Column="2" Content="Point 0,-1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="20" Click="buttonUnitaire4_Click"  Margin="157,159,0,0"/>
 
 
 

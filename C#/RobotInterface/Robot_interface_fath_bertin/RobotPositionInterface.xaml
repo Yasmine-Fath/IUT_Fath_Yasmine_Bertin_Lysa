@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Robot_interface_fath_bertin.RobotPositionInterface"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="300"
+             MinHeight="300">
+
+    <Border BorderBrush="Gray"
+            BorderThickness="1"
+            Background="White">
+
+        <Canvas x:Name="canvasRobot"
+                ClipToBounds="True"/>
+
+    </Border>
+
+</UserControl>
+
+

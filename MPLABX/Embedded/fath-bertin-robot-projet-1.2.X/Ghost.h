@@ -25,7 +25,16 @@ typedef struct GState {
             
             float GhostRecu;    //Theta ghost recu
             
-                     
+           //Position du Ghost et WayPoint
+            float xGhost;
+            float yGhost;
+            float xWaypoint;
+            float yWaypoint;
+            float DistanceGhostWaypoint;
+            
+
+            //Vitesse linéaire du Ghost
+            float VGhost;         
         };
     };
 } GSTATE;
@@ -33,6 +42,7 @@ typedef struct GState {
 extern GSTATE RobotGstate;
 void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax);
 void GhostComputation();
+void CalculDistanceGhostWaypoint(void);
 
 // 03/09
 //void AffichageGHOST(GSTATE gState);

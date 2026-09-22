@@ -222,5 +222,9 @@ void ValeurConsigne(unsigned char* msgPayload){
 
 //04/09
 void RecepetionGhost(unsigned char* msgPayload){
-    RobotGstate.ThetaWayPoint = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
+    //RobotGstate.ThetaWayPoint = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
+    
+    RobotGstate.xWaypoint = getFloat(msgPayload, 0);
+    RobotGstate.yWaypoint = getFloat(msgPayload, 4);
+    RobotGstate.ThetaWayPoint = atan2f( RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
 }
