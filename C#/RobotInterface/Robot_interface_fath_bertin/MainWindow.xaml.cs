@@ -145,6 +145,10 @@ namespace Robot_interface_fath_bertin
             //asservSpeedDisplay.UpdatePolarSpeedErrorValues(13, 14);
             //asservSpeedDisplay.UpdatePolarSpeedCorrectionValues(7, 8, 9, 10, 11, 12);
 
+            // Affichage graphique
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
+
+
         }
 
         public void SerialPort1_DataReceived(object sender, DataReceivedArgs e)
@@ -284,7 +288,7 @@ namespace Robot_interface_fath_bertin
             yWP = 0;
 
             // Affichage graphique
-            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
             // Envoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[8];
@@ -303,7 +307,7 @@ namespace Robot_interface_fath_bertin
             yWP = 0;
 
             // Affichage graphique
-            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
             // Envoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[8];
@@ -323,7 +327,7 @@ namespace Robot_interface_fath_bertin
             yWP = 1;
 
             // Affichage graphique
-            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
             // Envoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[8];
@@ -344,7 +348,7 @@ namespace Robot_interface_fath_bertin
 
 
             // Affichage graphique
-            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
             // Envoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[8];
@@ -364,7 +368,7 @@ namespace Robot_interface_fath_bertin
             yWP = -1;
 
             // Affichage graphique
-            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+            robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
             // Envoie du Theta Ghost sur MPLAB
             byte[] payload = new byte[8];
@@ -772,8 +776,7 @@ namespace Robot_interface_fath_bertin
                         DistanceWP = BitConverter.ToSingle(msgPayload, 24);
 
                         // Affichage du Theta Ghost
-                        TextBoxAngleThetaGhost.Text =
-                            "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad, " + (ThetaGhost*180/double.Pi).ToString("N2") + " °";
+                        TextBoxAngleThetaGhost.Text = "Theta Ghost : " + ThetaGhost.ToString("N2") + " rad, " + (ThetaGhost*180/double.Pi).ToString("N2") + " °";
 
                         // Affichage des coordonnées du Ghost
                         TextBoxXGhostOrientation.Text = "xG : " + xG.ToString("N2");
@@ -783,7 +786,7 @@ namespace Robot_interface_fath_bertin
                         TextBoxXWayPointOrientation.Text = "xWP : " + xWP.ToString("N2");
                         TextBoxYWayPointOrientation.Text = "yWP : " + yWP.ToString("N2");
                         // Affichage graphique
-                        robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP);
+                        robotPositionInterface.AfficherPosition(xG, yG, ThetaGhost, xWP, yWP, ThetaWayPoint, DistanceWP);
 
                     }
                     break;

@@ -71,12 +71,69 @@ void GhostComputation() {
     RobotGstate.ThetaGhost = RobotGstate.ThetaGhost + RobotGstate.IncrementTheta;
 
     // ============================================================
+    // CALCUL DE LA DISTANCE REELLE DU GHOST AU WAYPOINT
+    // ============================================================
+
+    float dx = RobotGstate.xWaypoint - RobotGstate.xGhost;
+    float dy = RobotGstate.yWaypoint - RobotGstate.yGhost;
+    float distanceAvantDeplacement = sqrtf(dx * dx + dy * dy);
+
+    // ============================================================
+    // DISTANCE PARCOURUE PENDANT CE CYCLE
+    // ============================================================
+
+    float distanceDeplacement = RobotGstate.VGhost * RobotGstate.Tsampling;
+
+    // ============================================================
     // CALCUL DE LA POSITION DU GHOST
     // ============================================================
 
-    RobotGstate.xGhost += RobotGstate.VGhost * cosf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
-    RobotGstate.yGhost += RobotGstate.VGhost * sinf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
+    /*
+     * Si le Ghost est déjà arrivé au waypoint,
+     * on le place exactement sur le waypoint.
+     *
+     * Cela évite que la position continue à évoluer.
+     */
 
+    if (distanceAvantDeplacement <= 0.001f) {
+
+        RobotGstate.xGhost = RobotGstate.xWaypoint;
+        RobotGstate.yGhost = RobotGstate.yWaypoint;
+        RobotGstate.DistanceGhostWaypoint = 0.0f;
+    }
+        /*
+         * Si le Ghost va atteindre ou dépasser le waypoint
+         * pendant ce cycle, on le place directement sur le waypoint.
+         *
+         * Exemple :
+         *
+         * Distance restante = 0.01 m
+         * Déplacement prévu = 0.02 m
+         *
+         * Au lieu de faire :
+         *
+         * 0.00 -> 0.02
+         *
+         * on fait :
+         *
+         * 0.00 -> 0.01
+         *
+         * et le Ghost s'arrête exactement sur le waypoint.
+         */
+
+    else if (distanceAvantDeplacement <= distanceDeplacement) {
+        RobotGstate.xGhost = RobotGstate.xWaypoint;
+        RobotGstate.yGhost = RobotGstate.yWaypoint;
+        RobotGstate.DistanceGhostWaypoint = 0.0f;
+    }
+        /*
+         * Sinon, le Ghost continue normalement son déplacement.
+         */
+
+    else {
+        RobotGstate.xGhost += RobotGstate.VGhost * cosf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
+        RobotGstate.yGhost += RobotGstate.VGhost * sinf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
+    }
     // ============================================================
     // CALCUL DE LA DISTANCE DU WAYPOINT AU SEGMENT AB
     // ============================================================
@@ -88,6 +145,13 @@ void GhostComputation() {
         RobotGstate.ThetaGhost = RobotGstate.ThetaWayPoint;
 
     }
+    if (RobotGstate.ThetaRestant != 0) {
+
+        RobotGstate.ThetaWayPoint = atan2f(RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
+
+    }
+
+
 
 }
 
