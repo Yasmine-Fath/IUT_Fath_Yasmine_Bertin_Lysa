@@ -1,0 +1,52 @@
+3)2)a) La supervision permet de faire remonter les informations de fonctionnement du robot vers une interface graphique. Cette communication repose sur un échange de données structuré selon l’implantation de la norme OSI appliquée aux bus terrain. Les informations sont transmises sous forme de trames série respectant un format précis afin d’assurer une interprétation correcte par le logiciel de supervision.
+
+Dans ce cadre, les fonctions UartEncodeAndSendMessage et UartCalculateChecksum ont été implémentées en langage C en s’inspirant de la version existante en C#. Les deux autres fonctions prévues dans le module UART n’étant pas nécessaires à ce stade du projet, elles ont été laissées non implantées et simplement commentées afin de conserver la lisibilité du code.
+
+Un premier test de communication a été réalisé depuis la fonction principale en utilisant la fonction UartEncodeAndSendMessage avec un identifiant de fonction égal à 0x0080. La payload correspond à une chaîne de caractères contenant le mot « Bonjour », stockée dans un tableau d’octets. Une temporisation a été ajoutée entre chaque envoi afin de limiter le débit de transmission. Cette temporisation est indispensable, car sans elle, le programme de réception en C# ne parvient pas à traiter correctement le flux de données reçu.
+
+Les résultats de ce test apparaissent correctement dans la console de réception de l’interface C#.//PHOTO supervision_3_textboxReception_bonjour8
+
+Les caractères du message ainsi que le contenu de la payload sont affichés, ce qui confirme que la trame est correctement constituée. Une capture de la trame observée à l’oscilloscope, associée à l’affichage du message dans la textbox de réception, permet de valider le bon fonctionnement de la communication série.
+//PHOTO Bonjour_3.2.1_ASCII et HEXA
+
+Après validation de l’envoi du message de test, l’appel à cette fonction ainsi que la temporisation bloquante ont été désactivés. L’envoi des données est alors réalisé directement à la fin de la fonction de conversion des valeurs issues des télémètres infrarouges. Les mesures sont transmises vers l’interface graphique en C# sous la forme d’une trame dont la structure respecte le format défini dans le tableau de la figure 11. // PHOTO supervisio_3_telemetres_textboxreception et telemetre_3.2.1
+
+Afin d’éviter une surcharge de l’affichage, la réception des caractères bruts dans la console C# a été désactivée. Les valeurs des télémètres infrarouges sont désormais affichées uniquement dans les champs dédiés de l’interface graphique. Des captures de la trame observée à l’oscilloscope ainsi que de l’affichage correspondant dans l’interface C# confirment la cohérence entre les données transmises et les valeurs affichées à l’écran.
+
+Une fonction de supervision supplémentaire a été implantée afin de détecter le passage du robot d’une étape de déplacement à une autre. Les étapes correspondent aux instants où de nouvelles consignes de vitesse sont envoyées aux moteurs. Aucun message n’est transmis durant les phases d’attente entre deux transitions afin d’éviter une surcharge de la console de réception.
+
+Cette nouvelle fonction de supervision utilise l’identifiant 0x0050. La payload associée est composée de cinq octets. Le premier octet correspond au numéro de l’étape courante du robot, tandis que les quatre octets suivants représentent l’instant de déclenchement de cette étape, codé en millisecondes. Ce format permet de connaître précisément l’ordre et le moment d’exécution des différentes phases de déplacement.
+
+L’envoi de cette trame est réalisé uniquement lors d’un changement d’état du robot, c’est-à-dire au moment où de nouvelles consignes de vitesse sont appliquées aux moteurs. Ce choix garantit un flux de données limité et pertinent pour la supervision, tout en évitant l’envoi répétitif de messages inutiles.
+
+Afin de valider le bon fonctionnement de cette supervision, une modification a été apportée au programme de réception en C#. Un nouveau traitement a été ajouté dans la fonction ProcessDecodedMessage pour gérer les messages dont l’identifiant est 0x0050. Lors de la réception, l’instant est reconstruit à partir des quatre octets de la payload, et l’état du robot est interprété à l’aide d’une énumération définissant l’ensemble des étapes possibles.
+
+Les états du robot sont définis par une énumération regroupant les phases d’attente, d’avance, de rotation, de recul et d’arrêt, ainsi que leurs états intermédiaires. Cette énumération permet un affichage clair et lisible de l’étape courante du robot dans la console de réception.
+
+Les informations reçues sont affichées dans l’interface graphique C# sous la forme du nom de l’état du robot suivi de son instant de déclenchement en millisecondes.
+
+PHOTO 3.2.1_code_0050
+
+b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
