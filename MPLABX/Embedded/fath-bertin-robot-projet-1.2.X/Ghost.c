@@ -8,7 +8,7 @@
 #include "timer.h"
 
 
-#define SEUIL_ARRIVEE 0.002f   // 2 mm
+#define SEUIL_ANGLE_AVANCE (5.0f * M_PI / 180.0f)
 GSTATE RobotGstate;
 
 
@@ -27,94 +27,12 @@ void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax) 
     RobotGstate.xGhost = 0.0f;
     RobotGstate.yGhost = 0.0f;
     // Vitesse linéaire du Ghost
-    RobotGstate.VGhost = 0.0f;
-    RobotGstate.state = GHOST_ROTATION;
-    RobotGstate.VLin = 0.0f;
-    RobotGstate.VLinMax = 0.5f; // m/s
-    RobotGstate.AccLin = 0.5f; // m/s²
-    RobotGstate.DistanceRestante = 0.0f;
-
+    RobotGstate.VGhost = 0.2f;
 }
 
-void GhostComputation() {
 
-    if (RobotGstate.state == GHOST_IDLE) {
-        RobotGstate.VTheta = 0;
-        RobotGstate.VLin = 0;
-        return;
-    }
-
-    if (RobotGstate.state == GHOST_DEPLACEMENT_LINEAIRE) {
-        GhostComputationLin();
-        return;
-    }
-
-    if (RobotGstate.state == GHOST_ROTATION) {
-        GhostComputationRot();
-        return;
-    }
-}
-//    09/10 matin
-
-void GhostComputationLin(void) {
-
-    float c = cosf(RobotGstate.ThetaGhost);
-    float s = sinf(RobotGstate.ThetaGhost);
-
-    // Devant ou derrière + distance restante signée (joue le rôle de ThetaRestant)
-    int devant = WaypointDevant();
-    float dist = Abs(DistanceProjeteeSurAxe());
-    RobotGstate.DistanceRestante = devant ? dist : -dist;
-
-    // Distance d'arrêt (joue le rôle de ThetaArret) : signe selon le sens de la vitesse
-    RobotGstate.DistanceArret = (RobotGstate.VLin * Abs(RobotGstate.VLin)) / (2 * RobotGstate.AccLin);
-
-    // Incrément de ce cycle (joue le rôle de IncrementTheta)
-    RobotGstate.IncrementLin = RobotGstate.VLin * RobotGstate.Tsampling;
-
-    if (((RobotGstate.DistanceArret >= 0 && RobotGstate.DistanceRestante >= 0) ||
-            (RobotGstate.DistanceArret <= 0 && RobotGstate.DistanceRestante <= 0)) &&
-            Abs(RobotGstate.DistanceRestante) >= Abs(RobotGstate.DistanceArret)) {
-
-        // On accélère en rampe saturée
-        if (RobotGstate.DistanceRestante > 0) {
-            // Waypoint devant : on accélère en positif, saturé à VLinMax
-            RobotGstate.VLin = Min(RobotGstate.VLin + RobotGstate.AccLin / RobotGstate.FQEI, RobotGstate.VLinMax);
-        } else if (RobotGstate.DistanceRestante < 0) {
-            // Waypoint derrière : on accélère en négatif, saturé à -VLinMax
-            RobotGstate.VLin = Max(RobotGstate.VLin - RobotGstate.AccLin / RobotGstate.FQEI, -RobotGstate.VLinMax);
-        }
-    } else {
-        // On freine en rampe saturée
-        if (RobotGstate.VLin > 0) {
-            RobotGstate.VLin = Max(RobotGstate.VLin - RobotGstate.AccLin / RobotGstate.FQEI, 0);
-        } else if (RobotGstate.VLin < 0) {
-            RobotGstate.VLin = Min(RobotGstate.VLin + RobotGstate.AccLin / RobotGstate.FQEI, 0);
-        }
-    }
-
-    // On ne dépasse jamais le projeté
-    if (Abs(RobotGstate.DistanceRestante) < Abs(RobotGstate.IncrementLin)) {
-        RobotGstate.IncrementLin = RobotGstate.DistanceRestante;
-    }
-
-    // On intègre le déplacement le long de l'axe du ghost
-    RobotGstate.xGhost += RobotGstate.IncrementLin * c;
-    RobotGstate.yGhost += RobotGstate.IncrementLin * s;
-
-    // Valeur affichée dans l'interface
-    RobotGstate.DistanceGhostWaypoint = Abs(RobotGstate.DistanceRestante);
-
-    // Projeté atteint et ghost arrêté -> retour en Idle
-    if (RobotGstate.VLin == 0 && Abs(RobotGstate.DistanceRestante) < SEUIL_ARRIVEE) {
-        RobotGstate.state = GHOST_IDLE;
-    }
-
-    return; // on ne passe pas dans le code de rotation
-
-}
-
-void GhostComputationRot(void) {
+void GhostComputation(void)
+{
     RobotGstate.ThetaRestant = ModuloByAngle(RobotGstate.ThetaGhost, RobotGstate.ThetaWayPoint) - RobotGstate.ThetaGhost;
 
     RobotGstate.ThetaArret = (RobotGstate.VTheta * RobotGstate.VTheta) / (2 * RobotGstate.AccTheta);
@@ -212,7 +130,7 @@ void GhostComputationRot(void) {
          * Sinon, le Ghost continue normalement son déplacement.
          */
 
-    else {
+    else if (Abs(RobotGstate.ThetaRestant) < SEUIL_ANGLE_AVANCE) {
         RobotGstate.xGhost += RobotGstate.VGhost * cosf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
         RobotGstate.yGhost += RobotGstate.VGhost * sinf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
     }
@@ -226,9 +144,6 @@ void GhostComputationRot(void) {
     if (RobotGstate.VTheta == 0 && Abs(RobotGstate.ThetaRestant) < 0.01) {
         RobotGstate.ThetaGhost = RobotGstate.ThetaWayPoint;
 
-        RobotGstate.VLin = 0;
-        RobotGstate.state = GHOST_DEPLACEMENT_LINEAIRE;
-
     }
     if (RobotGstate.ThetaRestant != 0) {
 
@@ -236,46 +151,6 @@ void GhostComputationRot(void) {
 
     }
 }
-
-// Retourne 1 si le waypoint est DEVANT le ghost (angle dans [-90° ; 90°]), 0 s'il est DERRIERE
-
-int WaypointDevant(void) {
-    float dx = RobotGstate.xWaypoint - RobotGstate.xGhost;
-    float dy = RobotGstate.yWaypoint - RobotGstate.yGhost;
-
-    // Direction du waypoint vue depuis le ghost
-    float angleWaypoint = atan2f(dy, dx);
-
-    // Angle entre l'axe de déplacement (ThetaGhost) et cette direction, ramené dans [-pi ; pi]
-    RobotGstate.AngleAxeWaypoint = ModuloByAngle(0, angleWaypoint - RobotGstate.ThetaGhost);
-
-    // Dans [-90° ; 90°] -> devant, sinon derrière
-    if (RobotGstate.AngleAxeWaypoint >= -M_PI / 2 && RobotGstate.AngleAxeWaypoint <= M_PI / 2)
-        return 1;
-    else
-        return 0;
-}
-
-// Distance signée entre le ghost et le projeté du waypoint sur l'axe du ghost
-
-float DistanceProjeteeSurAxe(void) {
-    float dx = RobotGstate.xWaypoint - RobotGstate.xGhost;
-    float dy = RobotGstate.yWaypoint - RobotGstate.yGhost;
-    return dx * cosf(RobotGstate.ThetaGhost) + dy * sinf(RobotGstate.ThetaGhost);
-}
-
-void SetWaypoint(float x, float y) {
-    RobotGstate.xWaypoint = x;
-    RobotGstate.yWaypoint = y;
-    RobotGstate.ThetaWayPoint = atan2f(y - RobotGstate.yGhost, x - RobotGstate.xGhost);
-    RobotGstate.VTheta = 0;
-    RobotGstate.VLin = 0;
-    RobotGstate.state = GHOST_ROTATION;
-}
-
-
-
-
 // 03/09
 /// AFFICHAGE DU GHOST
 
@@ -346,5 +221,6 @@ void CalculDistanceGhostWaypoint(void) {
 
     RobotGstate.DistanceGhostWaypoint = distance;
 }
+
 
 

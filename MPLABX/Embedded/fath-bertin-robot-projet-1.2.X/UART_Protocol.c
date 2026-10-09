@@ -227,6 +227,4 @@ void RecepetionGhost(unsigned char* msgPayload){
     RobotGstate.xWaypoint = getFloat(msgPayload, 0);
     RobotGstate.yWaypoint = getFloat(msgPayload, 4);
     RobotGstate.ThetaWayPoint = atan2f( RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
-    SetWaypoint(RobotGstate.xWaypoint, RobotGstate.yWaypoint);
-    RobotGstate.state = GHOST_DEPLACEMENT_LINEAIRE;
 }

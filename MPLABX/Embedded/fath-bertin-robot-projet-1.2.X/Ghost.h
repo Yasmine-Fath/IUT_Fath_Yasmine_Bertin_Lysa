@@ -8,11 +8,6 @@
 #ifndef GHOST_H
 #define	GHOST_H
 
-typedef enum {
-    GHOST_IDLE = 0,
-    GHOST_ROTATION,
-    GHOST_DEPLACEMENT_LINEAIRE
-} GhostMode;
 
 typedef struct GState {
 
@@ -43,14 +38,6 @@ typedef struct GState {
 
             //Vitesse linéaire du Ghost
             float VGhost;
-
-            GhostMode state;
-            float VLin; // vitesse linéaire du ghost (signée)
-            float VLinMax;
-            float AccLin;
-            float DistanceRestante; // équivalent de ThetaRestant
-            float DistanceArret; // équivalent de ThetaArret
-            float IncrementLin; // équivalent de IncrementTheta
         };
     };
 } GSTATE;
@@ -59,11 +46,6 @@ extern GSTATE RobotGstate;
 void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax);
 void GhostComputation();
 void CalculDistanceGhostWaypoint(void);
-int WaypointDevant(void);
-void SetWaypoint(float x, float y);
-void GhostComputationLin(void);
-float DistanceProjeteeSurAxe(void);
-void GhostComputationRot(void);
 
 // 03/09
 //void AffichageGHOST(GSTATE gState);
