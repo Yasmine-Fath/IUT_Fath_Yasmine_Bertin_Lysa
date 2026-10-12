@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/BrouiilonGhostC.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/CB_RX1.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Ghost.h</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.h</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/UART_Protocol.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/UART_Protocol.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Utilities.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/main.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/BrouillonGhostC.h</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/timer.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Ghost.c</file>
         </group>
     </open-files>

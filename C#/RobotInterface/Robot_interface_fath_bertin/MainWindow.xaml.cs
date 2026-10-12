@@ -74,6 +74,7 @@ namespace Robot_interface_fath_bertin
         public MainWindow()
         {
             InitializeComponent();
+            robotPositionInterface.OnCtrlClick += (x, y) => SendWaypoint(x, y);
 
             // Initialiser le port série avec les paramètres spécifiés
             serialPort1 = new ExtendedSerialPort("COM4", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
@@ -278,6 +279,18 @@ namespace Robot_interface_fath_bertin
         {
             UartEncodeAndSendMessage(0x0052, 1, new byte[] { (byte)StateRobot.STATE_ATTENTE_EN_COURS });        //STATE_ATTENTE_EN_COURS pour avoir un payload = 1 -> auto
 
+        }
+
+        private void SendWaypoint(double x, double y)
+        {
+            xWP = x;
+            yWP = y;
+
+            byte[] payload = new byte[8];
+            Array.Copy(BitConverter.GetBytes((float)x), 0, payload, 0, 4);
+            Array.Copy(BitConverter.GetBytes((float)y), 0, payload, 4, 4);
+
+            UartEncodeAndSendMessage(0x0091, payload.Length, payload);
         }
 
 
@@ -838,6 +851,8 @@ namespace Robot_interface_fath_bertin
                     break;
             }
         }
+
+
 
 
 

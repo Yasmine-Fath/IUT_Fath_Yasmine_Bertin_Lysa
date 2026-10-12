@@ -8,6 +8,7 @@
 #ifndef GHOST_H
 #define	GHOST_H
 
+#include "asservissement.h"
 
 typedef struct GState {
 
@@ -50,6 +51,14 @@ void CalculDistanceGhostWaypoint(void);
 // 03/09
 //void AffichageGHOST(GSTATE gState);
 void AffichageGHOST();
+
+
+
+extern volatile PidCorrector PD_Position_Lineaire;
+extern volatile PidCorrector PD_Position_Angulaire;
+
+void SetupPIDPosition(void);
+void PIDPosition(void);
 
 
 

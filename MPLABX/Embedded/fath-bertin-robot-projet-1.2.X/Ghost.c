@@ -7,9 +7,11 @@
 #include "UART_Protocol.h"
 #include "timer.h"
 
-
 #define SEUIL_ANGLE_AVANCE (5.0f * M_PI / 180.0f)
 GSTATE RobotGstate;
+
+volatile PidCorrector PD_Position_Lineaire;
+volatile PidCorrector PD_Position_Angulaire;
 
 
 //void SetupGhostState(GSTATE* RobotGstate, float theta, float vitesse, float accel, float vitesseMax){
@@ -28,11 +30,11 @@ void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax) 
     RobotGstate.yGhost = 0.0f;
     // Vitesse linéaire du Ghost
     RobotGstate.VGhost = 0.2f;
+    RobotGstate.xWaypoint = 0;
+    RobotGstate.yWaypoint = 0;
 }
 
-
-void GhostComputation(void)
-{
+void GhostComputation(void) {
     RobotGstate.ThetaRestant = ModuloByAngle(RobotGstate.ThetaGhost, RobotGstate.ThetaWayPoint) - RobotGstate.ThetaGhost;
 
     RobotGstate.ThetaArret = (RobotGstate.VTheta * RobotGstate.VTheta) / (2 * RobotGstate.AccTheta);
@@ -141,11 +143,11 @@ void GhostComputation(void)
 
 
     // On gère les erreurs numériques d?arrondis
-    if (RobotGstate.VTheta == 0 && Abs(RobotGstate.ThetaRestant) < 0.01) {
+    if (RobotGstate.VTheta == 0 && Abs(RobotGstate.ThetaRestant) < 0.01f) {
         RobotGstate.ThetaGhost = RobotGstate.ThetaWayPoint;
 
     }
-    if (RobotGstate.ThetaRestant != 0) {
+    if (RobotGstate.ThetaRestant != 0 && distanceAvantDeplacement > 0.001f) {
 
         RobotGstate.ThetaWayPoint = atan2f(RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
 
@@ -222,5 +224,28 @@ void CalculDistanceGhostWaypoint(void) {
     RobotGstate.DistanceGhostWaypoint = distance;
 }
 
+void SetupPIDPosition(void) {
+    //                                   Kp  Ki  Kd  Pmax IntMax DerMax
+    SetupPidAsservissement(&PD_Position_Lineaire, 0, 0, 1, 1.5, 1.5, 1.5);
+    SetupPidAsservissement(&PD_Position_Angulaire, 0, 0, 1, 6, 6, 6);
+}
+
+void PIDPosition(void) {
+    // ---------- 1) Erreur angulaire (robot réel -> ghost) ----------
+    // ModuloByAngle ramène ?ghost dans [?robot - ? ; ?robot + ?]
+    // => on prend toujours le chemin le plus court
+    float thetaRobot = robotState.angleRadianFromOdometry;
+    float erreurTheta = ModuloByAngle(thetaRobot, RobotGstate.ThetaGhost) - thetaRobot;
+
+    // ---------- 2) Erreur linéaire signée (figure 5) ----------
+    float dx = RobotGstate.xGhost - robotState.xPosFromOdometry;
+    float dy = RobotGstate.yGhost - robotState.yPosFromOdometry;
 
 
+    float erreurLineaire = dx * cosf(thetaRobot) + dy * sinf(thetaRobot);
+
+    // ---------- 3) Correcteurs PD ----------
+    // Les sorties deviennent les consignes de l'asservissement en vitesse
+    robotState.vitesseLineaireConsigne = Correcteur(&PD_Position_Lineaire, erreurLineaire);
+    robotState.vitesseAngulaireConsigne = Correcteur(&PD_Position_Angulaire, erreurTheta);
+}

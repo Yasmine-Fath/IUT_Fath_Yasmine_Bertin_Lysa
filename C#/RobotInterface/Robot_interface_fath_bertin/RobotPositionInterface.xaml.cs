@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Robot_interface_fath_bertin
 {
+
     public partial class RobotPositionInterface : UserControl
     {
+        // Événement déclenché par un CTRL+Click, avec les coordonnées terrain en mètres
+        public event Action<double, double> OnCtrlClick;
         // ============================================================
         // DERNIERES VALEURS RECUES DE L'EMBARQUE
         // ============================================================
@@ -44,6 +48,7 @@ namespace Robot_interface_fath_bertin
 
             SizeChanged += RobotPositionInterface_SizeChanged;
             Loaded += RobotPositionInterface_Loaded;
+            canvasRobot.MouseLeftButtonDown += CanvasRobot_MouseLeftButtonDown;
         }
 
         // ============================================================
@@ -669,6 +674,29 @@ namespace Robot_interface_fath_bertin
                 centre.Y + 10);
 
             canvasRobot.Children.Add(texte);
+        }
+
+
+        private Point CanvasVersCoordonnees(Point p)
+        {
+            double origineX = canvasRobot.ActualWidth / 2.0;
+            double origineY = canvasRobot.ActualHeight / 2.0;
+
+            double x = (p.X - origineX) / echelle;
+            double y = (origineY - p.Y) / echelle;     // Y inversé comme dans CoordonneesVersCanvas
+
+            return new Point(x, y);
+        }
+
+        private void CanvasRobot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (Keyboard.Modifiers != ModifierKeys.Control)
+                return;
+
+            Point pixel = e.GetPosition(canvasRobot);
+            Point terrain = CanvasVersCoordonnees(pixel);
+
+            OnCtrlClick?.Invoke(terrain.X, terrain.Y);
         }
     }
 }

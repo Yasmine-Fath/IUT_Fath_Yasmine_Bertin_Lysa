@@ -24,8 +24,8 @@ void InitTimer1(void) {
     IEC0bits.T1IE = 1; // Enable Timer interrupt
     SetFreqTimer1(f1);
     T1CONbits.TON = 1; // Enable Timer
-      
- 
+
+
 }
 //Interruption du timer 1
 
@@ -34,16 +34,20 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     //LED_BLANCHE_1 = !LED_BLANCHE_1;
     ADC1StartConversionSequence();
     QEIUpdateData();
-    UpdateAsservissement();
+
     PWMUpdateSpeed();
-    
-    if(cpt++ % 25 == 0){
+
+    if (cpt++ % 25 == 0) {
         SendPositionData();
     }
-    
+
     GhostComputation();
+    PIDPosition();
+    UpdateAsservissement();
     //AffichageGHOST(ghostState);
     AffichageGHOST();
+    AffichagePID();
+
 }
 //Initialisation d?un timer 32 bits
 
@@ -67,15 +71,15 @@ void InitTimer23(void) {
 void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void) {
     IFS0bits.T3IF = 0; // Clear Timer3 Interrupt Flag
     //LED_ORANGE_1 = !LED_ORANGE_1;
-//    if (toggle == 0) {
-//        PWMSetSpeedConsigne(20, MOTEUR_DROIT);
-//        PWMSetSpeedConsigne(20, MOTEUR_GAUCHE);
-//        toggle = 1;
-//    } else {
-//        PWMSetSpeedConsigne(-20, MOTEUR_DROIT);
-//        PWMSetSpeedConsigne(-20, MOTEUR_GAUCHE);
-//        toggle = 0;
-//    }
+    //    if (toggle == 0) {
+    //        PWMSetSpeedConsigne(20, MOTEUR_DROIT);
+    //        PWMSetSpeedConsigne(20, MOTEUR_GAUCHE);
+    //        toggle = 1;
+    //    } else {
+    //        PWMSetSpeedConsigne(-20, MOTEUR_DROIT);
+    //        PWMSetSpeedConsigne(-20, MOTEUR_GAUCHE);
+    //        toggle = 0;
+    //    }
 }
 
 void SetFreqTimer1(float freq) {
