@@ -16,13 +16,13 @@ volatile PidCorrector PD_Position_Angulaire;
 
 //void SetupGhostState(GSTATE* RobotGstate, float theta, float vitesse, float accel, float vitesseMax){
 
-void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax) {
+void SetupGhostState(volatile GSTATE* Ghost, float theta, float vitesse, float accel, float vitesseMax) {
 
     RobotGstate.ThetaGhost = theta;
     RobotGstate.VTheta = vitesse;
     RobotGstate.AccTheta = accel;
     RobotGstate.VThetamax = vitesseMax;
-    RobotGstate.FQEI = 10;
+    RobotGstate.FQEI = 250.0;
     RobotGstate.Tsampling = 1.0f / RobotGstate.FQEI;
     RobotGstate.ThetaWayPoint = 0;
     // Position initiale du Ghost
@@ -35,6 +35,13 @@ void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax) 
 }
 
 void GhostComputation(void) {
+        
+    if((RobotGstate.yGhost - RobotGstate.yWaypoint)*(RobotGstate.yGhost - RobotGstate.yWaypoint)+
+       (RobotGstate.xGhost - RobotGstate.xWaypoint)*(RobotGstate.xGhost - RobotGstate.xWaypoint) > 0.01)
+    {
+        RobotGstate.ThetaWayPoint = atan2f( RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);    
+    }
+    
     RobotGstate.ThetaRestant = ModuloByAngle(RobotGstate.ThetaGhost, RobotGstate.ThetaWayPoint) - RobotGstate.ThetaGhost;
 
     RobotGstate.ThetaArret = (RobotGstate.VTheta * RobotGstate.VTheta) / (2 * RobotGstate.AccTheta);
@@ -83,12 +90,6 @@ void GhostComputation(void) {
     float distanceAvantDeplacement = sqrtf(dx * dx + dy * dy);
 
     // ============================================================
-    // DISTANCE PARCOURUE PENDANT CE CYCLE
-    // ============================================================
-
-    float distanceDeplacement = RobotGstate.VGhost * RobotGstate.Tsampling;
-
-    // ============================================================
     // CALCUL DE LA POSITION DU GHOST
     // ============================================================
 
@@ -104,33 +105,7 @@ void GhostComputation(void) {
         RobotGstate.xGhost = RobotGstate.xWaypoint;
         RobotGstate.yGhost = RobotGstate.yWaypoint;
         RobotGstate.DistanceGhostWaypoint = 0.0f;
-    }/*
-         * Si le Ghost va atteindre ou dépasser le waypoint
-         * pendant ce cycle, on le place directement sur le waypoint.
-         *
-         * Exemple :
-         *
-         * Distance restante = 0.01 m
-         * Déplacement prévu = 0.02 m
-         *
-         * Au lieu de faire :
-         *
-         * 0.00 -> 0.02
-         *
-         * on fait :
-         *
-         * 0.00 -> 0.01
-         *
-         * et le Ghost s'arrête exactement sur le waypoint.
-         */
-
-    else if (distanceAvantDeplacement <= distanceDeplacement) {
-        RobotGstate.xGhost = RobotGstate.xWaypoint;
-        RobotGstate.yGhost = RobotGstate.yWaypoint;
-        RobotGstate.DistanceGhostWaypoint = 0.0f;
-    }/*
-         * Sinon, le Ghost continue normalement son déplacement.
-         */
+    }
 
     else if (Abs(RobotGstate.ThetaRestant) < SEUIL_ANGLE_AVANCE) {
         RobotGstate.xGhost += RobotGstate.VGhost * cosf(RobotGstate.ThetaGhost) * RobotGstate.Tsampling;
@@ -147,11 +122,11 @@ void GhostComputation(void) {
         RobotGstate.ThetaGhost = RobotGstate.ThetaWayPoint;
 
     }
-    if (RobotGstate.ThetaRestant != 0 && distanceAvantDeplacement > 0.001f) {
-
-        RobotGstate.ThetaWayPoint = atan2f(RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
-
-    }
+//    if (RobotGstate.ThetaRestant != 0 && distanceAvantDeplacement > 0.001f) {
+//
+//        RobotGstate.ThetaWayPoint = atan2f(RobotGstate.yWaypoint - RobotGstate.yGhost, RobotGstate.xWaypoint - RobotGstate.xGhost);
+//
+//    }
 }
 // 03/09
 /// AFFICHAGE DU GHOST

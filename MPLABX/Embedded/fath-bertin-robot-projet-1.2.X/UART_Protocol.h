@@ -24,6 +24,6 @@ int SetRobotAutoControlState(unsigned char msgPayload);
 void SetRobotState(unsigned char msgPayload);
 void SetupAsservissement(unsigned char* msgPayload);
 void ValeurConsigne(unsigned char* msgPayload);
-void RecepetionGhost(unsigned char* msgPayload);
+void RecepetionWaypoint(unsigned char* msgPayload);
 
 #endif

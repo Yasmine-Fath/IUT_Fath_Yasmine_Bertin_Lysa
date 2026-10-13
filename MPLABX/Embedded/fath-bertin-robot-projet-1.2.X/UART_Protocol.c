@@ -164,7 +164,7 @@ void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPaylo
             break;
             
         case GHOST_MODIFIED :
-            RecepetionGhost(msgPayload);
+            RecepetionWaypoint(msgPayload);
             break;
 
         default:
@@ -221,7 +221,7 @@ void ValeurConsigne(unsigned char* msgPayload){
 }
 
 //04/09
-void RecepetionGhost(unsigned char* msgPayload){
+void RecepetionWaypoint(unsigned char* msgPayload){
     //RobotGstate.ThetaWayPoint = getFloat(msgPayload, 0); //valeure du theta ghost recu du C#
     
     RobotGstate.xWaypoint = getFloat(msgPayload, 0);

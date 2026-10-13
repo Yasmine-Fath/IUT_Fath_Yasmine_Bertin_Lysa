@@ -16,6 +16,11 @@
 
 #define PWM_ENABLE _LATJ10
 
+// ===== Bouton de lancement de la mission carré =====
+#define BOUTON_CARRE        PORTHbits.RH0
+#define BOUTON_CARRE_TRIS   TRISHbits.TRISH0
+#define BOUTON_NIVEAU_APPUI 0          // 0 si appui = niveau bas (pull-up), 1 sinon
+
 // Prototypes fonctions
 void InitIO();
 void LockIO();

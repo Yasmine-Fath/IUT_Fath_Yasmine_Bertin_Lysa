@@ -53,7 +53,12 @@ void InitIO()
     _QEB2R = 113; //assign QEI B to pin RP96
     _QEA1R = 126; //assign QEI A to pin RP70
     _QEB1R = 124; //assign QEI B to pin RP69
-        
+    
+    // Bouton INTER1 en entrée
+    BOUTON_CARRE_TRIS = 1;
+    // Si la broche choisie est une broche analogique (ANx), mettre aussi
+    // le bit ANSELx correspondant à 0 pour la passer en numérique.
+    
     LockIO(); // On lock les registres d'entrées/sorties, ainsi que les registres des PPS
 }
 

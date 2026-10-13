@@ -44,7 +44,7 @@ typedef struct GState {
 } GSTATE;
 
 extern GSTATE RobotGstate;
-void SetupGhostState(float theta, float vitesse, float accel, float vitesseMax);
+void SetupGhostState(volatile GSTATE* Ghost, float theta, float vitesse, float accel, float vitesseMax);
 void GhostComputation();
 void CalculDistanceGhostWaypoint(void);
 

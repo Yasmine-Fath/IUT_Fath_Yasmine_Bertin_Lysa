@@ -76,7 +76,7 @@ void UpdateAsservissement()
 
     // --- Application des corrections aux moteurs ---
     PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,robotState.CorrectionVitesseAngulaire);
-    AffichagePID();
+    //AffichagePID();
 }
 
 

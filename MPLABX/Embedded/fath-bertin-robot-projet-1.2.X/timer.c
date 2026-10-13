@@ -8,9 +8,10 @@
 #include "ChipConfig.h"
 #include "QEI.h"
 #include "Ghost.h"
+#include "Mission.h"
 
 unsigned char toggle = 0;
-float f1 = 10.0;
+float f1 = 250.0;
 int cpt = 1;
 unsigned long timestamp;
 
@@ -33,20 +34,27 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0;
     //LED_BLANCHE_1 = !LED_BLANCHE_1;
     ADC1StartConversionSequence();
-    QEIUpdateData();
+    //QEIUpdateData();
 
     PWMUpdateSpeed();
 
     if (cpt++ % 25 == 0) {
-        SendPositionData();
+        //SendPositionData();
+        AffichageGHOST();
+        AffichagePID();
     }
+//  ACTIVER POUR VISUALISATION :
+//    GhostComputation();
+//    PIDPosition();
 
-    GhostComputation();
-    PIDPosition();
+    // dans l'interruption Timer1, avant UpdateAsservissement()
+    MissionUpdate();
+    if (MissionEstActive()) {
+        GhostComputation();
+        PIDPosition(); // écrit vitesseLineaireConsigne / vitesseAngulaireConsigne
+    }
     UpdateAsservissement();
     //AffichageGHOST(ghostState);
-    AffichageGHOST();
-    AffichagePID();
 
 }
 //Initialisation d?un timer 32 bits

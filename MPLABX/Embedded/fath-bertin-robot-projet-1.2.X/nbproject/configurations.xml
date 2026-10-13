@@ -21,6 +21,7 @@
       <itemPath>asservissement.h</itemPath>
       <itemPath>Ghost.h</itemPath>
       <itemPath>BrouillonGhostC.h</itemPath>
+      <itemPath>Mission.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -52,6 +53,7 @@
       <itemPath>asservissement.c</itemPath>
       <itemPath>Ghost.c</itemPath>
       <itemPath>BrouiilonGhostC.c</itemPath>
+      <itemPath>Mission.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

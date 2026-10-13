@@ -40,7 +40,7 @@ int main(void) {
     InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     InitQEI1();
     InitQEI2();
-    SetupGhostState(0, 0, 6, 2);
+    SetupGhostState(&robotState.gState, 0, 0.2, 6, 2);
     SetupPIDPosition(); 
     
     PWM_ENABLE = 1;
