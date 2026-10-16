@@ -87,6 +87,8 @@ void UpdateAsservissement() {
 //        PWMSetSpeedConsignePolaire(0, 0);
 //        return;
 //    }
+    
+    //erreur theta c le modulobyangle(anglefromodomentry, anglethetaghots)-anglefromodometry/////////////////Pour que le robot aille au point souhaiter /////////////////////////////////////////////
 
     float thetaRobot = (float) robotState.angleRadianFromOdometry;
     //erreur = THetaghost-QEIIondo
