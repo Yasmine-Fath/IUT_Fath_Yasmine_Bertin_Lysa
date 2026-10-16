@@ -12,15 +12,11 @@
 #define Y_DEPART   0.0f
 #define Y_CARRE    1.5f     // moitié du terrain (3 m / 2)
 
-#define NB_WAYPOINTS 7
+#define NB_WAYPOINTS 3
 static const float wpTerrain[NB_WAYPOINTS][2] = {
-    {X_DEPART, Y_CARRE}, // 1 m devant
-    {X_DEPART + 0.5f, Y_CARRE}, // 0,5 m à droite
-    {X_DEPART + 0.5f, Y_CARRE + 1.0f}, // 1 m (virage à gauche)
-    {X_DEPART - 0.5f, Y_CARRE + 1.0f}, // 1 m
-    {X_DEPART - 0.5f, Y_CARRE}, // 1 m
-    {X_DEPART + 0.5f, Y_CARRE}, // 1 m
-    {X_DEPART, Y_CARRE} // retour au milieu du côté bas
+    {X_DEPART,        1.0f},   // 1 m devant
+    {X_DEPART + 0.5f, 1.0f},   // tourne à droite, 0,5 m
+    {X_DEPART + 0.5f, 2.0f}    // tourne à gauche, 1 m, puis arrêt
 };
 
 // ---------- Tolérances ----------
@@ -126,10 +122,12 @@ unsigned char MissionEstActive(void) {
 
 void MissionUpdate(void) {
     unsigned char appui = BoutonFrontAppui();
-
+    if (appui) { // relance à chaque appui, même en cours de route
+        MissionDemarrer();
+        return;
+    }
     switch (etatMission) {
         case MISSION_IDLE:
-            if (appui) MissionDemarrer();
             break;
 
         case MISSION_EN_COURS:
@@ -139,17 +137,17 @@ void MissionUpdate(void) {
             float dxr = RobotGstate.xWaypoint - (float) robotState.xPosFromOdometry;
             float dyr = RobotGstate.yWaypoint - (float) robotState.yPosFromOdometry;
 
-            unsigned char ghostArrive = (dxg*dxg + dyg*dyg) < (TOL_GHOST_M * TOL_GHOST_M);
-            unsigned char robotArrive = (dxr*dxr + dyr*dyr) < (TOL_ROBOT_M * TOL_ROBOT_M);
+            unsigned char ghostArrive = (dxg * dxg + dyg * dyg) < (TOL_GHOST_M * TOL_GHOST_M);
+            unsigned char robotArrive = (dxr * dxr + dyr * dyr) < (TOL_ROBOT_M * TOL_ROBOT_M);
 
             if (ghostArrive && robotArrive) {
                 indexWp++;
                 if (indexWp >= NB_WAYPOINTS)
-                    etatMission = MISSION_FINIE;   // le ghost reste sur le dernier point
+                    etatMission = MISSION_FINIE; // le ghost reste sur le dernier point
                 else
                     MissionEnvoyerWaypoint(indexWp);
             } else if (++ticksWp > TIMEOUT_TICKS) {
-                MissionArreter();                  // sécurité : robot bloqué
+                MissionArreter(); // sécurité : robot bloqué
             }
             break;
         }

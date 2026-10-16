@@ -3,16 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/CB_RX1.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Mission.h</file>
-            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/IO.h</file>
-            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Ghost.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Mission.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/asservissement.h</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/QEI.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/UART_Protocol.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/PMW.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/IO.c</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/IO.h</file>
+            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Ghost.h</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/main.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/timer.c</file>
-            <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/IO.c</file>
             <file>file:/C:/Github/IUT_Fath_Yasmine_Bertin_Lysa/MPLABX/Embedded/fath-bertin-robot-projet-1.2.X/Ghost.c</file>
         </group>
     </open-files>

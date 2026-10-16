@@ -24,14 +24,14 @@ void SetupGhostState(volatile GSTATE* Ghost, float theta, float vitesse, float a
     RobotGstate.VThetamax = vitesseMax;
     RobotGstate.FQEI = 250.0;
     RobotGstate.Tsampling = 1.0f / RobotGstate.FQEI;
-    RobotGstate.ThetaWayPoint = 0;
+    RobotGstate.ThetaWayPoint = theta; // attentionnnnn il faut remettre : 0;
     // Position initiale du Ghost
-    RobotGstate.xGhost = 0.0f;
-    RobotGstate.yGhost = 0.0f;
+    RobotGstate.xGhost = 0.10f;
+    RobotGstate.yGhost = 0.10f;
     // Vitesse linéaire du Ghost
     RobotGstate.VGhost = 0.2f;
-    RobotGstate.xWaypoint = 0;
-    RobotGstate.yWaypoint = 0;
+    RobotGstate.xWaypoint = 0.10f;
+    RobotGstate.yWaypoint = 0.10f;
 }
 
 void GhostComputation(void) {

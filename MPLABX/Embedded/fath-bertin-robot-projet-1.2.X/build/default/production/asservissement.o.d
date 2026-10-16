@@ -1,6 +1,6 @@
 build/default/production/asservissement.o: asservissement.c \
  asservissement.h Toolbox.h UART_Protocol.h CB_TX1.h Robot.h Ghost.h \
- main.h QEI.h Utilities.h PWM.h
+ main.h QEI.h Utilities.h PWM.h Mission.h
 
 asservissement.h:
 
@@ -21,3 +21,5 @@ QEI.h:
 Utilities.h:
 
 PWM.h:
+
+Mission.h:

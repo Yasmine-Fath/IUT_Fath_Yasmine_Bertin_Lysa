@@ -8,9 +8,13 @@
 #include "QEI.h"
 #include "Utilities.h"
 #include "PWM.h"
+#include <math.h>
+#include "Ghost.h"
+#include "Mission.h"
 
 
-
+#define CMD_LIN_MAX 5.0f    // sortie max du PD linéaire  (x10 = 50 % de PWM)
+#define CMD_ANG_MAX 30.0f   // sortie max du PD angulaire
 
 /*
 float getFloatFromBytes(const unsigned char *p, int index)
@@ -30,13 +34,12 @@ float getFloatFromBytes(const unsigned char *p, int index)
 //
 //unsigned char* toto1[20] = {}; 
 //int d = 0;
-    
-
-    //getFloatFromBytes(toto1, d);
 
 
-void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax){
-    
+//getFloatFromBytes(toto1, d);
+
+void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax) {
+
     PidCorr->Kp = Kp;
     PidCorr->erreurProportionelleMax = proportionelleMax; //On limite la correction due au Kp
     PidCorr->Ki = Ki;
@@ -45,72 +48,103 @@ void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki
     PidCorr->erreurDeriveeMax = deriveeMax;
 }
 
-double Correcteur(volatile PidCorrector* PidCorr, double erreur)
-{
+double Correcteur(volatile PidCorrector* PidCorr, double erreur) {
     PidCorr->erreur = erreur;
     double erreurProportionnelle = LimitToInterval(erreur, -PidCorr->erreurProportionelleMax, PidCorr->erreurProportionelleMax);
     PidCorr->corrP = erreurProportionnelle * PidCorr->Kp;
-    
+
     PidCorr->erreurIntegrale += erreur / FREQ_ECH_QEI;
-    PidCorr->erreurIntegrale = LimitToInterval(PidCorr->erreurIntegrale,-PidCorr->erreurIntegraleMax / PidCorr->Ki,PidCorr->erreurIntegraleMax / PidCorr->Ki);
+    PidCorr->erreurIntegrale = LimitToInterval(PidCorr->erreurIntegrale, -PidCorr->erreurIntegraleMax / PidCorr->Ki, PidCorr->erreurIntegraleMax / PidCorr->Ki);
     PidCorr->corrI = PidCorr->erreurIntegrale * PidCorr->Ki;
-    
-    double erreurDerivee = (erreur - PidCorr->epsilon_1)*FREQ_ECH_QEI;
-    double deriveeBornee = LimitToInterval(erreurDerivee, -PidCorr->erreurDeriveeMax/PidCorr->Kd,
-        PidCorr->erreurDeriveeMax/PidCorr->Kd);
+
+    double erreurDerivee = (erreur - PidCorr->epsilon_1) * FREQ_ECH_QEI;
+    double deriveeBornee = LimitToInterval(erreurDerivee, -PidCorr->erreurDeriveeMax / PidCorr->Kd,
+            PidCorr->erreurDeriveeMax / PidCorr->Kd);
     PidCorr->epsilon_1 = erreur;
     PidCorr->corrD = deriveeBornee * PidCorr->Kd;
-    
-    return PidCorr->corrP+PidCorr->corrI+PidCorr->corrD;
+
+    return PidCorr->corrP + PidCorr->corrI + PidCorr->corrD;
 }
 
 
-void UpdateAsservissement()
-{
-   robotState.PidX.erreur = robotState.vitesseLineaireConsigne- robotState.vitesseLineaireFromOdometry;
-   robotState.PidTheta.erreur = robotState.vitesseAngulaireConsigne - robotState.vitesseAngulaireFromOdometry;
+//void UpdateAsservissement()
+//{
+//   robotState.PidX.erreur = robotState.vitesseLineaireConsigne- robotState.vitesseLineaireFromOdometry;
+//   robotState.PidTheta.erreur = robotState.vitesseAngulaireConsigne - robotState.vitesseAngulaireFromOdometry;
+//
+//    // --- Calcul des corrections via le PID ---
+//    robotState.CorrectionVitesseLineaire  = Correcteur(&robotState.PidX,robotState.PidX.erreur);
+//    robotState.CorrectionVitesseAngulaire = Correcteur(&robotState.PidTheta,robotState.PidTheta.erreur);
+//
+//    // --- Application des corrections aux moteurs ---
+//    PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,robotState.CorrectionVitesseAngulaire);
+//    //AffichagePID();
+//}
 
-    // --- Calcul des corrections via le PID ---
-    robotState.CorrectionVitesseLineaire  = Correcteur(&robotState.PidX,robotState.PidX.erreur);
-    robotState.CorrectionVitesseAngulaire = Correcteur(&robotState.PidTheta,robotState.PidTheta.erreur);
+void UpdateAsservissement() {
+    // Hors mission : moteurs arrêtés
+//    if (!MissionEstActive()) {
+//        PWMSetSpeedConsignePolaire(0, 0);
+//        return;
+//    }
 
-    // --- Application des corrections aux moteurs ---
-    PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,robotState.CorrectionVitesseAngulaire);
-    //AffichagePID();
+    float thetaRobot = (float) robotState.angleRadianFromOdometry;
+    //erreur = THetaghost-QEIIondo
+
+    // Erreur angulaire = theta ghost - theta robot, ramenée dans [-PI ; PI]
+    float erreurTheta = RobotGstate.ThetaGhost - thetaRobot;
+    while (erreurTheta > M_PI) erreurTheta -= 2.0f * M_PI;
+    while (erreurTheta < -M_PI) erreurTheta += 2.0f * M_PI;
+
+    // Erreur de position = ghost - odométrie (repère terrain)
+    float erreurX = RobotGstate.xGhost - (float) robotState.xPosFromOdometry;
+    float erreurY = RobotGstate.yGhost - (float) robotState.yPosFromOdometry;
+
+    // Erreur linéaire signée : projection de (ghost - robot) sur l'axe du robot
+    float erreurLineaire = erreurX * cosf(thetaRobot) + erreurY * sinf(thetaRobot);
+
+    // Même structure que ton asservissement en vitesse
+    robotState.PidX.erreur = erreurLineaire;
+    robotState.PidTheta.erreur = erreurTheta;
+
+    robotState.CorrectionVitesseLineaire = Correcteur(&robotState.PidX, robotState.PidX.erreur);
+    robotState.CorrectionVitesseAngulaire = Correcteur(&robotState.PidTheta, robotState.PidTheta.erreur);
+
+    PWMSetSpeedConsignePolaire(robotState.CorrectionVitesseLineaire,
+            robotState.CorrectionVitesseAngulaire);
 }
 
-
-void AffichagePID(){
-     unsigned char payload[24];
+void AffichagePID() {
+    unsigned char payload[24];
     //*****************correcteurs ****************
     getBytesFromFloat(payload, 0, robotState.PidX.corrP);
     getBytesFromFloat(payload, 4, robotState.PidX.corrI);
     getBytesFromFloat(payload, 8, robotState.PidX.corrD);
-    
+
     getBytesFromFloat(payload, 12, robotState.PidTheta.corrP);
     getBytesFromFloat(payload, 16, robotState.PidTheta.corrI);
     getBytesFromFloat(payload, 20, robotState.PidTheta.corrD);
-    
-    UartEncodeAndSendMessage(0x0071, 24, payload );
-    
+
+    UartEncodeAndSendMessage(0x0071, 24, payload);
+
     //*****************correction max ****************
     unsigned char payload1[24];
     getBytesFromFloat(payload1, 0, robotState.PidX.erreurProportionelleMax);
     getBytesFromFloat(payload1, 4, robotState.PidX.erreurIntegraleMax);
     getBytesFromFloat(payload1, 8, robotState.PidX.erreurDeriveeMax);
-    
+
     getBytesFromFloat(payload1, 12, robotState.PidTheta.erreurProportionelleMax);
     getBytesFromFloat(payload1, 16, robotState.PidTheta.erreurIntegraleMax);
     getBytesFromFloat(payload1, 20, robotState.PidTheta.erreurDeriveeMax);
-    
-    UartEncodeAndSendMessage(0x0072, 24, payload );
-    
+
+    UartEncodeAndSendMessage(0x0072, 24, payload1);
+
     //***********************erreurs**********************
     unsigned char payload2[8];
     getBytesFromFloat(payload2, 0, robotState.PidX.erreur);
     getBytesFromFloat(payload2, 4, robotState.PidTheta.erreur);
-    
-    UartEncodeAndSendMessage(0x0073, 8, payload );
+
+    UartEncodeAndSendMessage(0x0073, 8, payload2);
 
 
 }

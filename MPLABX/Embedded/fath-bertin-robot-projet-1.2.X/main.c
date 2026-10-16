@@ -28,7 +28,7 @@ unsigned int flagrobot;
 unsigned char stateRobot = STATE_ATTENTE;
 
 int main(void) {
-    
+
     //Initialisation oscillateur
     InitOscillator();
     InitIO();
@@ -37,12 +37,22 @@ int main(void) {
     InitTimer4();
     InitPWM();
     InitADC1();
-    InitUART();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    InitUART();
     InitQEI1();
     InitQEI2();
-    SetupGhostState(&robotState.gState, 0, 0.2, 6, 2);
-    SetupPIDPosition(); 
-    
+    SetupGhostState(&robotState.gState, 1.57, 0.2, 6, 2);
+
+    //SetupPIDPosition(); 
+
+    //SetupPidAsservissement(&robotState.PidTheta, 8, 0, 0, 100, 100, 100);
+
+    SetupPidAsservissement(&robotState.PidTheta, 25.0, 0, 0.5, 50.0, 1.5, 1.5);
+    SetupPidAsservissement(&robotState.PidX, 17.0, 0, 0, 50.0, 1.5, 1.5);
+
+    //SetupPidAsservissement(&PD_Position_Angulaire, 2.0, 0, 0.05, 6,   6,   6);
+    //void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax){
+
+
     PWM_ENABLE = 1;
 
     robotState.Mode = MODE_MANUEL;
@@ -60,7 +70,7 @@ int main(void) {
     //    LED_ORANGE_2 = 1;
     //    LED_ROUGE_2 = 1;
     //    LED_VERTE_2 = 1;
-    
+
 
 
 
@@ -111,8 +121,8 @@ int main(void) {
 
         }
 
-//                SendMessageDirect((unsigned char*) "Bonjour", 7);
-//                __delay32(40000000);
+        //                SendMessageDirect((unsigned char*) "Bonjour", 7);
+        //                __delay32(40000000);
 
         /*int i;
         for(i=0; i< CB_RX1_GetDataSize(); i++)
@@ -122,32 +132,31 @@ int main(void) {
         }
         __delay32(10000);*/
 
-//        unsigned char payload[] = {'B', 'o', 'n', 'j', 'o', 'u', 'r'};
-//        UartEncodeAndSendMessage(0x0080,7,payload);
-//        __delay32(40000000);
+        //        unsigned char payload[] = {'B', 'o', 'n', 'j', 'o', 'u', 'r'};
+        //        UartEncodeAndSendMessage(0x0080,7,payload);
+        //        __delay32(40000000);
 
-//        // Créer la payload (3 octets pour les distances)
-//        unsigned char payload[3] = {robotState.distanceTelemetreGauche, robotState.distanceTelemetreCentre, robotState.distanceTelemetreDroit};
-//
-//        // Appeler la fonction pour envoyer la trame avec l'ID 0x0030 (distances télémètre)
-//        UartEncodeAndSendMessage(0x0030, 3, payload);
-//
-//        // Temporisation pour éviter un flux trop rapide
-//        __delay32(40000000);
+        //        // Créer la payload (3 octets pour les distances)
+        //        unsigned char payload[3] = {robotState.distanceTelemetreGauche, robotState.distanceTelemetreCentre, robotState.distanceTelemetreDroit};
+        //
+        //        // Appeler la fonction pour envoyer la trame avec l'ID 0x0030 (distances télémètre)
+        //        UartEncodeAndSendMessage(0x0030, 3, payload);
+        //
+        //        // Temporisation pour éviter un flux trop rapide
+        //        __delay32(40000000);
 
-//        
-        
-//        unsigned char payload[2] = {20,10};
-//        UartEncodeAndSendMessage(0x0040, 2, payload); 
+        //        
+
+        //        unsigned char payload[2] = {20,10};
+        //        UartEncodeAndSendMessage(0x0040, 2, payload); 
         int i;
         for (i = 0; i < CB_RX1_GetDataSize(); i++) {
             unsigned char c = CB_RX1_Get();
             UartDecodeMessage(c);
             //SendMessage(&c, 1);
         }
-    }    
+    }
 }
-
 
 void OperatingSystemLoop(void) {
     switch (stateRobot) {
@@ -175,7 +184,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsignePolaire(15/2, 15/(2*DISTROUES));
+            PWMSetSpeedConsignePolaire(15 / 2, 15 / (2 * DISTROUES));
             stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
             break;
 
@@ -185,7 +194,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsignePolaire(15/2, -15/(2*DISTROUES));
+            PWMSetSpeedConsignePolaire(15 / 2, -15 / (2 * DISTROUES));
             stateRobot = STATE_TOURNE_DROITE_EN_COURS;
             break;
 
@@ -195,7 +204,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            PWMSetSpeedConsignePolaire(0, 15/DISTROUES);
+            PWMSetSpeedConsignePolaire(0, 15 / DISTROUES);
             if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
             }
@@ -207,7 +216,7 @@ void OperatingSystemLoop(void) {
             break;
 
         case STATE_TOURNE_SUR_PLACE_DROITE:
-            PWMSetSpeedConsignePolaire(0, - 15/DISTROUES);
+            PWMSetSpeedConsignePolaire(0, -15 / DISTROUES);
             if (timestamp > 500) {
                 stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
             }
