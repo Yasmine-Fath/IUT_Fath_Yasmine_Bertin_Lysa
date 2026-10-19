@@ -33,6 +33,15 @@ void InitTimer1(void) {
 void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     IFS0bits.T1IF = 0;
     //LED_BLANCHE_1 = !LED_BLANCHE_1;
+    // TEST TEMPORAIRE INTER1 / RH0
+    if (PORTHbits.RH0 == 0)
+    {
+        LED_ROUGE_1 = 1;
+    }
+    else
+    {
+        LED_ROUGE_1 = 0;
+    }
     ADC1StartConversionSequence();
     QEIUpdateData();
 
@@ -45,14 +54,14 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     }
 //  ACTIVER POUR VISUALISATION :
 //    GhostComputation();
-    PIDPosition();
+//    PIDPosition();
 
     // dans l'interruption Timer1, avant UpdateAsservissement()
-  //MissionUpdate();
-   // if (MissionEstActive()) {
-     GhostComputation();
-        //PIDPosition(); // écrit vitesseLineaireConsigne / vitesseAngulaireConsigne
-    //}
+  MissionUpdate();
+    if (MissionEstActive()) {
+        GhostComputation();
+//        PIDPosition(); // écrit vitesseLineaireConsigne / vitesseAngulaireConsigne
+    }
     UpdateAsservissement();
     //AffichageGHOST(ghostState);
 

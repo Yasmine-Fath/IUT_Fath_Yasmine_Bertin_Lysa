@@ -14,9 +14,9 @@
 
 #define NB_WAYPOINTS 3
 static const float wpTerrain[NB_WAYPOINTS][2] = {
-    {X_DEPART,        1.0f},   // 1 m devant
-    {X_DEPART + 0.5f, 1.0f},   // tourne à droite, 0,5 m
-    {X_DEPART + 0.5f, 2.0f}    // tourne à gauche, 1 m, puis arrêt
+    {X_DEPART, 1.0f}, // 1 m devant
+    {X_DEPART + 0.5f, 1.0f}, // tourne à droite, 0,5 m
+    {X_DEPART + 0.5f, 2.0f} // tourne à gauche, 1 m, puis arrêt
 };
 
 // ---------- Tolérances ----------
@@ -94,10 +94,10 @@ static void MissionDemarrer(void) {
     RobotGstate.ThetaWayPoint = th_0;
 
     // Évite un coup de dérivée au démarrage
-    PD_Position_Lineaire.erreurIntegrale = 0;
-    PD_Position_Lineaire.epsilon_1 = 0;
-    PD_Position_Angulaire.erreurIntegrale = 0;
-    PD_Position_Angulaire.epsilon_1 = 0;
+    robotState.PidX.erreurIntegrale = 0;
+    robotState.PidX.epsilon_1 = 0;
+    robotState.PidTheta.erreurIntegrale = 0;
+    robotState.PidTheta.epsilon_1 = 0;
 
     indexWp = 0;
     MissionEnvoyerWaypoint(indexWp);
@@ -113,7 +113,7 @@ static void MissionArreter(void) {
 }
 
 unsigned char MissionEstActive(void) {
-    return (etatMission != MISSION_IDLE);
+    return (etatMission != MISSION_EN_COURS);
 }
 
 // ---------------------------------------------------------------
@@ -122,7 +122,7 @@ unsigned char MissionEstActive(void) {
 
 void MissionUpdate(void) {
     unsigned char appui = BoutonFrontAppui();
-    if (appui) { // relance à chaque appui, même en cours de route
+    if (appui && etatMission != MISSION_EN_COURS) { // relance à chaque appui, mais pas en cours de route
         MissionDemarrer();
         return;
     }
@@ -143,7 +143,7 @@ void MissionUpdate(void) {
             if (ghostArrive && robotArrive) {
                 indexWp++;
                 if (indexWp >= NB_WAYPOINTS)
-                    etatMission = MISSION_FINIE; // le ghost reste sur le dernier point
+                    MissionArreter(); // le ghost reste sur le dernier point
                 else
                     MissionEnvoyerWaypoint(indexWp);
             } else if (++ticksWp > TIMEOUT_TICKS) {
@@ -154,6 +154,7 @@ void MissionUpdate(void) {
 
         case MISSION_FINIE:
             // Pour relancer : reset de la carte (le robot n'est plus au point de départ)
+            // Attente d'un nouvel appui sur le bouton
             break;
     }
 }

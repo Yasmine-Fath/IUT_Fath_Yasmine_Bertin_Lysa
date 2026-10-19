@@ -82,11 +82,11 @@ double Correcteur(volatile PidCorrector* PidCorr, double erreur) {
 //}
 
 void UpdateAsservissement() {
-    // Hors mission : moteurs arrêtés
-//    if (!MissionEstActive()) {
-//        PWMSetSpeedConsignePolaire(0, 0);
-//        return;
-//    }
+//     Hors mission : moteurs arrêtés
+    if (!MissionEstActive()) {
+        PWMSetSpeedConsignePolaire(0, 0);
+        return;
+    }
     
     //erreur theta c le modulobyangle(anglefromodomentry, anglethetaghots)-anglefromodometry/////////////////Pour que le robot aille au point souhaiter /////////////////////////////////////////////
 

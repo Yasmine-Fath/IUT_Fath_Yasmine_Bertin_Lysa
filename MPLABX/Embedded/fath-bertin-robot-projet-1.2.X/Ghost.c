@@ -205,22 +205,22 @@ void SetupPIDPosition(void) {
     SetupPidAsservissement(&PD_Position_Angulaire, 0, 0, 1, 6, 6, 6);
 }
 
-void PIDPosition(void) {
-    // ---------- 1) Erreur angulaire (robot réel -> ghost) ----------
-    // ModuloByAngle ramène ?ghost dans [?robot - ? ; ?robot + ?]
-    // => on prend toujours le chemin le plus court
-    float thetaRobot = robotState.angleRadianFromOdometry;
-    float erreurTheta = ModuloByAngle(thetaRobot, RobotGstate.ThetaGhost) - thetaRobot;
-
-    // ---------- 2) Erreur linéaire signée (figure 5) ----------
-    float dx = RobotGstate.xGhost - robotState.xPosFromOdometry;
-    float dy = RobotGstate.yGhost - robotState.yPosFromOdometry;
-
-
-    float erreurLineaire = dx * cosf(thetaRobot) + dy * sinf(thetaRobot);
-
-    // ---------- 3) Correcteurs PD ----------
-    // Les sorties deviennent les consignes de l'asservissement en vitesse
-    robotState.vitesseLineaireConsigne = Correcteur(&PD_Position_Lineaire, erreurLineaire);
-    robotState.vitesseAngulaireConsigne = Correcteur(&PD_Position_Angulaire, erreurTheta);
-}
+//void PIDPosition(void) {
+//    // ---------- 1) Erreur angulaire (robot réel -> ghost) ----------
+//    // ModuloByAngle ramène ?ghost dans [?robot - ? ; ?robot + ?]
+//    // => on prend toujours le chemin le plus court
+//    float thetaRobot = robotState.angleRadianFromOdometry;
+//    float erreurTheta = ModuloByAngle(thetaRobot, RobotGstate.ThetaGhost) - thetaRobot;
+//
+//    // ---------- 2) Erreur linéaire signée (figure 5) ----------
+//    float dx = RobotGstate.xGhost - robotState.xPosFromOdometry;
+//    float dy = RobotGstate.yGhost - robotState.yPosFromOdometry;
+//
+//
+//    float erreurLineaire = dx * cosf(thetaRobot) + dy * sinf(thetaRobot);
+//
+//    // ---------- 3) Correcteurs PD ----------
+//    // Les sorties deviennent les consignes de l'asservissement en vitesse
+//    robotState.vitesseLineaireConsigne = Correcteur(&PD_Position_Lineaire, erreurLineaire);
+//    robotState.vitesseAngulaireConsigne = Correcteur(&PD_Position_Angulaire, erreurTheta);
+//}

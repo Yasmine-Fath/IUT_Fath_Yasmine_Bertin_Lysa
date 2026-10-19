@@ -148,7 +148,7 @@ void UartProcessDecodedMessage(unsigned char msgFunction, unsigned char msgPaylo
 //            break;
         
         case ASSERVISSEMENT :
-            //SetupAsservissement(msgPayload);
+            //SetupAsservissement(msgPayload);      //a enlever pour avoir les valeurs sur le c# : !!!!!!!!!!! ATTENTION!!!!!!!!!!!!!!!
 
             break;
         case CONSIGNES :
