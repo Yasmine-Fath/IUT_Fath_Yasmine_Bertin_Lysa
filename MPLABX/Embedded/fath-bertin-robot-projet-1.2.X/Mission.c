@@ -12,11 +12,26 @@
 #define Y_DEPART   0.0f
 #define Y_CARRE    1.5f     // moitié du terrain (3 m / 2)
 
-#define NB_WAYPOINTS 3
-static const float wpTerrain[NB_WAYPOINTS][2] = {
-    {X_DEPART, 1.0f}, // 1 m devant
-    {X_DEPART + 0.5f, 1.0f}, // tourne à droite, 0,5 m
-    {X_DEPART + 0.5f, 2.0f} // tourne à gauche, 1 m, puis arrêt
+#define NB_WAYPOINTS 7
+static const float wpTerrain[NB_WAYPOINTS][6] = {
+//    {X_DEPART, 1.0f}, // 1 m devant
+//    {X_DEPART + 0.5f, 1.0f}, // tourne à droite, 0,5 m
+//    {X_DEPART + 0.5f, 2.0f} // tourne à gauche, 1 m, puis arrêt
+    
+    // 1 - Avance de 1 m
+    {X_DEPART, 1.0f},
+    // 2 - Droite 90° puis avance de 0,5 m
+    {X_DEPART + 0.5f, 1.0f},
+    // 3 - Gauche 90° puis avance de 1 m
+    {X_DEPART + 0.5f, 2.0f},
+    // 4 - Gauche 90° puis avance de 1 m
+    {X_DEPART - 0.5f, 2.0f},
+    // 5 - Gauche 90° puis avance de 1 m
+    {X_DEPART - 0.5f, 1.0f},
+    // 6 - Gauche 90° puis avance de 0,5 m
+    {X_DEPART, 1.0f},
+    // 7 - Gauche 90° puis avance de 0,5 m
+    {X_DEPART, 1.5f}
 };
 
 // ---------- Tolérances ----------
@@ -77,6 +92,9 @@ static void MissionEnvoyerWaypoint(int i) {
 }
 
 static void MissionDemarrer(void) {
+    
+    LED_BLEUE_2 = 1;
+    
     // Pose de départ = pose odométrique actuelle
     x_0 = (float) robotState.xPosFromOdometry;
     y_0 = (float) robotState.yPosFromOdometry;
@@ -105,6 +123,9 @@ static void MissionDemarrer(void) {
 }
 
 static void MissionArreter(void) {
+    
+    LED_BLEUE_2 = 0;
+    
     // Le ghost s'arrête sur place, le PD maintient le robot dessus
     RobotGstate.xWaypoint = RobotGstate.xGhost;
     RobotGstate.yWaypoint = RobotGstate.yGhost;
@@ -113,7 +134,7 @@ static void MissionArreter(void) {
 }
 
 unsigned char MissionEstActive(void) {
-    return (etatMission != MISSION_EN_COURS);
+    return (etatMission == MISSION_EN_COURS);
 }
 
 // ---------------------------------------------------------------
@@ -122,10 +143,15 @@ unsigned char MissionEstActive(void) {
 
 void MissionUpdate(void) {
     unsigned char appui = BoutonFrontAppui();
+    
     if (appui && etatMission != MISSION_EN_COURS) { // relance à chaque appui, mais pas en cours de route
         MissionDemarrer();
         return;
     }
+    
+    
+    
+    
     switch (etatMission) {
         case MISSION_IDLE:
             break;

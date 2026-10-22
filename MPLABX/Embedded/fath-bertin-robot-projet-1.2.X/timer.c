@@ -46,6 +46,15 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     QEIUpdateData();
 
     PWMUpdateSpeed();
+    MissionUpdate();
+    
+    
+    if (MissionEstActive()) {
+        GhostComputation();
+//        PIDPosition(); // écrit vitesseLineaireConsigne / vitesseAngulaireConsigne
+    }
+    UpdateAsservissement();
+    //AffichageGHOST(ghostState);
 
     if (cpt++ % 25 == 0) {
         SendPositionData();
@@ -57,13 +66,8 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
 //    PIDPosition();
 
     // dans l'interruption Timer1, avant UpdateAsservissement()
-  MissionUpdate();
-    if (MissionEstActive()) {
-        GhostComputation();
-//        PIDPosition(); // écrit vitesseLineaireConsigne / vitesseAngulaireConsigne
-    }
-    UpdateAsservissement();
-    //AffichageGHOST(ghostState);
+  
+    
 
 }
 //Initialisation d?un timer 32 bits
