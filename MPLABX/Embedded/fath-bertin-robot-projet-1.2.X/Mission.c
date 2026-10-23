@@ -31,7 +31,7 @@ static const float wpTerrain[NB_WAYPOINTS][6] = {
     // 6 - Gauche 90° puis avance de 0,5 m
     {X_DEPART, 1.0f},
     // 7 - Gauche 90° puis avance de 0,5 m
-    {X_DEPART, 1.5f}
+    {X_DEPART, 1.354f}
 };
 
 // ---------- Tolérances ----------

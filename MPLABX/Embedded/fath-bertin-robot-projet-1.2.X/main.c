@@ -46,8 +46,8 @@ int main(void) {
 
     //SetupPidAsservissement(&robotState.PidTheta, 8, 0, 0, 100, 100, 100);
 
-    SetupPidAsservissement(&robotState.PidTheta, 25.0, 0, 0.5, 50.0, 1.5, 1.5);
-    SetupPidAsservissement(&robotState.PidX, 17.0, 0, 17.0/50.0, 50.0, 1.5, 1.5);
+    SetupPidAsservissement(&robotState.PidTheta, 53.0, 0, 5, 55.0, 1.5, 10.0);
+    SetupPidAsservissement(&robotState.PidX, 17.0, 0, 5, 50.0, 1.5, 10.0);
 
     //SetupPidAsservissement(&PD_Position_Angulaire, 2.0, 0, 0.05, 6,   6,   6);
     //void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double proportionelleMax, double integralMax, double deriveeMax){
