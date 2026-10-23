@@ -43,7 +43,8 @@ int main(void) {
     SetupGhostState(&robotState.gState, 0, 0.2, 6, 2);  // 1.57/2
 
     //SetupPIDPosition(); 
-
+    
+    
     //SetupPidAsservissement(&robotState.PidTheta, 8, 0, 0, 100, 100, 100);
 
     SetupPidAsservissement(&robotState.PidTheta, 53.0, 0, 5, 55.0, 1.5, 10.0);

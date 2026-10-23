@@ -77,7 +77,7 @@ namespace Robot_interface_fath_bertin
             robotPositionInterface.OnCtrlClick += (x, y) => SendWaypoint(x, y);
 
             // Initialiser le port série avec les paramètres spécifiés
-            serialPort1 = new ExtendedSerialPort("COM8", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)
+            serialPort1 = new ExtendedSerialPort("COM8", 115200, Parity.None, 8, StopBits.One); //com à vérifier dans le gestionnaire de périferique -> Ports (COM et LPT)   
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
